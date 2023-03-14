@@ -33,11 +33,6 @@ from selenium import webdriver
 import mysettings
 import traceback
 
-'''
-Ниже идут настройки 
-'''
-BN = 100
-MN = 100
 
 '''
 ---------------------------------------------------------------------------'''
@@ -49,19 +44,19 @@ def main():
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     mypf = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUMF"
     print("Путь профиля Chrome: " + myp)
+    print("Путь профиля FireFox: " + mypf)
 
-    #options = webdriver.FirefoxOptions()
-    #options.add_argument(mypf)
-
-    #driver = webdriver.Firefox(options=options)
-
+    options = webdriver.FirefoxOptions()
+    options.add_argument(mypf)
+    driver = webdriver.Firefox(options=options)
+    '''
     options = webdriver.ChromeOptions()
     options.add_argument("--allow-profiles-outside-user-dir")
     options.add_argument(r"user-data-dir=" + myp)
     options.add_argument("--profile-directory=BOTVA")
     options.add_argument("--disable-blink-features=AutomationControlled")
     driver = webdriver.Chrome(options=options)
-
+    '''
     print("Логин...  ")
 
     driver.get("http://botva.ru")
@@ -106,7 +101,7 @@ def main():
             t.click()
             sleep(random.random() * 3 + 2)
     except:
-        print('Поймана ошибка при копке больших полян\n', traceback.format_exc())
+        print('Поймана ошибка при копке больших полян\n', "traceback.format_exc()")
     driver.get("https://g1.botva.ru/mine.php")
     try:
         t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
@@ -123,7 +118,7 @@ def main():
             t.click()
             sleep(random.random() * 3 + 2)
     except:
-        print('Поймана ошибка при копке малых полян\n', traceback.format_exc())
+        print('Поймана ошибка при копке малых полян\n', "traceback.format_exc()")
     driver.close()
 if __name__ == "__main__":
     main()
