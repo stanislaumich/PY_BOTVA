@@ -1,0 +1,1282 @@
+var Logging;
+(function (Logging) {
+    var Logger = (function () {
+        function Logger(level) {
+            if (level === void 0) { level = 0; }
+            this.level = level;
+        }
+        Logger.write = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            try {
+                var func = args.shift();
+                if (window.console && console[func]) {
+                    var t = '[' + (((new Date()).getTime() - Logger.logStartTime) / 1000) + '] ';
+                    args.unshift(t);
+                    switch (func) {
+                        case 'info':
+                            console.info.apply(console, args);
+                            break;
+                        case 'error':
+                            console.error.apply(console, args);
+                            break;
+                        case 'warn':
+                            console.warn.apply(console, args);
+                            break;
+                        default:
+                            console.log.apply(console, args);
+                            break;
+                    }
+                }
+            }
+            catch (e) {
+            }
+        };
+        Logger.prototype.debug = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 4)
+                return;
+            args.unshift('debug');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.info = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 3)
+                return;
+            args.unshift('info');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.warn = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 2)
+                return;
+            args.unshift('warn');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.error = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 1)
+                return;
+            args.unshift('error');
+            Logger.write.apply(this, args);
+        };
+        Logger.logStartTime = (new Date()).getTime();
+        return Logger;
+    })();
+    Logging.Logger = Logger;
+})(Logging || (Logging = {}));
+var Utils;
+(function (Utils) {
+    function getTimestamp() {
+        return Math.floor(new Date().getTime() / 1000);
+    }
+    Utils.getTimestamp = getTimestamp;
+    function getParameterFromQueryString(name, queryString) {
+        if (queryString === void 0) { queryString = location.search; }
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(queryString);
+        return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    function getParameterByName(name) {
+        var value = getParameterFromQueryString(name);
+        if (typeof value !== 'undefined')
+            return value;
+        var hashString = getParameterFromQueryString("hash");
+        if (typeof hashString !== 'undefined') {
+            hashString = '?' + hashString;
+            value = getParameterFromQueryString(name, hashString);
+            if (typeof value !== 'undefined')
+                return value;
+        }
+    }
+    Utils.getParameterByName = getParameterByName;
+    function toDate(timestamp) {
+        return new Date(timestamp * 1000);
+    }
+    Utils.toDate = toDate;
+    function getXMLHttpRequest() {
+        if (typeof XMLHttpRequest != 'undefined') {
+            return new XMLHttpRequest;
+        }
+        else {
+            try {
+                return new ActiveXObject("MSXML2.XMLHTTP");
+            }
+            catch (ex) {
+                return null;
+            }
+        }
+    }
+    function getJSON(params) {
+        var request = getXMLHttpRequest();
+        if (request != null) {
+            var sendArray = [];
+            for (var k in params.data) {
+                if (params.data.hasOwnProperty(k)) {
+                    sendArray.push(encodeURIComponent(k) + "=" + encodeURIComponent(params.data[k]));
+                }
+            }
+            var sendString = sendArray.join('&');
+            var url = sendString.length ? params.url + '?' + sendString : params.url;
+            var async = typeof params.async != 'undefined' ? params.async : true;
+            request.open("GET", url, async);
+            request.onreadystatechange = function handler() {
+                if (request.readyState != 4)
+                    return;
+                if (request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    if (params.done)
+                        params.done.apply(this, [response]);
+                }
+                else {
+                    if (params.fail)
+                        params.fail.apply(this, [request.statusText, request.statusMessage, request.statusCode]);
+                }
+            };
+        }
+        request.send();
+    }
+    Utils.getJSON = getJSON;
+})(Utils || (Utils = {}));
+var Cookies;
+(function (Cookies) {
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    Cookies.getCookie = getCookie;
+    function setCookie(name, value, options) {
+        var expires = options.expires;
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+        value = encodeURIComponent(value.toString());
+        var updatedCookie = name + "=" + value;
+        for (var propName in options) {
+            if (options.hasOwnProperty(propName)) {
+                updatedCookie += "; " + propName;
+                var propValue = options[propName];
+                if (propValue !== true) {
+                    updatedCookie += "=" + propValue;
+                }
+            }
+        }
+        document.cookie = updatedCookie;
+    }
+    Cookies.setCookie = setCookie;
+    function deleteCookie(name, options) {
+        if (getCookie(name)) {
+            document.cookie = name + "=" +
+                ((options.path) ? ";path=" + options.path : "") +
+                ((options.domain) ? ";domain=" + options.domain : "") +
+                ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        }
+    }
+    Cookies.deleteCookie = deleteCookie;
+    var Storage = (function () {
+        function Storage(storage_options) {
+            this.storage_options = storage_options;
+            this.prefix = '_lbn_';
+        }
+        Storage.prototype.setItem = function (key, value, options) {
+            var _options = {};
+            updateObject(_options, this.storage_options, options);
+            Cookies.setCookie(this.prefix + key, value, _options);
+        };
+        Storage.prototype.getItem = function (key) {
+            return Cookies.getCookie(this.prefix + key);
+        };
+        Storage.KEYS = {
+            LAST_SEEN: 'l',
+            REF_CODE: 'rt',
+            REFERRER: 'rf',
+            REF_CODE_CREATION_DATE: 'd'
+        };
+        return Storage;
+    })();
+    Cookies.Storage = Storage;
+    function updateObject(obj) {
+        var params = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            params[_i - 1] = arguments[_i];
+        }
+        for (var i = 0, l = params.length; i < l; i++) {
+            for (var prop in params[i]) {
+                if (params[i].hasOwnProperty(prop)) {
+                    var val = params[i][prop];
+                    if (typeof val == "object")
+                        updateObject(obj[prop], val);
+                    else
+                        obj[prop] = val;
+                }
+            }
+        }
+        return obj;
+    }
+})(Cookies || (Cookies = {}));
+/*
+    –ò—Å–ø–æ–ª—å–∑—É–µ–º—ã–µ —Ç–µ—Ä–º–∏–Ω—ã:
+    - —Ä–µ—Ñ–µ—Ä–∞–ª / —Ä–µ—Ñ–µ—Ä–∞–ª—å–Ω—ã–π –∫–æ–¥ / —Ä–µ—Ñ–∫–æ–¥ /ref code -- —É–Ω–∏–∫–∞–ª—å–Ω—ã–π –∫–ª—é—á(md5 hash) –∫–ª–∏–∫–∞. –ü–µ—Ä–µ–¥–∞–µ—Ç—Å—è –≤ –ø—Ä–æ–µ–∫—Ç –≤ GET –ø–∞—Ä–∞–º–µ—Ç—Ä–∞—Ö.
+        –ù–∞–ø—Ä–∏–º–µ—Ä rt=rt_ace8af043412482b59390a8c25d8a917c
+    - –æ—Ä–≥–∞–Ω–∏–∫–∞ / organic -- —ç—Ç–æ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å, –ø—Ä–∏—à–µ–¥—à–∏–π –Ω–∞ –ø—Ä–æ–µ–∫—Ç
+        –Ω–µ –æ—Ç –ø–∞—Ä—Ç–Ω–µ—Ä–æ–≤, –∞ –ª–∏–±–æ –∏–∑ –ø–æ–∏—Å–æ–≤—ã—Ö —Å–∏—Å—Ç–µ–º, –ª–∏–±–æ –ø—Ä–∏—à–µ–¥—à–∏–µ –Ω–∞–ø—Ä—è–º—É—é (–≤–±–∏–ª–∏ —Å–∞–π—Ç –≤ –∞–¥—Ä–µ—Å–Ω—É—é —Å—Ç—Ä–æ–∫—É).
+        –¢.–µ. –ø—Ä–∏ –ø–µ—Ä–≤–æ–º –ø–µ—Ä–µ—Ö–æ–¥–µ –Ω–∞ —Å–∞–π—Ç —É –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è –æ—Ç—Å—É—Ç—Å–≤–æ–≤–∞–ª —Ä–µ—Ñ–µ—Ä–∞–ª—å–Ω—ã–π –∫–æ–¥
+    - –æ—Ä–≥–∞–Ω–∏—á–µ—Å–∫–∏–π —Ä–µ—Ñ–µ—Ä–∞–ª -- —É–Ω–∏–∫–∞–ª—å–Ω—ã–π –∫–ª—é—á –æ—Ä–≥–∞–Ω–∏—á–µ—Å–∫–æ–≥–æ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+    - –∫–ª–∏–∫ -- –ø–µ—Ä–µ—Ö–æ–¥ –Ω–∞ –ø—Ä–æ–µ–∫—Ç —Å –±–∞–Ω–Ω–µ—Ä–∞. –°–æ–ø—Ä–æ–≤–æ–∂–¥–∞–µ—Ç—Å—è —É–Ω–∏–∫–∞–ª—å–Ω—ã–º —Ä–µ—Ñ–µ—Ä–∞–ª—å–Ω–º –∫–æ–¥–æ–º.
+ */
+/// <reference path='./logging.ts' />
+/// <reference path='./utils.ts' />
+/// <reference path='./cookies.ts' />
+var Marketing;
+(function (Marketing) {
+    var ORGANIC_TIMEOUT = 90 * 24 * 60 * 60;
+    var NON_ORGANIC_TIMEOUT = 90 * 24 * 60 * 60;
+    var DEFAULT_COOKIES_EXPIRES = 60 * 60 * 24 * 365 * 2;
+    var DEFAULT_EXPIRATION_REF_CODE_SECONDS = 60 * 24 * 60 * 60;
+    var DEFAULT_EXPIRATION_ORGANIC_REF_CODE_SECONDS = 90 * 24 * 60 * 60;
+    var OPENLEAD_IDS = {
+        'tera': 'ol35'
+    };
+    var Handlers = (function () {
+        function Handlers(logger) {
+            this.logger = logger;
+        }
+        Handlers.prototype.registration = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Registration:', args);
+            window.destinyScopeHandlerRegistration.apply(this, args);
+        };
+        Handlers.prototype.levelup = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Level up:', args);
+            window.destinyScopeHandlerLevelup.apply(this, args);
+        };
+        Handlers.prototype.purchase = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Purchase money:', args);
+            window.destinyScopeHandlerPurchase.apply(this, args);
+        };
+        return Handlers;
+    })();
+    var Arbitration = (function () {
+        function Arbitration(options) {
+            this.options = options;
+            this.CREATE_REFERRAL_URL = '//lbn2.ddestiny.ru/arbitration/save_referral/';
+            this.IS_REF_CODE_ORGANIC_URL = '//lbn2.ddestiny.ru/arbitration/is_ref_code_organic/';
+            this.UPDATE_OPENLEADID_URL = '//lbn2.ddestiny.ru/openlead/update/';
+            this.options = this.options || {};
+            this.options.ref_code_name = this.options.ref_code_name || 'rt';
+            this.options.cookie_options = this.options.cookie_options || {};
+            this.options.cookie_options.expires = this.options.cookie_options.expires || DEFAULT_COOKIES_EXPIRES;
+            this.options.cookie_options.path = this.options.cookie_options.path || '/';
+            if (options.dev) {
+                this.CREATE_REFERRAL_URL = '//dev.lbn2.ddestiny.ru/arbitration/save_referral/';
+                this.IS_REF_CODE_ORGANIC_URL = '//dev.lbn2.ddestiny.ru/arbitration/is_ref_code_organic/';
+            }
+            this.initOpenlead();
+            this.logger = new Logging.Logger(this.options.debug);
+            this.storage = new Cookies.Storage(this.options.cookie_options);
+            this.main();
+            this.storage.setItem(Cookies.Storage.KEYS.LAST_SEEN, Utils.getTimestamp().toString());
+            this.handlers = new Handlers(this.logger);
+            if (typeof window.destinyScopeInitialized == 'function') {
+                window.destinyScopeInitialized.apply(this);
+            }
+        }
+        Arbitration.prototype.initOpenlead = function () {
+            var self = this;
+            if (!OPENLEAD_IDS.hasOwnProperty(this.options.project))
+                return;
+            var projectId = OPENLEAD_IDS[this.options.project];
+            var jsElm = document.createElement("script");
+            jsElm.type = "text/javascript";
+            jsElm.src = 'https://openlead.net/s/ol.js?id=' + projectId;
+            jsElm.onload = function () {
+                self.updateOpenleadId();
+            };
+            document.body.appendChild(jsElm);
+        };
+        Arbitration.prototype.isRegistered = function () {
+            return !!this.options.account_id && !!this.options.account_ref_code;
+        };
+        Arbitration.prototype.hasNoActivity = function (seconds) {
+            var lastSeenTimestamp = parseInt(this.storage.getItem(Cookies.Storage.KEYS.LAST_SEEN)) || 0;
+            return Utils.getTimestamp() - lastSeenTimestamp >= seconds;
+        };
+        Arbitration.prototype.hasVisited = function () {
+            return typeof this.storage.getItem(Cookies.Storage.KEYS.LAST_SEEN) != 'undefined'
+                || this.isRegistered();
+        };
+        Arbitration.prototype.hasRefCodeInQueryString = function () {
+            return typeof Utils.getParameterByName(this.options.ref_code_name) != 'undefined';
+        };
+        Arbitration.prototype.hasExpiredRefCode = function () {
+            return typeof this.storage.getItem(Cookies.Storage.KEYS.REF_CODE) == 'undefined';
+        };
+        Arbitration.prototype.isCurrentRefCodeOrganic = function (callback) {
+            var self = this;
+            this.logger.debug('-> isCurrentRefCodeOrganic');
+            if (!this.options.account_id) {
+                this.logger.error('[isCurrentRefCodeOrganic] options.account_id is undefined');
+                return false;
+            }
+            if (!this.options.account_ref_code) {
+                this.logger.error('[isCurrentRefCodeOrganic] options.account_ref_code is undefined');
+                return false;
+            }
+            Utils.getJSON({
+                url: this.IS_REF_CODE_ORGANIC_URL,
+                data: {
+                    account_id: this.options.account_id,
+                    account_ref_code: this.options.account_ref_code
+                },
+                done: function (response) {
+                    if (response['status'] === 'ok') {
+                        callback.apply(self, [response['response']['organic']]);
+                    }
+                    else {
+                        self.logger.error('[isCurrentRefCodeOrganic] —Å–µ—Ä–≤–µ—Ä –≤–µ—Ä–Ω—É–ª –æ—Ç–≤–µ—Ç —Å –æ—à–∏–±–∫–æ–π:', response['error']);
+                    }
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[isCurrentRefCodeOrganic] –æ—à–∏–±–∫–∞ –ø—Ä–∏ –∑–∞–ø—Ä–æ—Å–µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        Arbitration.prototype.createReferral = function (params) {
+            var self = this;
+            this.logger.debug(("-> createReferral(account_id[" + params.account_id + "],")
+                + (" account_ref_code[" + params.account_ref_code + "])")
+                + (" ref_code[" + params.ref_code + "])"));
+            var getData = {
+                project: this.options.project
+            };
+            if (params.account_id) {
+                getData['account_id'] = params.account_id;
+                getData['account_ref_code'] = params.account_ref_code;
+            }
+            if (params.ref_code)
+                getData['ref_code'] = params.ref_code;
+            if (params.link_id)
+                getData['link_id'] = params.link_id;
+            if (params.source)
+                getData['source'] = params.source;
+            if (params.vk_referrer)
+                getData['vk_referrer'] = params.vk_referrer;
+            var _openlead = Cookies.getCookie('_openlead');
+            if (_openlead)
+                getData['_openlead'] = _openlead;
+            Utils.getJSON({
+                url: this.CREATE_REFERRAL_URL,
+                data: getData,
+                done: function (response) {
+                    self.logger.debug('[createReferral] –æ—Ç–≤–µ—Ç –æ—Ç —Å–µ—Ä–≤–µ—Ä–∞:', response);
+                    if (params.callback)
+                        params.callback.apply(this, [response]);
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[createReferral] –æ—à–∏–±–∫–∞ –ø—Ä–∏ –∑–∞–ø—Ä–æ—Å–µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        Arbitration.isVkTargeting = function () {
+            var apiUrl = Utils.getParameterByName('api_url'), referrer = Utils.getParameterByName('referrer'), isPlatformVk = typeof apiUrl == 'string' && apiUrl.indexOf('vk.com') != -1, isAdReferrer = typeof referrer == 'string' && referrer.indexOf('ad_') == 0;
+            return isPlatformVk && isAdReferrer;
+        };
+        Arbitration.prototype.saveRefCookie = function (response) {
+            var _cookie_options = {
+                expires: DEFAULT_EXPIRATION_ORGANIC_REF_CODE_SECONDS
+            };
+            this.storage.setItem(Cookies.Storage.KEYS.REF_CODE, response['response']['ref_code'], _cookie_options);
+            this.storage.setItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE, response['response']['ref_code_creation_date'], _cookie_options);
+            this.storage.setItem(Cookies.Storage.KEYS.REFERRER, document.referrer, _cookie_options);
+        };
+        Arbitration.prototype.createOrganicReferral = function () {
+            var self = this;
+            this.logger.debug('-> createOrganicReferral');
+            this.createReferral({
+                link_id: this.options.link_id,
+                source: this.options.source,
+                callback: function (response) {
+                    self.saveRefCookie.call(self, response);
+                }
+            });
+        };
+        Arbitration.prototype.createTargetingReferral = function (vk_referrer) {
+            var self = this;
+            this.logger.debug('-> createTargetingReferral');
+            this.createReferral({
+                link_id: this.options.link_id,
+                source: this.options.source,
+                vk_referrer: vk_referrer,
+                callback: function (response) {
+                    self.saveRefCookie.call(self, response);
+                }
+            });
+        };
+        Arbitration.prototype.moveCurrentReferralToOrganic = function () {
+            this.logger.debug('-> moveCurrentReferralToOrganic');
+            this.createReferral({
+                account_id: this.options.account_id,
+                account_ref_code: this.options.account_ref_code
+            });
+        };
+        Arbitration.prototype.moveCurrentReferralToNewReferral = function () {
+            this.logger.debug('-> moveCurrentReferralToNewReferral');
+            var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+            if (typeof ref_code == 'undefined') {
+                this.logger.error('[moveCurrentReferralToNewReferral] Trying to save undefined ref code');
+                return;
+            }
+            this.createReferral({
+                account_id: this.options.account_id,
+                account_ref_code: this.options.account_ref_code,
+                ref_code: ref_code
+            });
+        };
+        Arbitration.prototype.main = function () {
+            var self = this;
+            this.logger.debug('[*] –¢–µ–∫—É—â–µ–µ –≤—Ä–µ–º—è:', new Date());
+            this.logger.debug('[*] –¢–µ–∫—É—â–∏–π —Ä–µ—Ñ–µ—Ä–∞–ª:', this.storage.getItem(Cookies.Storage.KEYS.REF_CODE));
+            this.logger.debug('[*] –î–∞—Ç–∞ —Å–æ–∑–¥–∞–Ω–∏—è —Ç–µ–∫—É—â–µ–≥–æ —Ä–µ—Ñ–µ—Ä–∞–ª–∞:', this.storage.getItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE), '->', Utils.toDate(parseInt(this.storage.getItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE))));
+            this.logger.debug('[*] –ù–æ–≤—ã–π —Ä–µ—Ñ–µ—Ä–∞–ª:', Utils.getParameterByName(this.options.ref_code_name));
+            this.logger.info('---- –°—Ç–∞—Ä—Ç –±–ª–æ–∫–∞ –∞—Ä–±–∏—Ç—Ä–∞–∂–∞ ----');
+            if (this.hasVisited()) {
+                this.logger.debug('–°–∞–π—Ç —É–∂–µ –±—ã–ª –ø–æ—Å–µ—â–µ–Ω');
+                if (this.isRegistered()) {
+                    this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –∑–∞—Ä–µ–≥–∏—Å—Ç—Ä–∏—Ä–æ–≤–∞–Ω');
+                    var hasNoActivityAsUsual = this.hasNoActivity(NON_ORGANIC_TIMEOUT);
+                    var hasNoActivityAsOrganic = this.hasNoActivity(ORGANIC_TIMEOUT);
+                    var checkForOrganicCallback = function (isOrganic) {
+                        this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –æ—Ä–≥–∞–Ω–∏–∫–∞:', isOrganic);
+                        var hasNoActivity = isOrganic ? hasNoActivityAsOrganic : hasNoActivityAsUsual;
+                        if (hasNoActivity) {
+                            this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –±—ã–ª –Ω–µ –∞–∫—Ç–∏–≤–µ–Ω');
+                            if (this.hasRefCodeInQueryString()) {
+                                this.moveCurrentReferralToNewReferral();
+                            }
+                            else {
+                                this.moveCurrentReferralToOrganic();
+                            }
+                        }
+                        else {
+                            this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –≤—Å–µ –µ—â–µ –∞–∫—Ç–∏–≤–µ–Ω');
+                        }
+                    };
+                    if (hasNoActivityAsUsual) {
+                        this.isCurrentRefCodeOrganic(checkForOrganicCallback);
+                    }
+                    else {
+                        this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –≤—Å–µ –µ—â–µ –∞–∫—Ç–∏–≤–µ–Ω');
+                    }
+                }
+                else {
+                    this.logger.debug('–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –Ω–µ –∑–∞—Ä–µ–≥–∏—Å—Ç—Ä–∏—Ä–æ–≤–∞–Ω');
+                    if (this.hasExpiredRefCode()) {
+                        this.logger.debug('–¢–µ–∫—É—â–∏–π —Ä–µ—Ñ–∫–æ–¥ –ø—Ä–æ—Ç—É—Ö');
+                        this.saveReferral();
+                    }
+                    else {
+                        this.logger.debug('–¢–µ–∫—É—â–∏–π —Ä–µ—Ñ–∫–æ–¥ –µ—â–µ –Ω–µ –ø—Ä–æ—Ç—É—Ö');
+                    }
+                }
+            }
+            else {
+                this.logger.debug('–°–∞–π—Ç –µ—â–µ –Ω–µ –±—ã–ª –ø–æ—Å–µ—â–µ–Ω');
+                this.saveReferral();
+            }
+        };
+        Arbitration.prototype.saveReferral = function () {
+            this.logger.debug('-> saveReferral');
+            if (this.hasRefCodeInQueryString()) {
+                this.logger.debug('–ï—Å—Ç—å –Ω–æ–≤—ã–π —Ä–µ—Ñ–∫–æ–¥ –≤ QUERY_STRING -- —Å–æ—Ö—Ä–∞–Ω—è–µ–º –µ–≥–æ –≤ –∫—É–∫–∞—Ö');
+                var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+                var _cookie_options = {
+                    expires: parseInt(Utils.getParameterByName('_exp')) || DEFAULT_EXPIRATION_REF_CODE_SECONDS
+                };
+                this.storage.setItem(Cookies.Storage.KEYS.REF_CODE, ref_code, _cookie_options);
+                this.storage.setItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE, Utils.getTimestamp(), _cookie_options);
+                this.storage.setItem(Cookies.Storage.KEYS.REFERRER, document.referrer, _cookie_options);
+            }
+            else {
+                if (Arbitration.isVkTargeting()) {
+                    this.logger.debug('–ù–æ–≤–æ–≥–æ —Ä–µ—Ñ–∫–æ–¥–∞ –Ω–µ—Ç, —Ç–∞—Ä–≥–µ—Ç–∏–Ω–≥–æ–≤–∞—è —Ä–µ–∫–ª–∞–º–∞ -- –ø—Ä–∏—Å–≤–∞–∏–≤–∞–µ–º —Ä–µ—Ñ–µ—Ä–∞–ª "–¢–∞—Ä–≥–µ—Ç–∏–Ω–≥"');
+                    this.createTargetingReferral(Utils.getParameterByName('referrer'));
+                }
+                else {
+                    this.logger.debug('–ù–æ–≤–æ–≥–æ —Ä–µ—Ñ–∫–æ–¥–∞ –Ω–µ—Ç -- –ø—Ä–∏—Å–≤–∞–∏–≤–∞–µ–º —Ä–µ—Ñ–µ—Ä–∞–ª "–û—Ä–≥–∞–Ω–∏–∫–∞"');
+                    this.createOrganicReferral();
+                }
+            }
+        };
+        Arbitration.prototype.getRefCode = function () {
+            return this.storage.getItem(Cookies.Storage.KEYS.REF_CODE) || null;
+        };
+        Arbitration.prototype.getReferrer = function () {
+            return this.storage.getItem(Cookies.Storage.KEYS.REFERRER) || null;
+        };
+        Arbitration.prototype.updateOpenleadId = function () {
+            var self = this;
+            if (!this.hasRefCodeInQueryString())
+                return;
+            var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+            var _openlead = Cookies.getCookie('_openlead') || '';
+            Utils.getJSON({
+                url: this.UPDATE_OPENLEADID_URL + ref_code + '/',
+                data: { '_openlead': _openlead },
+                done: function (response) {
+                    self.logger.debug('[updateOpenleadId] –æ—Ç–≤–µ—Ç –æ—Ç —Å–µ—Ä–≤–µ—Ä–∞:', response);
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[updateOpenleadId] –æ—à–∏–±–∫–∞ –ø—Ä–∏ –∑–∞–ø—Ä–æ—Å–µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        return Arbitration;
+    })();
+    Marketing.Arbitration = Arbitration;
+})(Marketing || (Marketing = {}));
+if (typeof destinyScopeOptions == 'undefined') {
+    var destinyScopeOptions = {};
+}
+var DestinyScope = Marketing.Arbitration;
+var destiny_scope = new DestinyScope(destinyScopeOptions);
+        ‹ x ˇˇ     20230309232128-8l	7   https://lbn2.ddestiny.ru/static/js/api/destiny_scope.js   Co  var Logging;
+(function (Logging) {
+    var Logger = (function () {
+        function Logger(level) {
+            if (level === void 0) { level = 0; }
+            this.level = level;
+        }
+        Logger.write = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            try {
+                var func = args.shift();
+                if (window.console && console[func]) {
+                    var t = '[' + (((new Date()).getTime() - Logger.logStartTime) / 1000) + '] ';
+                    args.unshift(t);
+                    switch (func) {
+                        case 'info':
+                            console.info.apply(console, args);
+                            break;
+                        case 'error':
+                            console.error.apply(console, args);
+                            break;
+                        case 'warn':
+                            console.warn.apply(console, args);
+                            break;
+                        default:
+                            console.log.apply(console, args);
+                            break;
+                    }
+                }
+            }
+            catch (e) {
+            }
+        };
+        Logger.prototype.debug = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 4)
+                return;
+            args.unshift('debug');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.info = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 3)
+                return;
+            args.unshift('info');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.warn = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 2)
+                return;
+            args.unshift('warn');
+            Logger.write.apply(this, args);
+        };
+        Logger.prototype.error = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            if (this.level < 1)
+                return;
+            args.unshift('error');
+            Logger.write.apply(this, args);
+        };
+        Logger.logStartTime = (new Date()).getTime();
+        return Logger;
+    })();
+    Logging.Logger = Logger;
+})(Logging || (Logging = {}));
+var Utils;
+(function (Utils) {
+    function getTimestamp() {
+        return Math.floor(new Date().getTime() / 1000);
+    }
+    Utils.getTimestamp = getTimestamp;
+    function getParameterFromQueryString(name, queryString) {
+        if (queryString === void 0) { queryString = location.search; }
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(queryString);
+        return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    function getParameterByName(name) {
+        var value = getParameterFromQueryString(name);
+        if (typeof value !== 'undefined')
+            return value;
+        var hashString = getParameterFromQueryString("hash");
+        if (typeof hashString !== 'undefined') {
+            hashString = '?' + hashString;
+            value = getParameterFromQueryString(name, hashString);
+            if (typeof value !== 'undefined')
+                return value;
+        }
+    }
+    Utils.getParameterByName = getParameterByName;
+    function toDate(timestamp) {
+        return new Date(timestamp * 1000);
+    }
+    Utils.toDate = toDate;
+    function getXMLHttpRequest() {
+        if (typeof XMLHttpRequest != 'undefined') {
+            return new XMLHttpRequest;
+        }
+        else {
+            try {
+                return new ActiveXObject("MSXML2.XMLHTTP");
+            }
+            catch (ex) {
+                return null;
+            }
+        }
+    }
+    function getJSON(params) {
+        var request = getXMLHttpRequest();
+        if (request != null) {
+            var sendArray = [];
+            for (var k in params.data) {
+                if (params.data.hasOwnProperty(k)) {
+                    sendArray.push(encodeURIComponent(k) + "=" + encodeURIComponent(params.data[k]));
+                }
+            }
+            var sendString = sendArray.join('&');
+            var url = sendString.length ? params.url + '?' + sendString : params.url;
+            var async = typeof params.async != 'undefined' ? params.async : true;
+            request.open("GET", url, async);
+            request.onreadystatechange = function handler() {
+                if (request.readyState != 4)
+                    return;
+                if (request.status == 200) {
+                    var response = JSON.parse(request.responseText);
+                    if (params.done)
+                        params.done.apply(this, [response]);
+                }
+                else {
+                    if (params.fail)
+                        params.fail.apply(this, [request.statusText, request.statusMessage, request.statusCode]);
+                }
+            };
+        }
+        request.send();
+    }
+    Utils.getJSON = getJSON;
+})(Utils || (Utils = {}));
+var Cookies;
+(function (Cookies) {
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    Cookies.getCookie = getCookie;
+    function setCookie(name, value, options) {
+        var expires = options.expires;
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+        value = encodeURIComponent(value.toString());
+        var updatedCookie = name + "=" + value;
+        for (var propName in options) {
+            if (options.hasOwnProperty(propName)) {
+                updatedCookie += "; " + propName;
+                var propValue = options[propName];
+                if (propValue !== true) {
+                    updatedCookie += "=" + propValue;
+                }
+            }
+        }
+        document.cookie = updatedCookie;
+    }
+    Cookies.setCookie = setCookie;
+    function deleteCookie(name, options) {
+        if (getCookie(name)) {
+            document.cookie = name + "=" +
+                ((options.path) ? ";path=" + options.path : "") +
+                ((options.domain) ? ";domain=" + options.domain : "") +
+                ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        }
+    }
+    Cookies.deleteCookie = deleteCookie;
+    var Storage = (function () {
+        function Storage(storage_options) {
+            this.storage_options = storage_options;
+            this.prefix = '_lbn_';
+        }
+        Storage.prototype.setItem = function (key, value, options) {
+            var _options = {};
+            updateObject(_options, this.storage_options, options);
+            Cookies.setCookie(this.prefix + key, value, _options);
+        };
+        Storage.prototype.getItem = function (key) {
+            return Cookies.getCookie(this.prefix + key);
+        };
+        Storage.KEYS = {
+            LAST_SEEN: 'l',
+            REF_CODE: 'rt',
+            REFERRER: 'rf',
+            REF_CODE_CREATION_DATE: 'd'
+        };
+        return Storage;
+    })();
+    Cookies.Storage = Storage;
+    function updateObject(obj) {
+        var params = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            params[_i - 1] = arguments[_i];
+        }
+        for (var i = 0, l = params.length; i < l; i++) {
+            for (var prop in params[i]) {
+                if (params[i].hasOwnProperty(prop)) {
+                    var val = params[i][prop];
+                    if (typeof val == "object")
+                        updateObject(obj[prop], val);
+                    else
+                        obj[prop] = val;
+                }
+            }
+        }
+        return obj;
+    }
+})(Cookies || (Cookies = {}));
+/*
+    –†¬ò–°–É–†—ó–†—ï–†¬ª–°–ä–†¬∑–°—ì–†¬µ–†—ò–°‚Äπ–†¬µ –°‚Äö–†¬µ–°–Ç–†—ò–†—ë–†–Ö–°‚Äπ:
+    - –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª / –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª–°–ä–†–Ö–°‚Äπ–†‚Ññ –†—î–†—ï–†“ë / –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë /ref code -- –°—ì–†–Ö–†—ë–†—î–†¬∞–†¬ª–°–ä–†–Ö–°‚Äπ–†‚Ññ –†—î–†¬ª–°–ã–°‚Ä°(md5 hash) –†—î–†¬ª–†—ë–†—î–†¬∞. –†—ü–†¬µ–°–Ç–†¬µ–†“ë–†¬∞–†¬µ–°‚Äö–°–É–°–è –†–Ü –†—ó–°–Ç–†—ï–†¬µ–†—î–°‚Äö –†–Ü GET –†—ó–†¬∞–°–Ç–†¬∞–†—ò–†¬µ–°‚Äö–°–Ç–†¬∞–°‚Ä¶.
+        –†—ú–†¬∞–†—ó–°–Ç–†—ë–†—ò–†¬µ–°–Ç rt=rt_ace8af043412482b59390a8c25d8a917c
+    - –†—ï–°–Ç–†—ñ–†¬∞–†–Ö–†—ë–†—î–†¬∞ / organic -- –°–å–°‚Äö–†—ï –†—ó–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä, –†—ó–°–Ç–†—ë–°‚Ç¨–†¬µ–†“ë–°‚Ç¨–†—ë–†‚Ññ –†–Ö–†¬∞ –†—ó–°–Ç–†—ï–†¬µ–†—î–°‚Äö
+        –†–Ö–†¬µ –†—ï–°‚Äö –†—ó–†¬∞–°–Ç–°‚Äö–†–Ö–†¬µ–°–Ç–†—ï–†–Ü, –†¬∞ –†¬ª–†—ë–†¬±–†—ï –†—ë–†¬∑ –†—ó–†—ï–†—ë–°–É–†—ï–†–Ü–°‚Äπ–°‚Ä¶ –°–É–†—ë–°–É–°‚Äö–†¬µ–†—ò, –†¬ª–†—ë–†¬±–†—ï –†—ó–°–Ç–†—ë–°‚Ç¨–†¬µ–†“ë–°‚Ç¨–†—ë–†¬µ –†–Ö–†¬∞–†—ó–°–Ç–°–è–†—ò–°—ì–°–ã (–†–Ü–†¬±–†—ë–†¬ª–†—ë –°–É–†¬∞–†‚Ññ–°‚Äö –†–Ü –†¬∞–†“ë–°–Ç–†¬µ–°–É–†–Ö–°—ì–°–ã –°–É–°‚Äö–°–Ç–†—ï–†—î–°—ì).
+        –†—û.–†¬µ. –†—ó–°–Ç–†—ë –†—ó–†¬µ–°–Ç–†–Ü–†—ï–†—ò –†—ó–†¬µ–°–Ç–†¬µ–°‚Ä¶–†—ï–†“ë–†¬µ –†–Ö–†¬∞ –°–É–†¬∞–†‚Ññ–°‚Äö –°—ì –†—ó–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–è –†—ï–°‚Äö–°–É–°—ì–°‚Äö–°–É–†–Ü–†—ï–†–Ü–†¬∞–†¬ª –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª–°–ä–†–Ö–°‚Äπ–†‚Ññ –†—î–†—ï–†“ë
+    - –†—ï–°–Ç–†—ñ–†¬∞–†–Ö–†—ë–°‚Ä°–†¬µ–°–É–†—î–†—ë–†‚Ññ –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª -- –°—ì–†–Ö–†—ë–†—î–†¬∞–†¬ª–°–ä–†–Ö–°‚Äπ–†‚Ññ –†—î–†¬ª–°–ã–°‚Ä° –†—ï–°–Ç–†—ñ–†¬∞–†–Ö–†—ë–°‚Ä°–†¬µ–°–É–†—î–†—ï–†—ñ–†—ï –†—ó–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–è
+    - –†—î–†¬ª–†—ë–†—î -- –†—ó–†¬µ–°–Ç–†¬µ–°‚Ä¶–†—ï–†“ë –†–Ö–†¬∞ –†—ó–°–Ç–†—ï–†¬µ–†—î–°‚Äö –°–É –†¬±–†¬∞–†–Ö–†–Ö–†¬µ–°–Ç–†¬∞. –†–é–†—ï–†—ó–°–Ç–†—ï–†–Ü–†—ï–†¬∂–†“ë–†¬∞–†¬µ–°‚Äö–°–É–°–è –°—ì–†–Ö–†—ë–†—î–†¬∞–†¬ª–°–ä–†–Ö–°‚Äπ–†—ò –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª–°–ä–†–Ö–†—ò –†—î–†—ï–†“ë–†—ï–†—ò.
+ */
+/// <reference path='./logging.ts' />
+/// <reference path='./utils.ts' />
+/// <reference path='./cookies.ts' />
+var Marketing;
+(function (Marketing) {
+    var ORGANIC_TIMEOUT = 90 * 24 * 60 * 60;
+    var NON_ORGANIC_TIMEOUT = 90 * 24 * 60 * 60;
+    var DEFAULT_COOKIES_EXPIRES = 60 * 60 * 24 * 365 * 2;
+    var DEFAULT_EXPIRATION_REF_CODE_SECONDS = 60 * 24 * 60 * 60;
+    var DEFAULT_EXPIRATION_ORGANIC_REF_CODE_SECONDS = 90 * 24 * 60 * 60;
+    var OPENLEAD_IDS = {
+        'tera': 'ol35'
+    };
+    var Handlers = (function () {
+        function Handlers(logger) {
+            this.logger = logger;
+        }
+        Handlers.prototype.registration = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Registration:', args);
+            window.destinyScopeHandlerRegistration.apply(this, args);
+        };
+        Handlers.prototype.levelup = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Level up:', args);
+            window.destinyScopeHandlerLevelup.apply(this, args);
+        };
+        Handlers.prototype.purchase = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            this.logger.debug('Purchase money:', args);
+            window.destinyScopeHandlerPurchase.apply(this, args);
+        };
+        return Handlers;
+    })();
+    var Arbitration = (function () {
+        function Arbitration(options) {
+            this.options = options;
+            this.CREATE_REFERRAL_URL = '//lbn2.ddestiny.ru/arbitration/save_referral/';
+            this.IS_REF_CODE_ORGANIC_URL = '//lbn2.ddestiny.ru/arbitration/is_ref_code_organic/';
+            this.UPDATE_OPENLEADID_URL = '//lbn2.ddestiny.ru/openlead/update/';
+            this.options = this.options || {};
+            this.options.ref_code_name = this.options.ref_code_name || 'rt';
+            this.options.cookie_options = this.options.cookie_options || {};
+            this.options.cookie_options.expires = this.options.cookie_options.expires || DEFAULT_COOKIES_EXPIRES;
+            this.options.cookie_options.path = this.options.cookie_options.path || '/';
+            if (options.dev) {
+                this.CREATE_REFERRAL_URL = '//dev.lbn2.ddestiny.ru/arbitration/save_referral/';
+                this.IS_REF_CODE_ORGANIC_URL = '//dev.lbn2.ddestiny.ru/arbitration/is_ref_code_organic/';
+            }
+            this.initOpenlead();
+            this.logger = new Logging.Logger(this.options.debug);
+            this.storage = new Cookies.Storage(this.options.cookie_options);
+            this.main();
+            this.storage.setItem(Cookies.Storage.KEYS.LAST_SEEN, Utils.getTimestamp().toString());
+            this.handlers = new Handlers(this.logger);
+            if (typeof window.destinyScopeInitialized == 'function') {
+                window.destinyScopeInitialized.apply(this);
+            }
+        }
+        Arbitration.prototype.initOpenlead = function () {
+            var self = this;
+            if (!OPENLEAD_IDS.hasOwnProperty(this.options.project))
+                return;
+            var projectId = OPENLEAD_IDS[this.options.project];
+            var jsElm = document.createElement("script");
+            jsElm.type = "text/javascript";
+            jsElm.src = 'https://openlead.net/s/ol.js?id=' + projectId;
+            jsElm.onload = function () {
+                self.updateOpenleadId();
+            };
+            document.body.appendChild(jsElm);
+        };
+        Arbitration.prototype.isRegistered = function () {
+            return !!this.options.account_id && !!this.options.account_ref_code;
+        };
+        Arbitration.prototype.hasNoActivity = function (seconds) {
+            var lastSeenTimestamp = parseInt(this.storage.getItem(Cookies.Storage.KEYS.LAST_SEEN)) || 0;
+            return Utils.getTimestamp() - lastSeenTimestamp >= seconds;
+        };
+        Arbitration.prototype.hasVisited = function () {
+            return typeof this.storage.getItem(Cookies.Storage.KEYS.LAST_SEEN) != 'undefined'
+                || this.isRegistered();
+        };
+        Arbitration.prototype.hasRefCodeInQueryString = function () {
+            return typeof Utils.getParameterByName(this.options.ref_code_name) != 'undefined';
+        };
+        Arbitration.prototype.hasExpiredRefCode = function () {
+            return typeof this.storage.getItem(Cookies.Storage.KEYS.REF_CODE) == 'undefined';
+        };
+        Arbitration.prototype.isCurrentRefCodeOrganic = function (callback) {
+            var self = this;
+            this.logger.debug('-> isCurrentRefCodeOrganic');
+            if (!this.options.account_id) {
+                this.logger.error('[isCurrentRefCodeOrganic] options.account_id is undefined');
+                return false;
+            }
+            if (!this.options.account_ref_code) {
+                this.logger.error('[isCurrentRefCodeOrganic] options.account_ref_code is undefined');
+                return false;
+            }
+            Utils.getJSON({
+                url: this.IS_REF_CODE_ORGANIC_URL,
+                data: {
+                    account_id: this.options.account_id,
+                    account_ref_code: this.options.account_ref_code
+                },
+                done: function (response) {
+                    if (response['status'] === 'ok') {
+                        callback.apply(self, [response['response']['organic']]);
+                    }
+                    else {
+                        self.logger.error('[isCurrentRefCodeOrganic] –°–É–†¬µ–°–Ç–†–Ü–†¬µ–°–Ç –†–Ü–†¬µ–°–Ç–†–Ö–°—ì–†¬ª –†—ï–°‚Äö–†–Ü–†¬µ–°‚Äö –°–É –†—ï–°‚Ç¨–†—ë–†¬±–†—î–†—ï–†‚Ññ:', response['error']);
+                    }
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[isCurrentRefCodeOrganic] –†—ï–°‚Ç¨–†—ë–†¬±–†—î–†¬∞ –†—ó–°–Ç–†—ë –†¬∑–†¬∞–†—ó–°–Ç–†—ï–°–É–†¬µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        Arbitration.prototype.createReferral = function (params) {
+            var self = this;
+            this.logger.debug(("-> createReferral(account_id[" + params.account_id + "],")
+                + (" account_ref_code[" + params.account_ref_code + "])")
+                + (" ref_code[" + params.ref_code + "])"));
+            var getData = {
+                project: this.options.project
+            };
+            if (params.account_id) {
+                getData['account_id'] = params.account_id;
+                getData['account_ref_code'] = params.account_ref_code;
+            }
+            if (params.ref_code)
+                getData['ref_code'] = params.ref_code;
+            if (params.link_id)
+                getData['link_id'] = params.link_id;
+            if (params.source)
+                getData['source'] = params.source;
+            if (params.vk_referrer)
+                getData['vk_referrer'] = params.vk_referrer;
+            var _openlead = Cookies.getCookie('_openlead');
+            if (_openlead)
+                getData['_openlead'] = _openlead;
+            Utils.getJSON({
+                url: this.CREATE_REFERRAL_URL,
+                data: getData,
+                done: function (response) {
+                    self.logger.debug('[createReferral] –†—ï–°‚Äö–†–Ü–†¬µ–°‚Äö –†—ï–°‚Äö –°–É–†¬µ–°–Ç–†–Ü–†¬µ–°–Ç–†¬∞:', response);
+                    if (params.callback)
+                        params.callback.apply(this, [response]);
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[createReferral] –†—ï–°‚Ç¨–†—ë–†¬±–†—î–†¬∞ –†—ó–°–Ç–†—ë –†¬∑–†¬∞–†—ó–°–Ç–†—ï–°–É–†¬µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        Arbitration.isVkTargeting = function () {
+            var apiUrl = Utils.getParameterByName('api_url'), referrer = Utils.getParameterByName('referrer'), isPlatformVk = typeof apiUrl == 'string' && apiUrl.indexOf('vk.com') != -1, isAdReferrer = typeof referrer == 'string' && referrer.indexOf('ad_') == 0;
+            return isPlatformVk && isAdReferrer;
+        };
+        Arbitration.prototype.saveRefCookie = function (response) {
+            var _cookie_options = {
+                expires: DEFAULT_EXPIRATION_ORGANIC_REF_CODE_SECONDS
+            };
+            this.storage.setItem(Cookies.Storage.KEYS.REF_CODE, response['response']['ref_code'], _cookie_options);
+            this.storage.setItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE, response['response']['ref_code_creation_date'], _cookie_options);
+            this.storage.setItem(Cookies.Storage.KEYS.REFERRER, document.referrer, _cookie_options);
+        };
+        Arbitration.prototype.createOrganicReferral = function () {
+            var self = this;
+            this.logger.debug('-> createOrganicReferral');
+            this.createReferral({
+                link_id: this.options.link_id,
+                source: this.options.source,
+                callback: function (response) {
+                    self.saveRefCookie.call(self, response);
+                }
+            });
+        };
+        Arbitration.prototype.createTargetingReferral = function (vk_referrer) {
+            var self = this;
+            this.logger.debug('-> createTargetingReferral');
+            this.createReferral({
+                link_id: this.options.link_id,
+                source: this.options.source,
+                vk_referrer: vk_referrer,
+                callback: function (response) {
+                    self.saveRefCookie.call(self, response);
+                }
+            });
+        };
+        Arbitration.prototype.moveCurrentReferralToOrganic = function () {
+            this.logger.debug('-> moveCurrentReferralToOrganic');
+            this.createReferral({
+                account_id: this.options.account_id,
+                account_ref_code: this.options.account_ref_code
+            });
+        };
+        Arbitration.prototype.moveCurrentReferralToNewReferral = function () {
+            this.logger.debug('-> moveCurrentReferralToNewReferral');
+            var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+            if (typeof ref_code == 'undefined') {
+                this.logger.error('[moveCurrentReferralToNewReferral] Trying to save undefined ref code');
+                return;
+            }
+            this.createReferral({
+                account_id: this.options.account_id,
+                account_ref_code: this.options.account_ref_code,
+                ref_code: ref_code
+            });
+        };
+        Arbitration.prototype.main = function () {
+            var self = this;
+            this.logger.debug('[*] –†—û–†¬µ–†—î–°—ì–°‚Ä∞–†¬µ–†¬µ –†–Ü–°–Ç–†¬µ–†—ò–°–è:', new Date());
+            this.logger.debug('[*] –†—û–†¬µ–†—î–°—ì–°‚Ä∞–†—ë–†‚Ññ –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª:', this.storage.getItem(Cookies.Storage.KEYS.REF_CODE));
+            this.logger.debug('[*] –†‚Äù–†¬∞–°‚Äö–†¬∞ –°–É–†—ï–†¬∑–†“ë–†¬∞–†–Ö–†—ë–°–è –°‚Äö–†¬µ–†—î–°—ì–°‚Ä∞–†¬µ–†—ñ–†—ï –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª–†¬∞:', this.storage.getItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE), '->', Utils.toDate(parseInt(this.storage.getItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE))));
+            this.logger.debug('[*] –†—ú–†—ï–†–Ü–°‚Äπ–†‚Ññ –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª:', Utils.getParameterByName(this.options.ref_code_name));
+            this.logger.info('---- –†–é–°‚Äö–†¬∞–°–Ç–°‚Äö –†¬±–†¬ª–†—ï–†—î–†¬∞ –†¬∞–°–Ç–†¬±–†—ë–°‚Äö–°–Ç–†¬∞–†¬∂–†¬∞ ----');
+            if (this.hasVisited()) {
+                this.logger.debug('–†–é–†¬∞–†‚Ññ–°‚Äö –°—ì–†¬∂–†¬µ –†¬±–°‚Äπ–†¬ª –†—ó–†—ï–°–É–†¬µ–°‚Ä∞–†¬µ–†–Ö');
+                if (this.isRegistered()) {
+                    this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†¬∑–†¬∞–°–Ç–†¬µ–†—ñ–†—ë–°–É–°‚Äö–°–Ç–†—ë–°–Ç–†—ï–†–Ü–†¬∞–†–Ö');
+                    var hasNoActivityAsUsual = this.hasNoActivity(NON_ORGANIC_TIMEOUT);
+                    var hasNoActivityAsOrganic = this.hasNoActivity(ORGANIC_TIMEOUT);
+                    var checkForOrganicCallback = function (isOrganic) {
+                        this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†—ï–°–Ç–†—ñ–†¬∞–†–Ö–†—ë–†—î–†¬∞:', isOrganic);
+                        var hasNoActivity = isOrganic ? hasNoActivityAsOrganic : hasNoActivityAsUsual;
+                        if (hasNoActivity) {
+                            this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†¬±–°‚Äπ–†¬ª –†–Ö–†¬µ –†¬∞–†—î–°‚Äö–†—ë–†–Ü–†¬µ–†–Ö');
+                            if (this.hasRefCodeInQueryString()) {
+                                this.moveCurrentReferralToNewReferral();
+                            }
+                            else {
+                                this.moveCurrentReferralToOrganic();
+                            }
+                        }
+                        else {
+                            this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†–Ü–°–É–†¬µ –†¬µ–°‚Ä∞–†¬µ –†¬∞–†—î–°‚Äö–†—ë–†–Ü–†¬µ–†–Ö');
+                        }
+                    };
+                    if (hasNoActivityAsUsual) {
+                        this.isCurrentRefCodeOrganic(checkForOrganicCallback);
+                    }
+                    else {
+                        this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†–Ü–°–É–†¬µ –†¬µ–°‚Ä∞–†¬µ –†¬∞–†—î–°‚Äö–†—ë–†–Ü–†¬µ–†–Ö');
+                    }
+                }
+                else {
+                    this.logger.debug('–†—ü–†—ï–†¬ª–°–ä–†¬∑–†—ï–†–Ü–†¬∞–°‚Äö–†¬µ–†¬ª–°–ä –†–Ö–†¬µ –†¬∑–†¬∞–°–Ç–†¬µ–†—ñ–†—ë–°–É–°‚Äö–°–Ç–†—ë–°–Ç–†—ï–†–Ü–†¬∞–†–Ö');
+                    if (this.hasExpiredRefCode()) {
+                        this.logger.debug('–†—û–†¬µ–†—î–°—ì–°‚Ä∞–†—ë–†‚Ññ –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë –†—ó–°–Ç–†—ï–°‚Äö–°—ì–°‚Ä¶');
+                        this.saveReferral();
+                    }
+                    else {
+                        this.logger.debug('–†—û–†¬µ–†—î–°—ì–°‚Ä∞–†—ë–†‚Ññ –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë –†¬µ–°‚Ä∞–†¬µ –†–Ö–†¬µ –†—ó–°–Ç–†—ï–°‚Äö–°—ì–°‚Ä¶');
+                    }
+                }
+            }
+            else {
+                this.logger.debug('–†–é–†¬∞–†‚Ññ–°‚Äö –†¬µ–°‚Ä∞–†¬µ –†–Ö–†¬µ –†¬±–°‚Äπ–†¬ª –†—ó–†—ï–°–É–†¬µ–°‚Ä∞–†¬µ–†–Ö');
+                this.saveReferral();
+            }
+        };
+        Arbitration.prototype.saveReferral = function () {
+            this.logger.debug('-> saveReferral');
+            if (this.hasRefCodeInQueryString()) {
+                this.logger.debug('–†‚Ä¢–°–É–°‚Äö–°–ä –†–Ö–†—ï–†–Ü–°‚Äπ–†‚Ññ –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë –†–Ü QUERY_STRING -- –°–É–†—ï–°‚Ä¶–°–Ç–†¬∞–†–Ö–°–è–†¬µ–†—ò –†¬µ–†—ñ–†—ï –†–Ü –†—î–°—ì–†—î–†¬∞–°‚Ä¶');
+                var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+                var _cookie_options = {
+                    expires: parseInt(Utils.getParameterByName('_exp')) || DEFAULT_EXPIRATION_REF_CODE_SECONDS
+                };
+                this.storage.setItem(Cookies.Storage.KEYS.REF_CODE, ref_code, _cookie_options);
+                this.storage.setItem(Cookies.Storage.KEYS.REF_CODE_CREATION_DATE, Utils.getTimestamp(), _cookie_options);
+                this.storage.setItem(Cookies.Storage.KEYS.REFERRER, document.referrer, _cookie_options);
+            }
+            else {
+                if (Arbitration.isVkTargeting()) {
+                    this.logger.debug('–†—ú–†—ï–†–Ü–†—ï–†—ñ–†—ï –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë–†¬∞ –†–Ö–†¬µ–°‚Äö, –°‚Äö–†¬∞–°–Ç–†—ñ–†¬µ–°‚Äö–†—ë–†–Ö–†—ñ–†—ï–†–Ü–†¬∞–°–è –°–Ç–†¬µ–†—î–†¬ª–†¬∞–†—ò–†¬∞ -- –†—ó–°–Ç–†—ë–°–É–†–Ü–†¬∞–†—ë–†–Ü–†¬∞–†¬µ–†—ò –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª "–†—û–†¬∞–°–Ç–†—ñ–†¬µ–°‚Äö–†—ë–†–Ö–†—ñ"');
+                    this.createTargetingReferral(Utils.getParameterByName('referrer'));
+                }
+                else {
+                    this.logger.debug('–†—ú–†—ï–†–Ü–†—ï–†—ñ–†—ï –°–Ç–†¬µ–°‚Äû–†—î–†—ï–†“ë–†¬∞ –†–Ö–†¬µ–°‚Äö -- –†—ó–°–Ç–†—ë–°–É–†–Ü–†¬∞–†—ë–†–Ü–†¬∞–†¬µ–†—ò –°–Ç–†¬µ–°‚Äû–†¬µ–°–Ç–†¬∞–†¬ª "–†—õ–°–Ç–†—ñ–†¬∞–†–Ö–†—ë–†—î–†¬∞"');
+                    this.createOrganicReferral();
+                }
+            }
+        };
+        Arbitration.prototype.getRefCode = function () {
+            return this.storage.getItem(Cookies.Storage.KEYS.REF_CODE) || null;
+        };
+        Arbitration.prototype.getReferrer = function () {
+            return this.storage.getItem(Cookies.Storage.KEYS.REFERRER) || null;
+        };
+        Arbitration.prototype.updateOpenleadId = function () {
+            var self = this;
+            if (!this.hasRefCodeInQueryString())
+                return;
+            var ref_code = Utils.getParameterByName(this.options.ref_code_name);
+            var _openlead = Cookies.getCookie('_openlead') || '';
+            Utils.getJSON({
+                url: this.UPDATE_OPENLEADID_URL + ref_code + '/',
+                data: { '_openlead': _openlead },
+                done: function (response) {
+                    self.logger.debug('[updateOpenleadId] –†—ï–°‚Äö–†–Ü–†¬µ–°‚Äö –†—ï–°‚Äö –°–É–†¬µ–°–Ç–†–Ü–†¬µ–°–Ç–†¬∞:', response);
+                },
+                fail: function (statusText, statusMessage, statusCode) {
+                    self.logger.error('[updateOpenleadId] –†—ï–°‚Ç¨–†—ë–†¬±–†—î–†¬∞ –†—ó–°–Ç–†—ë –†¬∑–†¬∞–†—ó–°–Ç–†—ï–°–É–†¬µ:', statusText, statusMessage, statusCode);
+                }
+            });
+        };
+        return Arbitration;
+    })();
+    Marketing.Arbitration = Arbitration;
+})(Marketing || (Marketing = {}));
+if (typeof destinyScopeOptions == 'undefined') {
+    var destinyScopeOptions = {};
+}
+var DestinyScope = Marketing.Arbitration;
+var destiny_scope = new DestinyScope(destinyScopeOptions);
+”ò¿Ÿ  	         Oã'…      Logging    n,      Logger     Ï“a[      level      ‹Ÿú…      args   …Ÿfv      func   Ç=äO      shift      ¯2áâ      window     ˛Q1      console    uÙ.      getTime	    5^-Z      logStartTime
+   WT∆ß      ]      Yæçl      unshift    ¸ı‰      info   ˛tuW      error      ëMÜ      warn   =X˚      log    .`      debug      uÃñ√      Utils      ô™jÒ      getTimestamp   `-Ñó      floor      n›¶Ñ      getParameterFromQueryString    ì°<      queryString    0+QA      location   åóu*      [\[]   ¿·ÜK      \[     îú⁄(      [\]]   º”       \]     ≤cT      regex      %®_      [\?&]      ™AÜ_	      =([^&#]*)      0Fh      \+     ¿N      getParameterByName      ˛y¨À
+      hashString!     yá¥n      hash"   	–<•      toDate#     =»⁄_      getXMLHttpRequest$      ⁄$€      XMLHttpRequest%     åCKr      ActiveXObject&      U°g      MSXML2.XMLHTTP'     Pºv‘      getJSON(    ÀÀ&<      params)     l(      request*    Ö¢äœ	      sendArray+      6ó(Å      data,   Ñu2      push-   ëab
+      sendString.     óx5      open/   ≈ô¸
+      GET0    ÂWÌ¬      onreadystatechange1     ÜáZ`      handler2    πUüï
+      readyState3     âOÁù      response4   5ıá∆      parse5      H}ı#      responseText6   ‡˙£Œ      fail7   ∂ﬂ˘®
+      statusText8     áã      statusMessage9      ,(ò
+      statusCode:     ¸,∏      send;   !ê≠«      Cookies<    ËIkí	      getCookie=      ®—œ~      matches>    ∏OÄ      document?   _YNx      cookie@     íªÂo      (?:^|; )A   Æ–`¸      ([\.$?*|{}\(\)\[\]\\\/\+^])B    §1æÛ      \$1C    òã=†      =([^;]*)D   éK∑	      setCookieE       :yã      optionsF    ¯æR      expiresG    ∞åÙ      setTimeH    æY˘      updatedCookieI      ígQ      propNameJ   ^*V∏      ; K     X	      propValueL      Ôkï      deleteCookieM   ":k      pathN   m∂Ÿ      ;path=O     ∞ôw√      domainP     mQH      ;domain=Q   %&&      ;expires=Thu, 01 Jan 1970 00:00:01 GMTR     €=
+      StorageS    ®å<      storage_optionsT    ›2†      prefixU     {,î      _lbn_V      ßª+À      setItemW    B¸ø;      keyX    ->gg      _optionsY   vØô¥      updateObjectZ   Í√Òﬁ      getItem[    àµ      KEYS\   î›{¢	      LAST_SEEN]      ßYó      REF_CODE^   ≤G~ó      REFERRER_   >?ÿ      REF_CODE_CREATION_DATE`     ﬂN#9      obja    “P…ù      propb   &⁄õ      valc    x	çE	      Marketingd      Ç;à‡      ORGANIC_TIMEOUTe    ≈®i      NON_ORGANIC_TIMEOUTf     '%±      DEFAULT_COOKIES_EXPIRESg    ß˛?÷#      DEFAULT_EXPIRATION_REF_CODE_SECONDSh    ôÅ˙‰+      DEFAULT_EXPIRATION_ORGANIC_REF_CODE_SECONDSi    S-+Ó      OPENLEAD_IDSj   ´ìÔ∏      terak   Û`6      ol35l   ª,ÿk      Handlersm   Ò„Y      loggern     Ñ
+a;      registrationo   !±qX      Registration:p      ç¬jÉ      destinyScopeHandlerRegistrationq    hj“ÿ      levelupr    6E	      Level up:s      ﬁ‡H      destinyScopeHandlerLevelupt     ¢Z˚      purchaseu   ˇQQ      Purchase money:v    `˜Œ4      destinyScopeHandlerPurchasew    aT≈      Arbitrationx    HÌì+      CREATE_REFERRAL_URLy    Ã–E	-      //lbn2.ddestiny.ru/arbitration/save_referral/z      	IÎƒ      IS_REF_CODE_ORGANIC_URL{    Å-á3      //lbn2.ddestiny.ru/arbitration/is_ref_code_organic/|    I∑“      UPDATE_OPENLEADID_URL}      ≤‡íú#      //lbn2.ddestiny.ru/openlead/update/~    ﬂ7Tz      ref_code_name      ¶∑8      cookie_optionsÄ     ôf®7      devÅ    …Ÿ∫ƒ1      //dev.lbn2.ddestiny.ru/arbitration/save_referral/Ç      <.Ã7      //dev.lbn2.ddestiny.ru/arbitration/is_ref_code_organic/É    
+(—“      initOpenleadÑ   §¢‘Â      storageÖ     ª2       mainÜ   AQ
+      handlersá   n[dµ      destinyScopeInitializedà    ¡§\l      selfâ   íy]t      projectä    .ô?–	      projectIdã      a%j∞      jsElmå      DC      createElementç      5bH¡      text/javascripté    ú∑»õ      srcè    ⁄Òml       https://openlead.net/s/ol.js?id=ê   áƒ{p      onloadë     CË'™      updateOpenleadIdí   òh;      bodyì   ≠$~      appendChildî    •€î¿      isRegisteredï   â›O)
+      account_idñ     ¡¶	      account_ref_codeó   Óqs      hasNoActivityò      O  j      secondsô    õ∏@¯      lastSeenTimestampö      I	ú
+      hasVisitedõ     ÙÄç      hasRefCodeInQueryStringú    %C¯      hasExpiredRefCodeù      Rå‘      isCurrentRefCodeOrganicû    Ë€˘      callbackü   Yµéü      -> isCurrentRefCodeOrganic†     ÿµIã9      [isCurrentRefCodeOrganic] options.account_id is undefined°      r…£{?      [isCurrentRefCodeOrganic] options.account_ref_code is undefined¢    CïaÉ      organic£    Œì:Q      [ i s C u r r e n t R e f C o d e O r g a n i c ]   ! µ !  µ !    µ ! !S ª    U!   µ !   !   U!¨  Q ±  T U !: §     ç¢=      [ i s C u r r e n t R e f C o d e O r g a n i c ]    U!¨  Q ±  T ∞    W! Q   ∑  ∞  W! U! µ : •     Ãå˘      createReferral¶     l;˙õ      -> createReferral(account_id[ß      ´ü,=      ],®     ÙßU       account_ref_code[©     ÷”      ])™     "Ë`p
+       ref_code[´     7™#      ref_code¨   “œü      getData≠    Ô+ÈV      link_idÆ    ¬$S      vk_referrerØ    Á≤ﬁ®	      _openlead∞      z¡.á0      [ c r e a t e R e f e r r a l ]    U!   µ !    U!   ! µ !  µ ! ∞ : ±   ∞Ñ≤'4      [ c r e a t e R e f e r r a l ]    U!¨  Q ±  T ∞    W! Q   ∑  ∞  W! U! µ : ≤   √£      isVkTargeting≥      æp ¸      apiUrl¥     å¥-      api_urlµ    	NH      referrer∂   ¥j—      isPlatformVk∑   ⁄Eú¡      indexOf∏    ù¿»	      vk.comπ     Hµf¸      isAdReferrer∫   Å¿¡\      ad_ª    £Ç“≈      saveRefCookieº      9ó      _cookie_optionsΩ    ?µÿñ      ref_code_creation_dateæ     “’XM      createOrganicReferralø      fá      -> createOrganicReferral¿   ìÉ∞      createTargetingReferral¡    PDk'      -> createTargetingReferral¬     í®U      moveCurrentReferralToOrganic√   O7l      -> moveCurrentReferralToOrganicƒ    ~~¥¬       moveCurrentReferralToNewReferral≈   ΩÉ°9#      -> moveCurrentReferralToNewReferral∆    gäŸ’D      [moveCurrentReferralToNewReferral] Trying to save undefined ref code«   té_Ú      [ * ]    ^ µ  T!S!0  µ  µ    ! µ  X!: »   å;£–"      [ * ]    ^ µ  T!S!0  Q !  ! µ !  µ ! ∞  ª : …   Gµ@      [ * ]      ∞ !  ∞   ! U ∑  ë ∞   Q!  !  µ  T!S!0  µ  V U  ! µ !  µ ! ∞  ª  ∞ :     è`ú      ->À     ñU
+4      [ * ]    \ U !9  !  ! µ !  µ ! ∞  ª : Ã   Ù,`%2      - - - -    !  ∞ !!    ±  ª  U T ∞    ∞ ! ±  Q! ! ∞  ∂  ∞   - - - - Õ   S†¢%        ∞  !!   !S ∂  µ    ± !9  ª    W U! µ !0  µ  Œ     ¡G‰#7       _ U ª !
+ ∑  U  ∞ !  µ  ª !
+   ∑  ∞ ! µ  V Q!! ! Q! U  ∞  œ     úﬁR˘      hasNoActivityAsUsual–   F§F‚      hasNoActivityAsOrganic—     â‡uØ      checkForOrganicCallback“    ÈL¶	      isOrganic”      _Ìdç*       _ U ª !
+ ∑  U  ∞ !  µ  ª !
+   U! V ∞   Q T ∞ : ‘   „∫M3       _ U ª !
+ ∑  U  ∞ !  µ  ª !
+   ± !9  ª     µ    ∞  T!  Q  µ  ’     èg;∞5       _ U ª !
+ ∑  U  ∞ !  µ  ª !
+   ! µ    µ !0  µ    ∞  T!  Q  µ  ÷     YªO<       _ U ª !
+ ∑  U  ∞ !  µ  ª !
+    µ    ∑  ∞ ! µ  V Q!! ! Q! U  ∞  ◊   ü˝Èπ(       ^ µ  T!S!0  Q !  ! µ !  T U ë   W! U! !S!& ÿ   ;”û¨      saveReferralŸ   ≥ü4       ^ µ  T!S!0  Q !  ! µ !  T U ë   µ !0  µ     µ    W! U! !S!& ⁄   Ø€Û8*        ∞  !!    µ !0  µ     µ    ± !9  ª    W U! µ !0  µ  €   â≈7       -> saveReferral‹    §]ï[       " !! !
+    U !9  !  ! µ !  T U ë     Q U E R Y _ S T R I N G   - -   ! U!& ! ∞  ! µ  X   µ  V U      T!S T ∞ !& ›     ¬÷—      _expﬁ   ø-kã       \ U  U V U  ! µ !  T U ë ∞     µ ! ,   !  ∞ ! V µ !  Q  V U  ∞ !  ! µ  T ª  ∞  X ∞   - -    W! Q!  ∞  Q  ∞  µ  X  ! µ !  µ ! ∞  ª   "  ^ ∞ ! V µ !  Q  V" ﬂ     ≥í÷W^       \ U  U V U  ! µ !  T U ë ∞     µ !   - -    W! Q!  ∞  Q  ∞  µ  X  ! µ !  µ ! ∞  ª   "  [! V ∞   Q T ∞ " ‡   a)°‘
+      getRefCode·     !±◊      getReferrer‚    d\3È2      [ u p d a t e O p e n l e a d I d ]    U!   µ !    U!   ! µ !  µ ! ∞ : „   Ì‹C6      [ u p d a t e O p e n l e a d I d ]    U!¨  Q ±  T ∞    W! Q   ∑  ∞  W! U! µ : ‰   ä¢&      destinyScopeOptionsÂ    ^˘{¥      DestinyScopeÊ   ¥π\_      destiny_scopeÁ      G$?î      Logger<Ë    L’u÷      Logger.writeÈ   ≤…>û      Logger.prototype.debugÍ     „vô<      Logger.prototype.infoÎ      ∞¶      Logger.prototype.warnÏ      √≈$p      Logger.prototype.errorÓ     5ªK˙      Storage<Ô   ›ªæ≤      Storage.prototype.setItem      
+µcY      Storage.prototype.getItemÒ      â¢ˆ	      Handlers<Ú      ãGé≥      Handlers.prototype.registrationÛ    ë÷ﬁ      Handlers.prototype.levelupÙ     ºÑ ¥      Handlers.prototype.purchaseı    dUÒ]      Arbitration<ˆ   ‘∏ü"      Arbitration.prototype.initOpenlead˜     3Äå/      Arbitration.prototype.initOpenlead/jsElm.onload¯    ªœµZ"      Arbitration.prototype.isRegistered˘     ﬁŒŒ/#      Arbitration.prototype.hasNoActivity˙    ‹û¸$       Arbitration.prototype.hasVisited˚   ñÌ4ø-      Arbitration.prototype.hasRefCodeInQueryString¸      HÂ“'      Arbitration.prototype.hasExpiredRefCode˝    CÌá[-      Arbitration.prototype.isCurrentRefCodeOrganic      ÛQR©$      Arbitration.prototype.createReferral  €-´
+      Arbitration.isVkTargeting     ÃôêÁ#      Arbitration.prototype.saveRefCookie   Ÿeä+      Arbitration.prototype.createOrganicReferral   NÄ/q-      Arbitration.prototype.createTargetingReferral	     \‚‘2      Arbitration.prototype.moveCurrentReferralToOrganic
+    6ı:B6      Arbitration.prototype.moveCurrentReferralToNewReferral    ásÊ      Arbitration.prototype.main    TäÓ…"      Arbitration.prototype.saveReferral    }∫⁄       Arbitration.prototype.getRefCode  ˚Ÿ˘Ô!      Arbitration.prototype.getReferrer     ﬁH	&      Arbitration.prototype.updateOpenleadId     ?   ∞  B   ?             Ô%,â                                                                                                                                                                                      	      
+           
+      
+                 
+                 
+                 
+                                  
+                                                                                                                                                                                                                  	                                                                                                               #           !      #          "      %           #      #           $      #           %      #           &      #           '      #           (      #          )      ,           *      ,           +      #          ,      /           -      /           .      #           /      #           0      #          1      4           2      #          3      6           4      #           5      #           6      #          7      :           8      #           9      #           :      #           ;      #          <      ?           =      ?           >      ≥Oåc              ;  c  ‰  Â  Ê                                    P              o                   “   t  	            e                  “ 	   o                   “ 	   o                   “ 	   o                   “ 	   o                     P  "  #  P'                              +      {              +  „                  Ø                           °             (  P)  P*  k  -  ›               1                3  o               ;  P<  PD  L  R  Y  P            +  =              +  „  E  F  d  H  I  K               +  E              `  (  “ i  l  a  b  	                 R              S  o               W  „  E  X  o               W  o   	            c  d  Pe  Pf  Pg  Ph  Pi  Pl  Pw                l              m  o                   “ 	   o                   “ 	   o                   “ 	   o                  w  P            E  o                 à  Pä  ã  o                                 o               ò  ô  o                 o                 o                 o               û  Pà  Po                3               7  8  9              (  Pà  P¨  Ø  o               3  o                7  8  9                ≥  µ  ∂  π              3  º  o                 à  Po                3              Æ  à  Po                3                o                 ´  o                 à  œ  P–  P—  o               “  ó  o                 ´  º  o                 o                 o                 à  P´  Ø  o                3               7  8  9  Ø¬0∞                 A     IÙ$KEÆ˙ö                              \  ]  ^  _                  j                        ›  +  e   6     
+      ï  ñ         â          ›  +  e   6           F          ≠  ï  û        ≠  ï  Æ  û     
+      ï  ñ         ï  ñ  ´        F          ›  +  e   6           Ø                  á&’™ç!´!?   î   î                  (        –    j    ¥   ô   ì   ’±   7   ¿   ì   t ’j    ¥   ô   ì   ’±   7   ¿   ì   t ’j    ¥   ô   ì   ’±   7	   ¿   ì   t ’j
+    ¥   ô   ì   ’±   7   ¿   ì   t ’¥      ñ   ì   ±   7   ¿   ’ì   ±   ¥   H   ¿   ’±   ¥   }¥   Ÿ  ~ ¿   ’°5 `PFP§ P40 `PFÄ  ö§ P40 `PFÄ  Î§ PDÄ  ˘0 `PFÄ 6§ P4 `Pñ0%`Pê00%`Pê0%`Pò0P P   P                           j    p  √   ’µ  ∂   J   ’°0 `PFM P8 `P=P  Ù   Ù   ò                          j   ƒ   ’∑   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j	   J
+   ’∑   H   j   J   ’∑   ¥   }Ÿ  ~  ◊H   ⁄p  J   ’∑   û°K `Pê@" `Pï@, `Pï@6 `Pï@@ `Pï@J `P/P*P9 `P5 Q   d   d   .                       ‘√   ’µ  ñ   ì   ¬  ’ì   ∂   µ  J   ’°6 `P#
+-
+`P: `P= P ‘  §  Í        
+       3       $“√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ¶∂   ◊H   ⁄p  √  ’¥   H   ò   ì   ’¥   ∂  Iì   ñ0  ì      ¥   }Ÿ  ~  ◊H   ⁄p  ∑   H   &Ë*%	   %√  ’∂   ◊H
+   ⁄∂  t ’∂  ◊   õ1   ì   ◊   õH   ì   ◊   õ_   ì   ú}   ì   ¥   H   ◊H   ⁄¥   ∂   t ’ï}   ì$   ¥   H   ◊H   ⁄¥   ∂   t ’ïU   ì)   ¥   H   ◊H   ⁄¥   ∂   t ’ï-   ì.   ¥   H   ◊H   ⁄¥   ∂   t ’ï   ì3   ï   ì3    †®™´  ’´  ’»ì3   °6 `P:  	`P&fPò0 `Pï@ 4`Pï@1 `P+P8 `PÆ0 `P/	P*Pû0 `P/P4 `P¡00 `Pö P4 `P:0 `Pö P4 `P:0 `Pö P4 `P:0 `Pö P4 `Pó@ ë@ P  ‘  ¥     ÿ     ˇˇˇˇ          C           _   q  0     ≥                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ñ   ì    ûì   ∂   ◊H   ⁄   t ’∑   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pñ0 `PA	 F `Pê P4 `Pô P4 P   0            C   0     ≥                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ñ   ì    ûì   ∂   ◊H   ⁄   t ’∑   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pñ0 `PA	 F `Pê P4 `Pô P4 P   0            C   0     ≥                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ñ   ì    ûì   ∂   ◊H   ⁄   t ’∑   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pñ0 `PA	 F `Pê P4 `Pô P4 P   0            C   0     ≤                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ñ   ì    ûì   ∂   ◊H   ⁄   t ’∑   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pï0 `PA	 F `Pê P4 `Pô P4 P    0            C   ∞   ∞   s                        j   √   ’j   ƒ   ’j   √  ’j   √  ’j   ƒ   ’j   √  ’µ  ∂   J   ’µ  ∂  J   ’µ  ∂  J	   ’µ  ∂  J
+   ’°æ@ `PM `PM `PMG `P=P d   d   ,                          ¥   ◊H   ⁄¥   }Ÿ  ~  ◊H   ⁄p  Ë*p û°0 `Pñ P*P'ˇˇˇÔP3 Q 0  0  “                        µ ñ   ì   ¥   H   ¬ ’ì   µ  ◊H   ⁄i      p ◊H   ⁄i      p ¬  ’¥   }	   µ  %
+   %Ÿ  ~ √   ’∂   ◊H   ⁄µ p √  ’∂  ñ   ì   ¥   ï-   ì   ¥    ∂  I◊H   ⁄i      p p ì   û°0 `P#-
+`Pì0 `Pî Pî P7 `P°0 `P.P8 `Pº DP#ˇˇˇ‚P8 Q       ú                        ∑    µ  p √   ’∂      ñ   ì   ∂   ûì   ∑       p √  ’∂     ñH   ì      ∂  %√  ’∑    µ  ∂  p √   ’∂      ñ   ì   ∂   ûì   °0 `P)P8 `Pï0 `PD F `P+P8 `Pï0 `P? `P-P8 `Pï0 `PD V    H   H                            ¥   }µ  Ë)Ÿ  ~ û°0 `Pë P3 Q       ¿   e                        $¥      ñ   ì   ¥   }Ÿ  ~  ûï;   ì   ¶¥   }   Ÿ  ~ ûï   ì    †®™´   ’´   ’†»°»ì   °0 `Pñ0 `P*PC K01 `P/PC N ; `PA Y      ‡      O      ˇˇˇˇ    ]                  /      8  (  î                '      ∑   p  ƒ   ’∑   ñh  ì   e    √   ’∑   H   \î   ]^óv   ì   √  ∑   H   ◊H   ⁄∂  p ñE   ì   ∂   ◊H   ⁄¥    ∂  p    %¥    ∑   H   ∂  Ip %t ’ì   ’ïáˇˇˇì   _∂   ◊H   ⁄   p √  ’∂  H   ñ$   ì   ∑   H	   
+   %∂  %ï   ì   ∑   H	   ì   √  ’∑   H      ñ   ì!   ∑   H   ï   ì"   ì"   √  ’∑   ◊H   ⁄   ∂  ∂  t ’∑   j   J   ’ì%   ∑   ◊H   ⁄t  ’°0 `P? `Pë0 `P: `Pù ˇˇˇ˜4 `Pï P= `Pï Pû P$ˇˇˇ›PI L	 `Pê 
+P8 `P∆0 `P∫0 `Pô P4 `Pï@ `P,P4 P  8        5   ~   Ä  Ä  	                      ‘√  ’∑   H   ñ   ì    ûì   ∑   H   » ñm   ì   ¥   ◊H   ⁄∑   H   p √   ’∑   H   ñ1   ì   ∑   H   ◊H   ⁄∂  e   ∂   f    t ’ì   ïi   ì   ∑   H	   ñU   ì   ∑   H	   ◊H   ⁄∂  e   ∑   H
+   f    ∑   H   f   ∑   H   f   t ’ì   °6 `Pó0 `PA F `Pò0 #`Pñ P8 `Pî0 `Pö )ˇˇˇÛPì@0 `Pî0 `Pö ///ˇˇˇ»PI P   ¿   ¿   v                        j   ƒ   ’j   √   ’j   √  ’j   ƒ   ’∑   ∑   J   ’∑   ∂   J   ’∑   ∂  J   ’j    p  √  ’∑   ∂  J	   ’°™@ `Pê@ `PO& `P? `PF; P8 `POOP   ƒ   ƒ   |          
+              ¥   H   ◊H   ⁄¥   }   µ  ◊H   ⁄i      p %	   %Ÿ  ~ p √   ’∂   ñ   ì   ¥
+    ∂   Ip ï   ì   ¥   ì   û°0 `P∞ 3P.ˇˇˇ„P#ˇˇˇ˙P8 `Pö Pó0 Q    H  8  é         
+       (      µ H   √   ’∂      ò   ì   ’∂   ì   ñS   ì   ¥   }Ÿ  ~  √  ’∂  ◊H   ⁄∂  ◊H   ⁄p  ∂   Ë)%t ’µ ∂  J   √   ’ì   ∂   ò   ì   ’∂   H   ì   ñ!   ì   µ ∂   ◊H   ⁄p  J   ’ì   ¥    µ ◊H   ⁄p  p ¬ ’µ  	   %µ %√  ’µ \î   ]^óy   ì   √  µ ◊H
+   ⁄∂  p ñO   ì   ∂     ∂  %%√  ’µ ∂  I√  ’∂  ñ   ì$   ∂  	   ∂  %%√  ’ì&   ’ïÑˇˇˇì&   _¥   ∂  J   ’°0 `P= `P©0 `Pí0 `Pñ P,ˇˇˇˆP4 `Pñ@ `Pß0 `P.PN
+ `Pê !P#ˇˇˇÁP7 `Pí0 `Pñ ˇˇˇ4 `P.P= `P6  `P= `Pê0 `PK L `P? P  H        ˜   Å   ‹   ‹   †                         ∑    µ  p ñé   ì   ¥   µ     %µ H   ñ   ì      µ H   %ï   ì      ì   %µ H   ñ   ì      µ H   %ï   ì      ì   %   %J	   ’ì   °0 `P)	P= `P>µ0µ0ë@ P   º   º   o                 
+        j   √   ’∂   H   j   J   ’∂   H   j   J   ’∂   7      :	   
+   :      :      :   J   ’∂   û°J `Pî@
+ `Pî@ `P9 : : : ê@ `P4 Q T   T   #                       ‘√   ’∂   µ  J   ’∂      J   ’°6 `P= `P? P  å   å   O                       ‘√  ’7   √   ’∑    ∂   ∂  H   µ t ’∑   ◊H   ⁄∂  H   µ  %µ ∂   t ’°6 `P: `Pñ P4 `P† P4 P T   T   $                       ‘√   ’∑   ◊H   ⁄∂   H   µ  %p û°6 `Pô P3 Q    Ë  L                     “√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   √  ’∂   H   √  ’î
+   ∂  ∂  ñ¡   ì   ∂   ∂  I\î   ]^óè   ì   √  ∂   ∂  I◊H   ⁄∂  p ñ_   ì   ∂   ∂  I∂  I√  ’∂     ñ%   ì   ∑    µ  ∂  I∂  t ’ï   ì   µ  ∂  ∂  L’ì   ’ïnˇˇˇì   _∂  .'√  ’ï5ˇˇˇì   µ  û°6 `P:  	`P&fPò0 `Pï@ 0`Pï@  `P&`P.fPì0 `Pú ˇˇˇÙ4 `Pî 
+P= `Pì0 `Pï0 `Pí PN `Pí@ L 2`Pï@ `P3 Q               C         ï   ó          r   –   ÿ   ÿ   s                        	 ßvƒ   ’	 ßvƒ   ’ g¬ƒ   ’	 Oƒ   ’	 ßvƒ   ’7      :   ƒ   ’j    p  ƒ   ’j    p  √   ’µ  ∂   J   ’°0 `P: `P: "`P; .`P: 6`P: `P5 ê@	 `PF& P9 `PFÄ : P8 `P=P   ê   ê   L                         j   √   ’∂   H   j   J   ’∂   H   j   J   ’∂   H   j   J   ’∂   û°J `Pî@ `Pî@ `Pî@ `P4 Q    @   @                          ‘√   ’∂   µ  J   ’°6 `P= P    ¸   ü                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ◊H   ⁄   ∂   t ’¥   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pô P4 `Pô 'P4 P               C     ¸   ü                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ◊H   ⁄   ∂   t ’¥   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pô P4 `Pô "P4 P               C     ¸   ü                       “√  ’‘√  ’e    √   ’√  ’î   ∂  ∂  H   ñ/   ì   ∂   ∂  &∂  ∂  IL’∂  .'√  ’ï¬ˇˇˇì	   ∂  H   ◊H   ⁄   ∂   t ’¥   H   ◊H   ⁄∂  ∂   t ’°< `P:  	`P&fPò0 `Pï@ 4`Pï@ `Pô P4 `Pô #P4 P               C   h  h  ú                 %        j   ƒ   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j	   J
+   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J   ’∑   H   j   J    ’∑   H   j!   J"   ’∑   H   j#   J$   ’∑   H   j%   J&   ’∑   H   j'   J(   ’∑   û°K `Pï@& `Pï@) `Pï@- `Pï@1 `Pï@4 `Pï@7 `Pï@U `Pï@y `Pê@} `Pï@Ä  Ö `Pï@Ä  ê `Pï@Ä  ú `Pï@Ä  £ `Pï@Ä  ∞ `Pï@Ä  ‰ `Pï@Ä  ˚ `Pï000 `Pï000 `Pï@Ä  `P5 Q  @  @  Ü               M       ‘√   ’∂   µ  J   ’∂      J   ’∂      J   ’∂      J   ’∂   ∂   H   ô   ì   ’7   ì   J   ’∂   H   ∂   H   H	   ô   ì   ’
+   ì   J	   ’∂   H   ∂   H   H   ô   ì   ’7   ì   J   ’∂   H   H   ∂   H   H   H   ô   ì   ’∑  ì   J   ’∂   H   H   ∂   H   H   H   ô   ì    ’   ì    J   ’µ  H   ñ(   ì#   ∂      J   ’∂      J   ’ì%   ∂   ◊H   ⁄t  ’∂   ¥   H   }∂   H   H   Ÿ  ~ J   ’∂   ¥   H   }∂   H   H   Ÿ  ~ J   ’∂   ◊H   ⁄t  ’∂   H   ◊H   ⁄¥   H   H   H   ¥   ◊H    ⁄p  ◊H!   ⁄p  t ’∂   ∑  }∂   H   Ÿ  ~ J"   ’¥#   H$   %   ñ#   ìI   ¥#   H$   ◊H&   ⁄∂   t ’ìM   °6 `P= `P? `P? `P? `P®0 `P≤0 `P≤0 `Pº0 `Pº0 `Pí0 `P? `Pî@ `P+P4 `P° P9 `P° P9 `P+P4 `P∞ ;P*P#ˇˇˇ√P4 `Pó P9 `Põ0 `Pï PI P    $  $  º                        ‘√  ’∂  ƒ   ’∑  ◊H   ⁄∂  H   H   p ó   ì    ûì   ∑  ∂  H   H   I√   ’¥   ◊H   ⁄   p √  ’∂     J   ’∂  	   ∂   %J
+   ’∂  j   J   ’¥   H   ◊H   ⁄∂  t ’°6 `P: `Pö P= `PA F `Pô0 `Pë 	P8 `P? `Pî0 `PO `Pï P4 P  @   @                             ∑   ◊H   ⁄t  ’°0 `P,P4 P  p   p   8                	        ‘√   ’∂   H   H   ò   ì   ’∂   H   H   ì	   û°6 `P  õ  ï0 Q    §   §   f                       ‘√  ’¥    ∂  H   ◊H   ⁄¥   H   H   H   p p ô   ì
+   ’ì
+   √   ’¥   ◊H	   ⁄p  ∂   &µ  û°6 $`P™ P#ˇˇˇÚPô0 `P,P< Q å   å   T                        ‘√   ’∂   H   ◊H   ⁄¥   H   H   H   p    ô   ì
+   ’∂   ◊H   ⁄p  ì   û°6 `P § Pï0+P8 Q   `   `   ,                        ‘√   ’¥   ◊H   ⁄∂   H   H   p    û°6 `P ö P: Q    h   h   6                	        ‘√   ’∂   H   ◊H   ⁄¥   H   H   H   p    û°6 `P § P: Q  å  å                        ‘√   ’∂   ƒ   ’∂   H   ◊H   ⁄   t ’∂   H   H   ó%   ì   ∂   H   ◊H   ⁄   t ’ûì	   ∂   H   H   ó%   ì   ∂   H   ◊H   ⁄	   t ’ûì   ¥
+   ◊H   ⁄7   ∂   H   :   7   ∂   H   H   :   ∂   H   H   :   :   j   :   j   :   t ’°6 `P: `Pï P4 `Pò0 `Pï P4 `PA F `Pò0 `Pï P4 `PA F `Pë0 > 5 ì0 ò@ J J PD P    ¿   ¿   v                         µ  H      ñ;   ì   ∑   ◊H   ⁄∑   e   µ  H   H   f    t ’ï,   ì   ∑   H   ◊H   ⁄   µ  H   t ’ì   °0 `Pò0 `Pñ í ˇˇˇÛPN0 `Pû PI P    T   T   $                         ∑   H   ◊H   ⁄   µ  µ µ t ’°0 `Pü P4 P  ¨  ¨  ı               6       ‘√  ’∂  ƒ   ’∂  H   ◊H   ⁄   ∑   H   %   %   ∑   H   %   %%	   ∑   H
+   %   %%t ’7   ∂  H   H   :   √   ’∑   H   ñ2   ì   ∂   ∑   H   J   ’∂   ∑   H   J   ’ì   ∑   H
+   ñ   ì   ∂   ∑   H
+   J
+   ’ì   ∑   H   ñ   ì   ∂   ∑   H   J   ’ì    ∑   H   ñ   ì"   ∂   ∑   H   J   ’ì$   ∑   H   ñ   ì&   ∂   ∑   H   J   ’ì(   ¥   ◊H   ⁄   p √  ’∂  ñ   ì,   ∂   ∂  J   ’ì-   ¥   ◊H   ⁄7   ∂  H   :   ∂   :   j   :   j   :   t ’°6 `P: `P¶0ó0ó@ PD `P5 ò@ `Pî0 `Pî0 `Pô@ `Pî0 `Pô0 `Pî0 `Pô0 `Pî0 `Pô0 `Pî0 `Pô0 `Pë P8 `P> `Pì0 `Pë0 > 9 J J PD# P   ®   ®   c                	       ‘√   ’∑   H   ◊H   ⁄   µ  t ’∑   H   ñ0   ì   ∑   H   ◊H   ⁄∂   e   µ  f    t ’ì	   °6 `Pô P4 `Pî0 `Pö (ˇˇˇÛP9 P   T   T   $                         ∑   H   ◊H   ⁄   µ  µ µ t ’°0 `Pü P4 P      ∑                         ¥   ◊H   ⁄   p √   ’¥   ◊H   ⁄   p √  ’∂      ò!   ì	   ’∂   ◊H   ⁄   p ˇì   √  ’∂     ò    ì   ’∂  ◊H   ⁄   p ì   √  ’∂  ò   ì   ’∂  ì   û°0 `Pë P(*`Pë P(/`P¶ $Pê (`P¶ (P? `Pò0 Q        √                       ‘√  ’7   ∑  :   √   ’∂  H   ◊H   ⁄¥   H   H   H   µ  H	   H
+   ∂   t ’∂  H   ◊H   ⁄¥   H   H   H   µ  H	   H   ∂   t ’∂  H   ◊H   ⁄¥   H   H   H   ¥   H   ∂   t ’°6 "`P5 O `Pµ P4 `Pµ P4 `P≤ P4 P    º   º   n                        ‘√   ’∂   ƒ   ’∂   H   ◊H   ⁄   t ’∂   ◊H   ⁄7   ∂   H   H   :   ∂   H   H   :   j	   :
+   t ’°6 `P: `Pï P4 `Pê0 ì0 ì0 J PD
+ P    P   P                            ∑   H   ◊H   ⁄∑   µ  t ’°0 `Pô P4 P    ƒ   ƒ   v                       ‘√   ’∂   ƒ   ’∂   H   ◊H   ⁄   t ’∂   ◊H   ⁄7   ∂   H   H   :   ∂   H   H   :   µ  :	   j
+   :   t ’°6 `P: `Pï P4 `Pê0 ì0 ì0 8 J PD P P   P                            ∑   H   ◊H   ⁄∑   µ  t ’°0 `Pô P4 P    †   †   Z                        ‘√   ’∂   H   ◊H   ⁄   t ’∂   ◊H   ⁄7   ∂   H   H   :   ∂   H   H   :   t ’°6 `Pï P4 `Pê0 ì0 ì@ PD P    $  $  ∫                        ‘√  ’∂  H   ◊H   ⁄   t ’¥   ◊H   ⁄∂  H   H   p √   ’∂      ñ%   ì   ∂  H   ◊H	   ⁄
+   t ’ ûì   ∂  ◊H   ⁄7   ∂  H   H   :   ∂  H   H   :   ∂   :   t ’°6 `Pï P4 `Pö P8 `Pï0 `Pï P4 `PA F `Pê0 ì0 ì0 I PD P       Û               Y        ‘√  ’∂  √   ’∂  H   ◊H   ⁄   ¥   }Ÿ  ~  t ’∂  H   ◊H   ⁄   ∂  H   ◊H   ⁄¥   H	   H
+   H   p t ’∂  H   ◊H   ⁄   ∂  H   ◊H   ⁄¥   H	   H
+   H   p    ¥   ◊H   ⁄¥    ∂  H   ◊H   ⁄¥   H	   H
+   H   p p p t ’∂  H   ◊H   ⁄   ¥   ◊H   ⁄∂  H   H   p t ’∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄p  ñj  ì3   ∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄p  ñÆ   ì9   ∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄∑  p ƒ   ’∂  ◊H   ⁄∑  p ƒ   ’j   √  ’∑   ñ"   ìA   ∂  ◊H   ⁄∂  t ’ï#   ìC   ∂  H   ◊H   ⁄   t ’ìF   ïÜ   ìF   ∂  H   ◊H   ⁄    t ’∂  ◊H!   ⁄p  ñ7   ìL   ∂  H   ◊H   ⁄"   t ’∂  ◊H#   ⁄t  ’ï#   ìQ   ∂  H   ◊H   ⁄$   t ’ìT   ï2   ìT   ∂  H   ◊H   ⁄%   t ’∂  ◊H#   ⁄t  ’ìY   °6 `P9 `Pü 4P#ˇˇˇÿP4 `Pπ EP#ˇˇˇ«P4 `Pπ cPæ _P#ˇˇˇÍP#ˇˇˇ˘P#ˇˇˇgP4 `PØ :P#ˇˇˇ“P4 `Pï P4 `P+P= `Pï P4 `P+P= `Pï P4 /`Pê P9 1`Pê P9 2`PJ `P? `P/PN 0 `Pï Pì@$0 `Pï P4 `P+P= `Pï P4 `P+PN*0 `Pï Pì@/0 `Pï P4 `P+PI3 P   L  L  ‚                       ‘√  ’∂  H   ◊H   ⁄   µ  t ’µ  ñ   ì   ∑   ï   ì   ∑   ì   √   ’∂   ñm   ì   ∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄p  ñ   ì   ∂  ◊H   ⁄t  ’ï   ì   ∂  ◊H   ⁄t  ’ì   ï#   ì   ∂  H   ◊H   ⁄   t ’ì   °6 `Pò P4 ,`P´0 `P> `Pï P4  `P+P=  `P+PN0  `P+Pì@0 `Pï PI P †  †  Î        	       @        ‘√  ’∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄p  ñ,  ì   ∂  H   ◊H   ⁄   t ’¥   ◊H   ⁄∂  H   H	   p √   ’7
+   ¥    ¥   ◊H   ⁄   p p ô   ì   ’∑  ì   :   √  ’∂  H   ◊H   ⁄¥   H   H   H   ∂   ∂  t ’∂  H   ◊H   ⁄¥   H   H   H   ¥   ◊H   ⁄p  ∂  t ’∂  H   ◊H   ⁄¥   H   H   H   ¥   H   ∂  t ’ïë   ì0   ∑   ◊H   ⁄p  ñK   ì3   ∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄¥   ◊H   ⁄   p t ’ï2   ì;   ∂  H   ◊H   ⁄   t ’∂  ◊H   ⁄t  ’ì@   °6 `Pï P4 `P+P= `Pï P4 `Pö P8 &`P5 ó P#ˇˇˇÒP¢@ `P¨ P4 `P∞ HP'ˇˇˇ≈P4 `P≤ PN0 `P,P= `Pï P4 `Pú #P#ˇˇˇ‚PN0 `Pï P4 `P+PI P  p   p   @                        ‘√   ’∂   H   ◊H   ⁄¥   H   H   H   p ô   ì   ’ì   û°6 `P§ Pî0 Q p   p   @                        ‘√   ’∂   H   ◊H   ⁄¥   H   H   H   p ô   ì   ’ì   û°6 `P§ Pî0 Q D  D  ’                        ‘√  ’∂  ƒ   ’∂  ◊H   ⁄p  ó   ì    ûì   ¥   ◊H   ⁄∂  H   H   p √   ’¥   ◊H   ⁄   p ô   ì   ’	   ì   √  ’¥   ◊H
+   ⁄7   ∂  H   ∂   %   %:   7   ∂  :   :   j   :   j   :   t ’°6 `P: `P+P= `PA F `Pö P8 `Pë Pù0 `Pë0 ô0 %> J J PD P    P   P                            ∑   H   ◊H   ⁄   µ  t ’°0 `Pô P4 P    T   T   $                         ∑   H   ◊H   ⁄   µ  µ µ t ’°0 `Pü P4 P  3ıÿ  `    `        [      	  
+                 `  `        ˙       `        ˙       `        ˙     	  `        ˙       `  p  p˙  g    p    p    p    p      	    `  p    `          `  W  V     P    P        É   ˇ  Y     P     `ˇ  !  ?    `    `$  ˇ  %  &    `  `  `2  ü    4  5  e      6  7  8  9    `+  Ã   ,  w   =  ˛   &    ›  ?     ˇ  .  /    p0  :  
+  `
+  p  p  p  p  p  p    "  '    `>  ?  U    @  V    PB  C  Y   ˇ    `F      G    ª  w   π  =  Ã   J  >  ?    `>  =  M  N  t   O  P  Q  ?    `  Ã        `S  U  T    `  @S  D  T    `<  T    `  pg    pV    pZ    @l  \  › ]  œ ^  d  _  [    `  p  p  p  p<  D  L    pR    `m     `  m    o    p     !  `  m    r    s     "  `  m    u    v       `  pg    pn    pq    pt  $  `E  y  x  {  z  }  |    @~  ›     @F  M  /  Ä  Å  Ç  É         m  ;  R  Ñ  Ö  V  [  \      π  Ü    á       &  `ë  %  `Ã   E  â  >  å  Ç  ç  ƒ  è  é  #  pê  í  ì  '  `E  ï  ñ  (  `X  Ñ  Z  ;  R  [  \      )  `Ñ  Z  ;  R  [  \  ˇ  î  *  `    E  ~  ˇ  +  `Ñ  Z  ;  R  [  ]  ˇ  -  `ü      3  ¢  m    £  .  `m    §  ,  `m    ü  E  ï    †  ñ  °    '    @z  ›  	  @+  *  pe   +  p6  0  `m    ∞  û     1  `m    ±  /  `m    ¶  ï  ß  ®  ñ  ©  ™  ´  
+  @E  â  ≠  ï  Æ  ;  <  Ø    '    @x  ›  +  -  pe   .  p6  2  `    ¥  µ    ∑  ∏  ∫  3  `  @F  Ñ  V  ;  R  [  ]  3  ´  _  Ω  ^  >  µ  5  `ª  1   4  `m    ø  •    @E  ≠  ï  2  pû  7  `ª  1   6  `m    ¡  •    @E  ≠  ï  Æ  4  pû  8  `m    √  •    @E  ï  ñ  9  `m    ≈      E  ~  ˇ    ∆  •    @ï  ñ  ´  ;  `m    ”  ‘  õ  ƒ  ¬  ’  :  `m    «    »  Ñ  Z  ;  R  [  ]  …  _       "  X  À    E  ~    Ã  ö  Õ  î  Œ  ó  8  pù  ’  ÷  ú  ◊  ÿ  Ÿ  ⁄  <  `m    €  õ  ‹      E  ~    @X  ›  F  Ñ  V  ;  R  [  ]  _    ^  >  µ  ≤  ﬁ  ¿  ﬂ  æ  =  `Ñ  Z  ;  R  [  ]  >  `Ñ  Z  ;  R  [  ^  @  `m    ‚  A  `m    „  ?  `õ      E  ~  ;  <  Ø  t   '    @|  /  ›    @+  =  pe   >  p6  #  `!  pg  "  pÉ  $  pî  %  pó  &  pö  '  põ  (  pú  )  pù  ,  p•  /  p≤  0  pª  1  pæ  3  p¿  5  p¬  6  pƒ  7  pÖ  9  pÿ  :  p‡  ;  p·  <  pë    `  @k  j    p   pw     `  p      @	  p    @  p;    @  pc    @‰  ˇ    @Â  w  Ê  ˇXÑù                ?              † /      Á      †              †        Ë      †       È      †       Í      † !      Î      † (      Ï      † Ç              † B            †  G            †  W            †  [      "      †  ]      #      †  p      '      †  c      1      † “   
+           † ç      <      †  ô      D      †  ß   
+   L      †  ¡      Ó      † µ      R      †  π      Ô      † æ            † ±      Y      †  ñ             † ˆ   	   Ò      † ‹      l      †  ﬁ      Ú      † Ê      Û      † Ó      Ù      † m  )   ı      † ˇ   '   w      †  (     ˆ      † &     ˜      † 7     ¯      † ;  
+   ˘      † E  	   ˙      † N     ˚      † T     ¸      † i     ˝      † \  	   e       †
+ e     6      †
+ à           † ~     e       †
+ Ñ     6      †
+ ¶  	        † Ø          † ¬          † ø     û      †
+ –          † Õ     û      †
+ ‹  	   	     † Â     
+     † ˛  &        † ı  	   —      †
+ $          † B          † I          † X          † P     e       †
+ T     6      †
+ ùH©¿      Co      Co                     ’
+     ’
+     
+          Ä>   ≤
+  5   ≤
+                 Z   æ   K   æ                  ﬂ     ÷                     >  f  5  f  %   *            ë  ∏  à  ∏  /   )            „  
+	  ⁄  
+	  9   )            6	  ^
+  -	  ^
+  C   *           Ä  Ï  ˇ
+  Ï  S   
+            +  m    m  T                Ω  2  ô  2  X   (            R    7    _               U  ì  F  ì  l               Õ  ı  ≥  ı  p              Ä
+  Õ  ˙  Õ  }              £  §  ì  §  ä   9           Ä  ê!    ê!  ù   
+            ?    -    û               U  †  C  †  £               ›    »    ª              R    I    ƒ               o  „  _  „  ≈                ◊    ◊  …   -             P  ˝  P  Œ   -            L  é!  7  é!  ⁄             Ä™)  gn  °)  gn  ˚   
+           .+  É/  %+  É/                L+  Ç+  ;+  Ç+               ∂+  ”,  ≠+  ”,    3            -  .  ˙,  .    .            H.  c/  ?.  c/    /           Ä®/  8n  ü/  8n  "               …/  ä5  µ/  ä5  #            Ç¡5  ≈7  ∏5  ≈7  ;  6             Q7  å7  H7  å7  C  $            ˝7  \8  Ù7  \8  H  6            ï8  [9  å8  [9  K  7           ë9  %:  à9  %:  O  4            h:  ’:  _:  ’:  S  A            ;  ~;  	;  ~;  V  ;           Ç¡;  ñA  ∏;  ñA  Y  A            ∫>  p@  ±>  p@  j    ›"˝          ë@  |A  à@  |A  r            Ç–A  ÇH  «A  ÇH  w  8           YF  eG  PF  eG  ë              ÜG  hH  }G  hH  ñ              ±H  ˜I  ®H  ˜I  õ  -            0J  'L  'J  'L  ü  7          ÇhL  €M  _L  €M  ß  ?             fM  ¡M  ]M  ¡M  ≠  #          ÇN  »O  N  »O  ≤  A            SO  ÆO  JO  ÆO  π  #           P  Q  P  Q  æ  F            SQ  ÜS  JQ  ÜS  ≈  J           Ç∂S  Fb  ≠S  Fb  “  .            oY  k]  fY  k]  ﬂ  ;           ~b  @i  ub  @i    6            vi  ‘i  mi  ‘i    4            j  ij  j  ij     5           Ç•j  n  új  n  #  :             Rl  ˆl  Il  ˆl  ,              m  ˚m  m  ˚m  /            5°›◊ÛëaÛÍ≈§	      dÂédÂéE^yd8rÜ   ^    O^partitionKey=%28https%2Cbotva.ru%29,:https://lbn2.ddestiny.ru/static/js/api/destiny_scope.js strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.4.6 (Ubuntu)
+Date: Tue, 14 Mar 2023 21:22:15 GMT
+Content-Type: application/x-javascript
+Content-Length: 26430
+Last-Modified: Wed, 09 Aug 2017 14:03:22 GMT
+ETag: "598b162a-673e"
+Expires: Thu, 13 Apr 2023 21:22:15 GMT
+Cache-Control: max-age=2592000
+Strict-Transport-Security: max-age=31536000;
+Content-Security-Policy-Report-Only: default-src https:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data:; font-src https: data:; report-uri /csp-report
+Accept-Ranges: bytes
+ original-response-headers Server: nginx/1.4.6 (Ubuntu)
+Date: Tue, 14 Mar 2023 21:22:15 GMT
+Content-Type: application/x-javascript
+Content-Length: 26430
+Last-Modified: Wed, 09 Aug 2017 14:03:22 GMT
+Connection: keep-alive
+ETag: "598b162a-673e"
+Expires: Thu, 13 Apr 2023 21:22:15 GMT
+Cache-Control: max-age=2592000
+Strict-Transport-Security: max-age=31536000;
+Content-Security-Policy-Report-Only: default-src https:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data:; font-src https: data:; report-uri /csp-report
+Accept-Ranges: bytes
+ ctid 2 uncompressed-len 0 net-response-time-onstart 1040 net-response-time-onstop 1040 alt-data 1;26430,javascript/moz-script-bytecode-20230309232128-8l alt-data-from-child 1  j6

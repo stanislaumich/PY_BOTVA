@@ -32,7 +32,7 @@ import sqlite3
 from selenium import webdriver
 import mysettings
 import traceback
-
+from selenium.webdriver.firefox.options import Options
 
 '''
 ---------------------------------------------------------------------------'''
@@ -43,10 +43,15 @@ def main():
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     mypf = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUMF"
+    try:
+        os.mkdir(mypf)
+    except:
+        print("Путь профиля лисы уже существует")
     print("Путь профиля Chrome: " + myp)
     print("Путь профиля FireFox: " + mypf)
 
-    options = webdriver.FirefoxOptions()
+    options = Options()
+    options.add_argument('-profile')
     options.add_argument(mypf)
     driver = webdriver.Firefox(options=options)
     '''
