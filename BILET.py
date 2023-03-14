@@ -22,6 +22,7 @@ mysettings.py прописать логин и пароль для входа в
 
 
 '''
+import random
 from time import sleep
 import os
 from selenium.webdriver.common.by import By
@@ -42,7 +43,7 @@ MN = 100
 
 
 def main():
-    print("[INFO]Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать прокачку")
+    print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать билетики")
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     print("Путь профиля Chrome: " + myp)
@@ -65,7 +66,7 @@ def main():
     element.send_keys(mysettings.passw)
     element = driver.find_element(By.CLASS_NAME, "submit_by_ajax_completed")
     element.submit()
-    sleep(3)
+    sleep(random.random() * 3)
     driver.get("https://g1.botva.ru/mine.php")
     # class="mt4"
     elements = driver.find_elements(By.CLASS_NAME, "mt4")
@@ -75,18 +76,37 @@ def main():
     print(f' Билетов на большую поляну: {bp}')
     bn = int(bp)
     mn = int(mp)
-
-    t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
-    t[1].click()
-    sleep(1)
-    for i in range(4):
-        print(i)
-        t = driver.find_elements(By.CLASS_NAME, "cmd_arow4")
+    try:
+        t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
         t[1].click()
-        sleep(2)
+        sleep(random.random() * 2+1)
+        for i in range(bn+1):
+            print(f'Копаю большую- {i+1}')
+            t = driver.find_elements(By.CLASS_NAME, "cmd_arow4")
+            t[1].click()
+            sleep(random.random() * 2+1)
+            # cmd_arow3 пропробовать ещё
+            t = driver.find_element(By.CLASS_NAME, "cmd_arow3")
+            t.click()
+            sleep(random.random() * 3+1)
+    except:
+        print('Поймана ошибка')
     driver.get("https://g1.botva.ru/mine.php")
-    # driver.find_element_by_link_text("МАЛЕНЬКАЯ").click()
-
+    try:
+        t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
+        t[0].click()
+        sleep(random.random() * 2 + 1)
+        for i in range(bn + 1):
+            print(f'Копаю малую- {i + 1}')
+            t = driver.find_elements(By.CLASS_NAME, "cmd_arow4")
+            t[1].click()
+            sleep(random.random() * 2 + 1)
+            # cmd_arow3 пропробовать ещё
+            t = driver.find_element(By.CLASS_NAME, "cmd_arow3")
+            t.click()
+            sleep(random.random() * 3 + 1)
+    except:
+        print('Поймана ошибка')
 
 if __name__ == "__main__":
     main()
