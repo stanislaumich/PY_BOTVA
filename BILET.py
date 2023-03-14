@@ -31,6 +31,7 @@ import configparser
 import sqlite3
 from selenium import webdriver
 import mysettings
+import traceback
 
 '''
 Ниже идут настройки 
@@ -46,13 +47,21 @@ def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать билетики")
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
+    mypf = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUMF"
     print("Путь профиля Chrome: " + myp)
+
+    #options = webdriver.FirefoxOptions()
+    #options.add_argument(mypf)
+
+    #driver = webdriver.Firefox(options=options)
+
     options = webdriver.ChromeOptions()
     options.add_argument("--allow-profiles-outside-user-dir")
     options.add_argument(r"user-data-dir=" + myp)
     options.add_argument("--profile-directory=BOTVA")
     options.add_argument("--disable-blink-features=AutomationControlled")
     driver = webdriver.Chrome(options=options)
+
     print("Логин...  ")
 
     driver.get("http://botva.ru")
@@ -68,45 +77,53 @@ def main():
     element.submit()
     sleep(random.random() * 3)
     driver.get("https://g1.botva.ru/mine.php")
-    # class="mt4"
-    elements = driver.find_elements(By.CLASS_NAME, "mt4")
-    mp = elements[0].text
-    bp = elements[1].text
-    print(f' Билетов на малую поляну:   {mp}')
-    print(f' Билетов на большую поляну: {bp}')
-    bn = int(bp)
-    mn = int(mp)
+    sleep(2)
+    mp = 0
+    bp = 0
+    try:
+        elements = driver.find_elements(By.CLASS_NAME, "mt4")
+        mp = elements[0].text
+        print(mp)
+        bp = elements[1].text
+        print(bp)
+        print(f' Билетов на малую поляну:   {mp}')
+        print(f' Билетов на большую поляну: {bp}')
+        bn = int(bp)
+        mn = int(mp)
+    except:
+        print("Ошибка выбора количества билетов")
     try:
         t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
         t[1].click()
-        sleep(random.random() * 2+1)
+        sleep(random.random() * 2 + 3)
         for i in range(bn+1):
-            print(f'Копаю большую- {i+1}')
+            print(f'Копаю большую - {i+1}')
             t = driver.find_elements(By.CLASS_NAME, "cmd_arow4")
             t[1].click()
-            sleep(random.random() * 2+1)
+            sleep(random.random() * 2 + 2)
             # cmd_arow3 пропробовать ещё
             t = driver.find_element(By.CLASS_NAME, "cmd_arow3")
             t.click()
-            sleep(random.random() * 3+1)
+            sleep(random.random() * 3 + 2)
     except:
-        print('Поймана ошибка')
+        print('Поймана ошибка при копке больших полян\n', traceback.format_exc())
     driver.get("https://g1.botva.ru/mine.php")
     try:
         t = driver.find_elements(By.CLASS_NAME, "cmd_arow5")
         t[0].click()
-        sleep(random.random() * 2 + 1)
-        for i in range(bn + 1):
-            print(f'Копаю малую- {i + 1}')
+        sleep(random.random() * 2 + 3)
+        for i in range(mn + 1):
+            print(f'Копаю малую - {i + 1}')
             t = driver.find_elements(By.CLASS_NAME, "cmd_arow4")
             t[1].click()
-            sleep(random.random() * 2 + 1)
+            sleep(random.random() * 2 + 2)
             # cmd_arow3 пропробовать ещё
+            #t = driver.find_element(By.XPATH, "//a[contains(text(),'ВСЛЕПУЮ')]")
             t = driver.find_element(By.CLASS_NAME, "cmd_arow3")
             t.click()
-            sleep(random.random() * 3 + 1)
+            sleep(random.random() * 3 + 2)
     except:
-        print('Поймана ошибка')
-
+        print('Поймана ошибка при копке малых полян\n', traceback.format_exc())
+    driver.close()
 if __name__ == "__main__":
     main()

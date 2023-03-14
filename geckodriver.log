@@ -1,0 +1,72 @@
+1678826939879	geckodriver	INFO	Listening on 127.0.0.1:64898
+1678826942929	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--allow-profiles-outside-user-dir" "user-d ... 9" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofileOdpEb2"
+1678826978344	geckodriver	INFO	Listening on 127.0.0.1:64957
+1678826981448	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64958" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofilea5hPpa"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678826981790	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678826981796	Marionette	INFO	Listening on port 64966
+WebDriver BiDi listening on ws://127.0.0.1:64958
+Read port: 64966
+1678826982079	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofilea5hPpa\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64958/devtools/browser/44ed8cfe-6293-4a66-a8fc-a75bb0a1fb80
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+1678826992470	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+1678827078005	Marionette	INFO	Stopped listening on port 64966
+Dynamically enable window occlusion 1
+1678827083504	geckodriver	INFO	Listening on 127.0.0.1:65058
+1678827086580	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "65059" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofileuTWW0X"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678827086988	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678827086992	Marionette	INFO	Listening on port 65070
+Read port: 65070
+WebDriver BiDi listening on ws://127.0.0.1:65059
+1678827087093	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofileuTWW0X\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:65059/devtools/browser/aa5b7ffa-bfba-4003-948c-05524704c06a
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+1678827631277	Marionette	INFO	Stopped listening on port 65070
+Dynamically enable window occlusion 1
+[Parent 18892, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+de of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678827178295	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1678827178300	Marionette	INFO	Listening on port 65173
+Read port: 65173
+WebDriver BiDi listening on ws://127.0.0.1:65164
+1678827178408	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\yacra\\AppData\\Local\\Temp\\rust_mozprofile04fGWs\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:65164/devtools/browser/7f64e93d-4207-47cd-8e2c-a81888ce2fa4
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+1678827951009	Marionette	INFO	Stopped listening on port 65173
+Dynamically enable window occlusion 1
