@@ -9,13 +9,6 @@ import mysettings
 ''''''
 uagent = ""
 def main():
-    basepath = config["PATH"]["workdir"]
-    try:
-        os.mkdir(basepath)
-    except:
-        print("Проверка рабочей папки")
-    finally:
-        print(" ")
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     print("Путь профиля Chrome: "+myp)
