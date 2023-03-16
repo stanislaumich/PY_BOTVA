@@ -27,7 +27,7 @@ soup.find_all(class_=re.compile("itl"))
 
 
 '''
-import time
+from datetime import date
 from bs4 import BeautifulSoup
 import requests
 import lxml
@@ -36,31 +36,42 @@ import re
 url = 'https://g1.botva.ru/clan_members.php?id=31481'
 
 
-allmembertr = []
 
 def main():
     print("[INFO] ")
     page = requests.get(url)
     print(page.status_code)
-    html = page.text
-    #html = re.sub(r'>\s+<', '><', html.replace('\n', ''))
-    html =  html.replace('\n', '')
-    #html = html.replace('\t', '+')
+    html = page.content
     soup = BeautifulSoup(html, "lxml")
-
-
-    #print(soup)
-    allmembertr = soup.findAll('tr')
-    #print(allmembertr)
-    ra = []
-    for rec in allmembertr:
-        nik = rec.a.text#.text.strip(' ')
-        print(nik)
-        lev = rec.td[1].text
-        print(lev)
-        print(rec)
-
-
+    today = date.today()
+    fname = "{}.{}.{}".format(today.day, today.month, today.year)
+    fname = fname + ".csv"
+    f = open(fname, 'w')
+    table = soup.find_all('table')
+    all_cols = []
+    for row in table:
+        cols = row.find_all('td')
+        rw = []
+        i = 0
+        for c in cols:
+            c = c.text.replace('\n', '')
+            c = c.replace('\r', '')
+            c = c.replace('&nbsp', '')
+            c = c.strip(' ')
+            c = c.strip(chr(160))
+            c = c.strip(' ')
+            if c!='':
+                rw.append(c)
+                i = i + 1
+                if i==5:
+                    i = 0
+                    e = tuple(rw)
+                    all_cols.append(e)
+                    rw.clear()
+    print(all_cols)
+    for r in all_cols:
+        f.write(f"{r[0]};{r[2]}\n")
+    f.close()
 
 
 
