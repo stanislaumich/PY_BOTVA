@@ -68,11 +68,12 @@ def main():
                     e = tuple(rw)
                     all_cols.append(e)
                     rw.clear()
-    print(all_cols)
+    #print(all_cols)
+    f.write(f'{url}\n')
     for r in all_cols:
         f.write(f"{r[0]};{r[2]}\n")
     f.close()
-
+    print('Обработка завершена, проверьте файл с сегодняшней датой')
 
 
 
