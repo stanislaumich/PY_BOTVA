@@ -307,3 +307,69 @@ WebDriver BiDi listening on ws://127.0.0.1:51744
 Read port: 51751
 1678829102743	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 DevTools listening on ws://127.0.0.1:51744/devtools/browser/c7fc44f6-53fe-4bdd-8796-75404346cdc7
+1678946853962	geckodriver	INFO	Listening on 127.0.0.1:50804
+1678946857379	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "50805" "--remote-allow-hosts" "localhost" "-no-remote"
+Read port: 51751
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678946859369	Marionette	INFO	Marionette enabled
+1678946859381	Marionette	INFO	Listening on port 50828
+Read port: 50828
+WebDriver BiDi listening on ws://127.0.0.1:50805
+1678946860338	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50805/devtools/browser/73b293ba-c6a3-4dc6-b2fc-df02450f3ebf
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 1216: unreachable code after return statement
+JavaScript error: resource://gre/modules/PromiseWorker.jsm, line 106: Error: Could not get children of file(S:\PY_BOTVA\SELENIUMF\thumbnails) because it does not exist
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript warning: https://i.botva.ru/m/g=global?v=940, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+1678947340908	Marionette	INFO	Stopped listening on port 50828
+1678947397396	geckodriver	INFO	Listening on 127.0.0.1:51084
+1678947400470	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "51085" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1678947402142	Marionette	INFO	Marionette enabled
+1678947402152	Marionette	INFO	Listening on port 51092
+Read port: 51092
+WebDriver BiDi listening on ws://127.0.0.1:51085
+1678947402327	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: shader-cache: Timed out before finishing loads
+[ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+DevTools listening on ws://127.0.0.1:51085/devtools/browser/fc246b21-54db-4c0b-9d20-6e2f86a4cc32
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=940, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+1678947412046	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1678947680816	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+1678947727443	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+1678947736037	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+1678947741774	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+1678947804890	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
+1678948093819	Marionette	INFO	Stopped listening on port 51092
