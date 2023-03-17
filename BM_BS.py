@@ -1,24 +1,8 @@
 '''
 https://g1.botva.ru/clan_members.php?id=31481
 
-
+для этого скрипта нужно доинсталлить вот эти
 pip install bs4 lxml requests
-
-<tr class="row_0">
-<td data-sort-value="">
-</td>
-<td class="left pt3 pb3 pr3 borderr">
-<b class="icon race21" title="Барантус"></b>
-                                                 
-                        <a class="profile" href="/player.php?id=5074120">=Rottweiler=</a>
-</td>
-<td class="p3 borderr center" data-sort-value="100">100</td>
-<td class="p3 borderr right" data-sort-value="52398600999">52.398.600.999<b class="icon ico_points" title="Боевая мощь"></b><b class="order"></b></td>
-<td class="pt3 pb3 pl5 borderr left" data-sort-value="9223372036854775796">Ротвейлер</td>
-<td class="p3 right nowrapi" data-sort-value="2620054496">2.620.054.496 <b class="icon ico_glory_small" title="Слава"></b></td>
-<td><a href="post.php?m=new&amp;to_id=5074120"><b class="icon ico_mail" title="отправить письмо"></b></a></td>
-</tr>
-
 
 
 
@@ -34,8 +18,9 @@ import requests
 import lxml
 import re
 
-url = 'https://g1.botva.ru/clan_members.php?id=31481'
-
+url = 'https://g1.botva.ru/clan_members.php?id=31481' # Авалоны
+url = 'https://g1.botva.ru/clan_members.php?id=55626' # Мисты
+url = 'https://g1.botva.ru/clan_members.php?id=21148' # Мы
 
 
 def main():
@@ -48,7 +33,8 @@ def main():
     tm = time.localtime(time.time())
     fname = "{}.{}.{}.{}.{}.{}".format(tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour, tm.tm_min, tm.tm_sec)
     fname = fname + ".csv"
-    f = open(fname, 'w')
+    f = open('BM___' + fname, 'w')
+    ff = open('FULL_'+fname, 'w')
     el = soup.find('a', class_='profile')
     klan = el.text
     print(klan)
@@ -75,9 +61,12 @@ def main():
                     rw.clear()
     #print(all_cols)
     f.write(f'{klan};{url}\n')
+    ff.write(f'{klan};{url}\n')
     for r in all_cols:
         f.write(f"{r[0]};{r[2]}\n")
+        ff.write(f"{r[0]};{r[2]};{r[3]};{r[4]}\n")
     f.close()
+    ff.close()
     print('Обработка завершена, проверьте файл с сегодняшней датой')
 
 
