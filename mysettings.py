@@ -1,5 +1,7 @@
 #login = "wiwali@mail.ru"
 #passw = "QYUR8NUANE"
+#login = "375293766074@ya.ru"
+#passw = "CrazyDogLz42"
 login = "staslz42tas@gmail.com"
 passw = "CrazyDog"
 drv = "C" # "C"
