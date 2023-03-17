@@ -1,4 +1,4 @@
-'''
+"""
 https://g1.botva.ru/clan_members.php?id=31481
 
 для этого скрипта нужно доинсталлить вот эти
@@ -10,17 +10,16 @@ pip install bs4 lxml requests
 soup.find_all(class_=re.compile("itl"))
 
 
-'''
-from datetime import date
+"""
 import time
 from bs4 import BeautifulSoup
 import requests
-import lxml
-import re
+# import lxml
+# import re
 
-url = 'https://g1.botva.ru/clan_members.php?id=31481' # Авалоны
-url = 'https://g1.botva.ru/clan_members.php?id=55626' # Мисты
-url = 'https://g1.botva.ru/clan_members.php?id=21148' # Мы
+# url = 'https://g1.botva.ru/clan_members.php?id=31481'  # Авалоны
+# url = 'https://g1.botva.ru/clan_members.php?id=55626'  # Мисты
+url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 
 
 def main():
@@ -51,15 +50,15 @@ def main():
             c = c.strip(' ')
             c = c.strip(chr(160))
             c = c.strip(' ')
-            if c!='':
+            if c != '':
                 rw.append(c)
                 i = i + 1
-                if i==5:
+                if i == 5:
                     i = 0
                     e = tuple(rw)
                     all_cols.append(e)
                     rw.clear()
-    #print(all_cols)
+    # print(all_cols)
     f.write(f'{klan};{url}\n')
     ff.write(f'{klan};{url}\n')
     for r in all_cols:
@@ -68,8 +67,6 @@ def main():
     f.close()
     ff.close()
     print('Обработка завершена, проверьте файл с сегодняшней датой')
-
-
 
 
 if __name__ == "__main__":
