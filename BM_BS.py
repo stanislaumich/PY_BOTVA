@@ -28,6 +28,7 @@ soup.find_all(class_=re.compile("itl"))
 
 '''
 from datetime import date
+import time
 from bs4 import BeautifulSoup
 import requests
 import lxml
@@ -43,10 +44,14 @@ def main():
     print(page.status_code)
     html = page.content
     soup = BeautifulSoup(html, "lxml")
-    today = date.today()
-    fname = "{}.{}.{}".format(today.day, today.month, today.year)
+
+    tm = time.localtime(time.time())
+    fname = "{}.{}.{}.{}.{}.{}".format(tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour, tm.tm_min, tm.tm_sec)
     fname = fname + ".csv"
     f = open(fname, 'w')
+    el = soup.find('a', class_='profile')
+    klan = el.text
+    print(klan)
     table = soup.find_all('table')
     all_cols = []
     for row in table:
@@ -69,7 +74,7 @@ def main():
                     all_cols.append(e)
                     rw.clear()
     #print(all_cols)
-    f.write(f'{url}\n')
+    f.write(f'{klan};{url}\n')
     for r in all_cols:
         f.write(f"{r[0]};{r[2]}\n")
     f.close()
