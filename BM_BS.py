@@ -21,6 +21,12 @@ import requests
 # url = 'https://g1.botva.ru/clan_members.php?id=55626'  # Мисты
 url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 
+def remove(value, deletechars):
+    for c in deletechars:
+        value = value.replace(c,'')
+    return value
+
+#print remove(filename, '\/:*?"<>|')
 
 def main():
     print("[INFO] ")
@@ -29,13 +35,18 @@ def main():
     html = page.content
     soup = BeautifulSoup(html, "lxml")
 
+
+    el = soup.find('a', class_='profile')
+    klan = el.text
+
     tm = time.localtime(time.time())
     fname = "{}.{}.{}.{}.{}.{}".format(tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour, tm.tm_min, tm.tm_sec)
     fname = fname + ".csv"
+    fname = remove(klan + '_' + fname, '\/:*?"<>|')
+
     f = open('BM___' + fname, 'w')
-    ff = open('FULL_'+fname, 'w')
-    el = soup.find('a', class_='profile')
-    klan = el.text
+    ff = open('FULL_' + fname, 'w')
+
     print(klan)
     table = soup.find_all('table')
     all_cols = []
