@@ -1,0 +1,3 @@
+g1.botva.ru^partitionKey=%28http%2Cbotva.ru%29:HSTS	0	19434	1710697932370,1,0
+i.botva.ru^partitionKey=%28http%2Cbotva.ru%29:HSTS	0	19434	1710697921059,1,0
+avatar.botva.ru^partitionKey=%28http%2Cbotva.ru%29:HSTS	0	19434	1710697920959,1,0

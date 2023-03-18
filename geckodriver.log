@@ -373,3 +373,88 @@ interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mj
 webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
 JavaScript warning: https://i.botva.ru/m/g=jquery?v=940, line 5: unreachable code after return statement
 1678948093819	Marionette	INFO	Stopped listening on port 51092
+1679160747367	geckodriver	INFO	Listening on 127.0.0.1:57661
+1679160750496	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "57662" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679160751069	Marionette	INFO	Marionette enabled
+1679160751071	Marionette	INFO	Listening on port 57674
+Read port: 57674
+WebDriver BiDi listening on ws://127.0.0.1:57662
+1679160751117	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57662/devtools/browser/185f08c4-26b0-436d-82bf-5590a57ebdb5
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+1679160771280	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript error: resource://gre/modules/PromiseWorker.jsm, line 106: Error: Could not get children of file(S:\PY_BOTVA\SELENIUMF\thumbnails) because it does not exist
+1679160936384	geckodriver	INFO	Listening on 127.0.0.1:57795
+1679160939456	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "57796" "--remote-allow-hosts" "localhost" "-no-remote"
+Read port: 57674
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679160939707	Marionette	INFO	Marionette enabled
+1679160939709	Marionette	INFO	Listening on port 57806
+WebDriver BiDi listening on ws://127.0.0.1:57796
+DevTools listening on ws://127.0.0.1:57796/devtools/browser/fcf610fd-2a39-49ba-9d5f-7bedd749fddf
+Read port: 57806
+1679160941639	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+1679161090653	Marionette	INFO	Stopped listening on port 57806
+1679161124673	geckodriver	INFO	Listening on 127.0.0.1:57944
+1679161127793	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "57945" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679161128042	Marionette	INFO	Marionette enabled
+1679161128044	Marionette	INFO	Listening on port 57954
+Read port: 57954
+WebDriver BiDi listening on ws://127.0.0.1:57945
+1679161128075	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57945/devtools/browser/67c2838a-2457-4435-b456-0314c79a8b64
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 1216: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+1679161177374	geckodriver	INFO	Listening on 127.0.0.1:58003
+1679161180461	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "58004" "--remote-allow-hosts" "localhost" "-no-remote"
+Read port: 57954
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679161180694	Marionette	INFO	Marionette enabled
+1679161180696	Marionette	INFO	Listening on port 58014
+WebDriver BiDi listening on ws://127.0.0.1:58004
+DevTools listening on ws://127.0.0.1:58004/devtools/browser/9cbad522-4a00-4994-8019-c937bc7a5ad5
+Read port: 58014
+1679161182637	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 818: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=outerjs?v=941, line 1216: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+JavaScript warning: https://i.botva.ru/m/g=global?v=941, line 337: unreachable code after return statement
+1679161305061	Marionette	INFO	Stopped listening on port 58014
+1679161916303	geckodriver	INFO	Listening on 127.0.0.1:58426
+1679161919398	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "58427" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679161919660	Marionette	INFO	Marionette enabled
+1679161919663	Marionette	INFO	Listening on port 58436
+WebDriver BiDi listening on ws://127.0.0.1:58427
+Read port: 58436
+1679161919790	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:58427/devtools/browser/233057d1-b7b8-4ddd-a72e-890a7a7d2eed

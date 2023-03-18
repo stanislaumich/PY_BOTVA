@@ -1,0 +1,1128 @@
+.notices_block                                             {margin-top: 60px; margin-left: -10px; width: 200px}
+.notices_block .notice                                     {margin: 0; width: 200px; height: 100px; display: block; cursor: pointer; position: relative; background-position: 0 0; background-repeat: no-repeat}
+.notices_block .notice:hover                               {background-position: 0 -100px}
+
+.notices_block .notice.supersale_block                     {text-decoration: none}
+.notices_block .notice.supersale_block .big_count.middle_count.countdownHolder {width: 204px !important}
+.notices_block .notice.supersale_block:hover               {background-position: 0 0; opacity: .8}
+.notices_block .notice.supersale_block .text               {padding: 35px 0 0; color: #BE3211; text-align: center; font-size: 14px; font-weight: 700}
+.notices_block .notice.supersale_block .text span          {font-size: 24px}
+.notices_block .notice.battleground_block_text_new         {color: #834f15; margin-top: -24px; margin-left: 20px; text-align: center; font-size: 11px; font-weight: bold}
+.notices_block .notice.notice_new                          {height: 130px}
+.notices_block .notice.notice_new:hover                    {background-position: 0 -130px}
+.notices_block .notice.day_sale_block,
+.notices_block .notice.prince_block,
+.notices_block .notice.bday12_set_block,
+.notices_block .notice.foreman_block                       {height: 210px; margin-bottom: 40px}
+.notices_block .notice.marchset_block                      {height: 210px; margin-bottom: 40px}
+.notices_block .notice.bday12_set_block:hover,
+.notices_block .notice.day_sale_block:hover,
+.notices_block .notice.prince_block:hover,
+.notices_block .notice.marchset_block:hover                 {-webkit-filter: brightness(120%); -moz-filter: brightness(120%); -o-filter: brightness(120%); filter: brightness(120%); background-position: 0 0}
+.notices_block .notice.foreman_block:hover                 {-webkit-filter: brightness(120%); -moz-filter: brightness(120%); -o-filter: brightness(120%); filter: brightness(120%); background-position: 0 0}
+.notices_block .notice.avatar_buy_energy                   {height: 210px; margin-bottom: 40px}
+.notices_block .notice.avatar_buy_energy:hover             {-webkit-filter: brightness(120%); -moz-filter: brightness(120%); -o-filter: brightness(120%); filter: brightness(120%); background-position: 0 0}
+.notices_block .notice.menu_chat2                          {height: 60px}
+.notices_block .notice.menu_chat2:hover                    {background-position: 0 -60px}
+.notices_block .notice.menu_bday:after                     {content: '.'; margin: -5px 0 0; width: 100px; height: 100px; display: block; position: absolute; z-index: 10; background-repeat: no-repeat; color: transparent}
+.notices_block .notice.portal_avatarum,
+.notices_block .notice.portal_botva                        {width: 190px; height: 225px; background-position: 0 0 !important}
+.notices_block .notice.portal_avatarum:hover,
+.notices_block .notice.portal_botva:hover                  {-webkit-filter: brightness(120%); -moz-filter: brightness(120%); -o-filter: brightness(120%); filter: brightness(120%)}
+.notices_block .notice.meteor_block,
+.notices_block .notice.glass_block,
+.notices_block .notice.extra_green_block,
+.notices_block .notice.quest_chest_block,
+.notices_block .notice.supergifts_2014may_block,
+.notices_block .notice.supergifts_2014may_block2,
+.notices_block .notice.supergifts_2014may_block3,
+.notices_block .notice.supergifts_2014may_block4,
+.notices_block .notice.avatar_lottery_block1,
+.notices_block .notice.avatar_lottery_block2,
+.notices_block .notice.avatar_captor,
+.notices_block .notice.berserkers,
+.notices_block .notice.feb23socks,
+.notices_block .notice.mar8cats,
+.notices_block .notice.mansion_boxes,
+.notices_block .notice.newbotva,
+.notices_block .notice.lunar,
+.notices_block .notice.swamp,
+.notices_block .notice.coolsale,
+.notices_block .notice.paradise,
+/*.notices_block .notice.ccg_block,*/
+.notices_block .notice.airships,
+.notices_block .notice.indepth,
+.notices_block .notice.ahaha,
+.notices_block .notice.ninja,
+.notices_block .notice.knowledge,
+.notices_block .notice.neopuzus,
+.notices_block .notice.mapsale,
+.notices_block .notice.green_march,
+.notices_block .notice.greenbag,
+.notices_block .notice.avatar_flexible,
+.notices_block .notice.event_corsair,
+.notices_block .notice.event_corsair2,
+.notices_block .notice.event_opposition,
+.notices_block .notice.event_opposition2,
+.notices_block .notice.frigate_block,
+.notices_block .notice.frigate_avatar_block,
+.notices_block .notice.funlove_block,
+.notices_block .notice.double_cheese_block,
+.notices_block .notice.double_atlantis_block,
+.notices_block .notice.yeti_block,
+.notices_block .notice.brain_block,
+.notices_block .notice.dungeon_block,
+.notices_block .notice.dungeon_block2,
+.notices_block .notice.dungeon_block3,
+.notices_block .notice.halloween2014_block,
+.notices_block .notice.halloween2014_battle_block,
+.notices_block .notice.school_history,
+.notices_block .notice.drillhall_block,
+.notices_block .notice.nygifts_101,
+.notices_block .notice.nygifts_102,
+.notices_block .notice.nygifts_103,
+.notices_block .notice.nygifts_104,
+.notices_block .notice.nygifts_105,
+.notices_block .notice.nygifts_106,
+.notices_block .notice.nygifts_201,
+.notices_block .notice.nygifts_202,
+.notices_block .notice.nygifts_203,
+.notices_block .notice.nygifts_204,
+.notices_block .notice.nygifts_205,
+.notices_block .notice.nygifts_206,
+.notices_block .notice.nygifts_111,
+.notices_block .notice.nygifts_112,
+.notices_block .notice.nygifts_113,
+.notices_block .notice.nygifts_114,
+.notices_block .notice.nygifts_115,
+.notices_block .notice.nygifts_116,
+.notices_block .notice.nygifts_211,
+.notices_block .notice.nygifts_212,
+.notices_block .notice.nygifts_213,
+.notices_block .notice.nygifts_214,
+.notices_block .notice.nygifts_215,
+.notices_block .notice.nygifts_216,
+.notices_block .notice.nygifts_121,
+.notices_block .notice.nygifts_122,
+.notices_block .notice.nygifts_123,
+.notices_block .notice.nygifts_124,
+.notices_block .notice.nygifts_125,
+.notices_block .notice.nygifts_126,
+.notices_block .notice.nygifts_127,
+.notices_block .notice.nygifts_128,
+.notices_block .notice.nygifts_221,
+.notices_block .notice.nygifts_222,
+.notices_block .notice.nygifts_223,
+.notices_block .notice.nygifts_224,
+.notices_block .notice.nygifts_225,
+.notices_block .notice.nygifts_226,
+.notices_block .notice.nygifts_227,
+.notices_block .notice.nygifts_228,
+.notices_block .notice.nygifts_131,
+.notices_block .notice.nygifts_132,
+.notices_block .notice.nygifts_133,
+.notices_block .notice.nygifts_134,
+.notices_block .notice.nygifts_135,
+.notices_block .notice.nygifts_136,
+.notices_block .notice.nygifts_137,
+.notices_block .notice.nygifts_138,
+.notices_block .notice.nygifts_231,
+.notices_block .notice.nygifts_232,
+.notices_block .notice.nygifts_233,
+.notices_block .notice.nygifts_234,
+.notices_block .notice.nygifts_235,
+.notices_block .notice.nygifts_236,
+.notices_block .notice.nygifts_237,
+.notices_block .notice.nygifts_238,
+.notices_block .notice.maygifts_701,
+.notices_block .notice.maygifts_702,
+.notices_block .notice.maygifts_703,
+.notices_block .notice.maygifts_704,
+.notices_block .notice.maygifts_705,
+.notices_block .notice.maygifts_706,
+.notices_block .notice.maygifts_801,
+.notices_block .notice.maygifts_802,
+.notices_block .notice.maygifts_803,
+.notices_block .notice.maygifts_804,
+.notices_block .notice.maygifts_805,
+.notices_block .notice.maygifts_806,
+.notices_block .notice.maygifts_901,
+.notices_block .notice.maygifts_1001,
+.notices_block .notice.maygifts_1002,
+.notices_block .notice.maygifts_1003,
+.notices_block .notice.maygifts_1004,
+.notices_block .notice.maygifts_902,
+.notices_block .notice.maygifts_903,
+.notices_block .notice.maygifts_904,
+.notices_block .notice.maygifts_905,
+.notices_block .notice.maygifts_906,
+.notices_block .notice.maygifts_907,
+.notices_block .notice.maygifts_908,
+.notices_block .notice.maygifts_111,
+.notices_block .notice.maygifts_112,
+.notices_block .notice.maygifts_113,
+.notices_block .notice.maygifts_114,
+.notices_block .notice.maygifts_115,
+.notices_block .notice.maygifts_116,
+.notices_block .notice.maygifts_117,
+.notices_block .notice.maygifts_118,
+.notices_block .notice.nycontraband,
+.notices_block .notice.nycontraband2021,
+.notices_block .notice.nycontraband2018,
+.notices_block .notice.may2020contraband,
+.notices_block .notice.children2019,
+.notices_block .notice.maycontraband,
+.notices_block .notice.sandbox_event,
+.notices_block .notice.dark_gold,
+.notices_block .notice.starter_packs,
+.notices_block .notice.nygreen,
+.notices_block .notice.maygreen,
+.notices_block .notice.mignonsale,
+.notices_block .notice.mimibears,
+.notices_block .notice.uptime,
+.notices_block .notice.nytree2013,
+.notices_block .notice.pre_monstrapocalypse,
+.notices_block .notice.monstrapocalypse,
+.notices_block .notice.flowars_block,
+.notices_block .notice.godpoll_block,
+.notices_block .notice.hello14_block,
+.notices_block .notice.orange_bar,
+.notices_block .notice.dream_coulomb,
+.notices_block .notice.octogames,
+.notices_block .notice.letter2016,
+.notices_block .notice.event_pinocchioshop,
+.notices_block .notice.may2016_block,
+.notices_block .notice.abandoned_block,
+.notices_block .notice.abandoned_block1,
+.notices_block .notice.abandoned_block2,
+.notices_block .notice.abandoned_block3,
+.notices_block .notice.abandoned_block4,
+.notices_block .notice.abandoned_block5,
+.notices_block .notice.halloween_sale_2018,
+.notices_block .notice.morro_undead1,
+.notices_block .notice.morro_undead2,
+.notices_block .notice.morro_undead3,
+.notices_block .notice.portal_avatarum,
+.notices_block .notice.portal_botva,
+.notices_block .notice.clan_chemp_block,
+.notices_block .notice.sept1_block,
+.notices_block .notice.event_examination,
+.notices_block .notice.menu_monsters_pvp_timer,
+.notices_block .notice.dino_block,
+.notices_block .notice.penguin_may,
+.notices_block .notice.space_green_x2,
+.notices_block .notice.superfair_block,
+.notices_block .notice.superfair_block2,
+.notices_block .notice.menu_gifts_task,
+.notices_block .notice.event_goodness,
+.notices_block .notice.ny2015_gifts,
+.notices_block .notice.valentine,
+.notices_block .notice.valentine2017,
+.notices_block .notice.morro_dogs,
+.notices_block .notice.march_8_2015,
+.notices_block .notice.march8_block,
+.notices_block .notice.womancraft,
+.notices_block .notice.warecho,
+.notices_block .notice.meetnewtanks,
+.notices_block .notice.springlottery1,
+.notices_block .notice.springlottery2,
+.notices_block .notice.guild_ring,
+.notices_block .notice.ny2015,
+.notices_block .notice.ava50_ny_block,
+.notices_block .notice.supersale_block,
+.notices_block .notice.scramble,
+.notices_block .notice.gardenbeds,
+.notices_block .notice.pvpcasket,
+.notices_block .notice.menu_monsters_pvp,
+.notices_block .notice.ny_2016_block,
+.notices_block .notice.super_mill,
+.notices_block .notice.thatsallfolks,
+.notices_block .notice.pre_monstrapocalypse1,
+.notices_block .notice.pre_monstrapocalypse2,
+.notices_block .notice.pre_monstrapocalypse3,
+.notices_block .notice.abandoned_undead,
+.notices_block .notice.weekofauthority,
+.notices_block .notice.dragons,
+.notices_block .notice.shanni_alchemy,
+.notices_block .notice.shanni_dreaming,
+.notices_block .notice.shield,
+.notices_block .notice.mansion4,
+.notices_block .notice.mansion5,
+.notices_block .notice.bday11_searching,
+.notices_block .notice.bday11_battle,
+.notices_block .notice.bday11_battle_rare,
+.notices_block .notice.marketman_block,
+.notices_block .notice.marketman_block_assasin,
+.notices_block .notice.marketman_block_assasin_avatar,
+.notices_block .notice.marketman_block_assasin_avatar2,
+.notices_block .notice.explorer_block,
+.notices_block .notice.explorer_block_avatar,
+.notices_block .notice.bday12_set_block,
+.notices_block .notice.bday12_confrontation,
+.notices_block .notice.mfights,
+.notices_block .notice.caves,
+.notices_block .notice.loan_block,
+.notices_block .notice.marketman_block_snow,
+.notices_block .notice.marketman_block_energy,
+.notices_block .notice.marketman_block_dark_gold,
+.notices_block .notice.marketman_block_fight,
+.notices_block .notice.marketman_block_piligrim,
+.notices_block .notice.marketman_block_watch,
+.notices_block .notice.marketman_block_oak,
+.notices_block .notice.marketman_block_relic,
+.notices_block .notice.marketman_block_mustache,
+.notices_block .notice.marketman_block_newres10,
+.notices_block .notice.marketman_block_arcane,
+.notices_block .notice.marketman_block_atlant,
+.notices_block .notice.discord,
+.notices_block .notice.marketman_block_casket_winter,
+.notices_block .notice.cheesetown_carpet,
+.notices_block .notice.marketman_block_cheese,
+.notices_block .notice.marketman_block_dragon{margin-bottom: 40px}
+.notices_block .notice.meteor_block + .notice.battleground_block_text_new,
+.notices_block .notice.glass_block + .notice.battleground_block_text_new,
+.notices_block .notice.extra_green_block + .notice.battleground_block_text_new,
+.notices_block .notice.quest_chest_block + .notice.battleground_block_text_new,
+.notices_block .notice.yeti_block + .notice.battleground_block_text_new,
+.notices_block .notice.brain_block + .notice.battleground_block_text_new,
+.notices_block .notice.dungeon_block + .notice.battleground_block_text_new,
+.notices_block .notice.dungeon_block2 + .notice.battleground_block_text_new,
+.notices_block .notice.dungeon_block3 + .notice.battleground_block_text_new,
+.notices_block .notice.halloween2014_block + .notice.battleground_block_text_new,
+.notices_block .notice.halloween2014_battle_block + .notice.battleground_block_text_new,
+.notices_block .notice.school_history+ .notice.battleground_block_text_new,
+.notices_block .notice.drillhall_block+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_101+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_102+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_103+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_104+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_105+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_106+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_201+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_202+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_203+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_204+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_205+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_206+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_111+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_112+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_113+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_114+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_115+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_116+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_211+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_212+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_213+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_214+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_215+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_216+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_121+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_122+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_123+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_124+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_125+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_126+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_127+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_128+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_221+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_222+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_223+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_224+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_225+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_226+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_227+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_228+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_131+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_132+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_133+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_134+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_135+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_136+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_137+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_138+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_231+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_232+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_233+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_234+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_235+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_236+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_237+ .notice.battleground_block_text_new,
+.notices_block .notice.nygifts_238+ .notice.battleground_block_text_new,
+.notices_block .notice.gift_for_green+ .notice.battleground_block_text_new,
+.notices_block .notice.gift_for_green_avatar+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_101+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_102+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_103+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_104+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_105+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_106+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_201+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_202+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_203+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_204+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_205+ .notice.battleground_block_text_new,
+.notices_block .notice.mayifts_206+ .notice.battleground_block_text_new,
+.notices_block .notice.nycontraband+ .notice.battleground_block_text_new,
+.notices_block .notice.nycontraband2018+ .notice.battleground_block_text_new,
+.notices_block .notice.may2020contraband+ .notice.battleground_block_text_new,
+.notices_block .notice.children2019+ .notice.battleground_block_text_new,
+.notices_block .notice.maycontraband+ .notice.battleground_block_text_new,
+.notices_block .notice.sandbox_event+ .notice.battleground_block_text_new,
+.notices_block .notice.dark_gold+ .notice.battleground_block_text_new,
+.notices_block .notice.starter_packs+ .notice.battleground_block_text_new,
+.notices_block .notice.nygreen+ .notice.battleground_block_text_new,
+.notices_block .notice.maygreen+ .notice.battleground_block_text_new,
+.notices_block .notice.mignonsale+ .notice.battleground_block_text_new,
+.notices_block .notice.mimibears+ .notice.battleground_block_text_new,
+.notices_block .notice.uptime+ .notice.battleground_block_text_new,
+.notices_block .notice.nytree2013+ .notice.battleground_block_text_new,
+.notices_block .notice.pre_monstrapocalypse+ .notice.battleground_block_text_new,
+.notices_block .notice.monstrapocalypse+ .notice.battleground_block_text_new,
+.notices_block .notice.flowars_block+ .notice.battleground_block_text_new,
+.notices_block .notice.godpoll_block+ .notice.battleground_block_text_new,
+.notices_block .notice.hello14_block+ .notice.battleground_block_text_new,
+.notices_block .notice.octogames+ .notice.battleground_block_text_new,
+.notices_block .notice.orange_bar+ .notice.battleground_block_text_new,
+.notices_block .notice.dream_coulomb+ .notice.battleground_block_text_new,
+.notices_block .notice.event_pinocchioshop+ .notice.battleground_block_text_new,
+.notices_block .notice.may2016_block+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block1+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block2+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block3+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block4+ .notice.battleground_block_text_new,
+.notices_block .notice.abandoned_block5+ .notice.battleground_block_text_new,
+.notices_block .notice.halloween_sale_2018+ .notice.battleground_block_text_new,
+.notices_block .notice.morro_undead1+ .notice.battleground_block_text_new,
+.notices_block .notice.morro_undead2+ .notice.battleground_block_text_new,
+.notices_block .notice.morro_undead3+ .notice.battleground_block_text_new,
+.notices_block .notice.menu_bday7+ .notice.battleground_block_text_new,
+.notices_block .notice.portal_avatarum+ .notice.battleground_block_text_new,
+.notices_block .notice.portal_botva+ .notice.battleground_block_text_new,
+.notices_block .notice.clan_chemp_block+ .notice.battleground_block_text_new,
+.notices_block .notice.sept1_block+ .notice.battleground_block_text_new,
+.notices_block .notice.event_examination+ .notice.battleground_block_text_new,
+.notices_block .notice.dino_block+ .notice.battleground_block_text_new,
+.notices_block .notice.penguin_may+ .notice.battleground_block_text_new,
+.notices_block .notice.menu_monsters_pvp_timer+ .notice.battleground_block_text_new,
+.notices_block .notice.space_green_x2+ .notice.battleground_block_text_new,
+.notices_block .notice.superfair_block+ .notice.battleground_block_text_new,
+.notices_block .notice.superfair_block2+ .notice.battleground_block_text_new,
+.notices_block .notice.menu_gifts_task+ .notice.battleground_block_text_new,
+.notices_block .notice.event_goodness+ .notice.battleground_block_text_new,
+.notices_block .notice.ny2015_gifts+ .notice.battleground_block_text_new,
+.notices_block .notice.ny2015+ .notice.battleground_block_text_new,
+.notices_block .notice.ava50_ny_block+ .notice.battleground_block_text_new,
+.notices_block .notice.supersale_block+ .notice.battleground_block_text_new,
+.notices_block .notice.scramble+ .notice.battleground_block_text_new,
+.notices_block .notice.gardenbeds+ .notice.battleground_block_text_new,
+.notices_block .notice.pvpcasket+ .notice.battleground_block_text_new,
+.notices_block .notice.ny_2016_block + .notice.battleground_block_text_new,
+.notices_block .notice.super_mill + .notice.battleground_block_text_new,
+.notices_block .notice.thatsallfolks + .notice.battleground_block_text_new,
+.notices_block .notice.loan_block + .notice.battleground_block_text_new {margin-top: 0}
+.notices_block .notice.bday12_confrontation + .notice.battleground_block_text_new {margin-top: 0}
+
+.notices_block .notice.battleground_block_mine_01_new      {background-image: url(../../../images/m/battleground/shaft1.png)}
+.notices_block .notice.battleground_block_mine_02_new      {background-image: url(../../../images/m/battleground/shaft2.png)}
+.notices_block .notice.battleground_block_mine_03_new      {background-image: url(../../../images/m/battleground/shaft3.png)}
+.notices_block .notice.battleground_block_mine_04_new      {background-image: url(../../../images/m/battleground/shaft4.png)}
+.notices_block .notice.battleground_block_mine_05_new      {background-image: url(../../../images/m/battleground/shaft5.png)}
+.notices_block .notice.battleground_block_mine_06_new      {background-image: url(../../../images/m/battleground/shaft6.png)}
+.notices_block .notice.maslenica_block                     {background-image: url(../ad/block_pancake.png)}
+.notices_block .notice.knowledgeday_block                  {background-image: url(../ad/ban_knowledge.png)}
+.notices_block .notice.neopuzus                            {background-image: url(../ad/neopuzus.png)}
+.notices_block .notice.popka_block                         {background-image: url(../ad/popka_block.png)}
+.notices_block .notice.immortal_block                      {background-image: url(../ad/immortal_block.png)}
+.notices_block .notice.supergifts_2013may_block            {background-image: url(../ad/supergifts_2013may_block.png)}
+.notices_block .notice.supergifts_2013may_block2           {background-image: url(../ad/supergifts_2013may_block_2.png)}
+.notices_block .notice.supergifts_2013may_block3           {background-image: url(../ad/supergifts_2013may_block_3_other.png)}
+.notices_block .notice.supergifts_2013may_block4           {background-image: url(../ad/supergifts_2013may_block_4.png)}
+.notices_block .notice.supergifts_2014may_block            {background-image: url(../ad/supergifts_2014may_block.png)}
+.notices_block .notice.supergifts_2014may_block2           {background-image: url(../ad/supergifts_2014may_block_2.png)}
+.notices_block .notice.supergifts_2014may_block3           {background-image: url(../ad/supergifts_2014may_block_3.png)}
+.notices_block .notice.supergifts_2014may_block4           {background-image: url(../ad/supergifts_2014may_block_4.png)}
+.notices_block .notice.octoberfest_block                   {background-image: url(../ad/kvasfest.png)}
+.notices_block .notice.tournament_block                    {background-image: url(../ad/tournament.png)}
+.notices_block .notice.menu_forum_events                   {background-image: url(../ad/menu_forum_events.png)}
+.notices_block .notice.menu_forum_events2                  {background-image: url(../ad/menu_forum_events2.png)}
+.notices_block .notice.menu_battle_5                       {background-image: url(../m/class/battle/booking_of_battle5.png)}
+.notices_block .notice.menu_battle_6                       {background-image: url(../m/class/battle/booking_of_battle6.png)}
+.notices_block .notice.menu_battle_7                       {background-image: url(../m/class/battle/booking_of_battle7.png)}
+.notices_block .notice.menu_battle_8                       {background-image: url(../m/class/battle/booking_of_battle8.png)}
+.notices_block .notice.menu_newbie                         {background-image: url(../m/newbie/quest.png)}
+.notices_block .notice.menu_newbie2                        {background-image: url(../m/newbie/quest2.png)}
+.notices_block .notice.menu_chat2                          {background-image: url(../images/chat/chat_bg.png)}
+.notices_block .notice.trainer                             {background-image: url(../m/tutorial/captain1_big.png)}
+.notices_block .notice.trainer.race_2                      {background-image: url(../m/tutorial/captain2_big.png)}
+.notices_block .notice.trainer.compact                     {background-image: url(../m/tutorial/captain1_bg.png)}
+.notices_block .notice.trainer.compact2                    {background-image: url(../m/tutorial/captain2_bg.png)}
+.notices_block .notice.menu_zoo.rand_1                     {background-image: url(../other/zoo/fpets_bg1.png)}
+.notices_block .notice.menu_zoo.rand_2                     {background-image: url(../other/zoo/fpets_bg2.png)}
+.notices_block .notice.menu_zoo.rand_3                     {background-image: url(../other/zoo/fpets_bg3.png)}
+.notices_block .notice.menu_zoo.rand_4                     {background-image: url(../other/zoo/fpets_bg4.png)}
+.notices_block .notice.menu_zoo.rand_5                     {background-image: url(../other/zoo/fpet_4bg.png)}
+.notices_block .notice.menu_zoo.rand_6                     {background-image: url(../other/zoo/fpet_4bg2.png)}
+.notices_block .notice.menu_toolbar                        {background-image: url(../other/brouser_bg.png)}
+.notices_block .notice.menu_worm                           {background-image: url(../other/redworm_bg2.png)}
+.notices_block .notice.menu_advwiki                        {background-image: url(../other/wiki_bg.png)}
+.notices_block .notice.menu_bday4                          {background-image: url(../ad/bday4_presents.png)}
+.notices_block .notice.menu_dragon_1                       {background-image: url(../ad/dracon_bar.png)}
+.notices_block .notice.menu_dragon_2                       {background-image: url(../ad/santa_bar.png)}
+.notices_block .notice.menu_stamps_discount                {background-image: url(../other/stamps.png)}
+.notices_block .notice.menu_preview                        {background-image: url(../other/new_guild.png)}
+.notices_block .notice.s106                                {background-image: url(../events/1sept_day.png)}
+.notices_block .notice.menu_bday_ticket                    {background-image: url(../ad/bday_bg2.png)}
+.notices_block .notice.menu_gifts_special                  {background-image: url(../ad/bday_bg2.png)}
+.notices_block .notice.harbour_disc                        {background-image: url(../ad/42_percent.png)}
+.notices_block .notice.menu_monsterpve                     {background-image: url(../m/monsterpve/menu.png)}
+.notices_block .notice.harbour_disc_90                     {background-image: url(../ad/90_persent.png)}
+.notices_block .notice.pegas_disc_60                       {background-image: url(../ad/pegas_discount.png)}
+.notices_block .notice.draco_disc_80                       {background-image: url(../ad/draco_discount.png)}
+.notices_block .notice.grifon_disc_80                      {background-image: url(../ad/grifon_discount.png)}
+.notices_block .notice.manticore_disc_80                   {background-image: url(../ad/manticore_disc_80.png)}
+.notices_block .notice.menu_atlantis_ad                    {background-image: url(../ad/atlantis_block.png)}
+.notices_block .notice.menu_atlantis2_ad                   {background-image: url(../ad/atlantis2_block.png)}
+.notices_block .notice.menu_wormspirit                     {background-image: url(../ad/menu_wormspirit.png)}
+.notices_block .notice.menu_space                          {background-image: url(../ad/menu_space.png)}
+.notices_block .notice.menu_specialist                     {background-image: url(../ad/specialist_block.png)}
+.notices_block .notice.menu_mammoth                        {background-image: url(../ad/mamont_block.png)}
+.notices_block .notice.menu_stamps_2013_ny                 {background-image: url(../ad/stamps_bg.png)}
+.notices_block .notice.menu_raincoat                       {background-image: url(../ad/block_raincoat.png)}
+.notices_block .notice.menu_professions                    {background-image: url(../ad/block_proffs.png)}
+.notices_block .notice.menu_whale_buy                      {background-image: url(../ad/block_kit.png)}
+.notices_block .notice.menu_avatar_buy                     {background-image: url(../ad/ava50.png)}
+.notices_block .notice.menu_avatar_buy_ny                  {background-image: url(../ad/ava25_ny.png)}
+.notices_block .notice.menu_zoobox                         {background-image: url(../ad/zoobox.png)}
+.notices_block .notice.menu_monkey                         {background-image: url(../events/monkey.png)}
+.notices_block .notice.fungus                              {background-image: url(../ad/fungus.png)}
+.notices_block .notice.orange_bar                          {background-image: url(../ad/orange_bar.png)}
+.notices_block .notice.dream_coulomb                       {background-image: url(../ad/dream_coulomb.png)}
+.notices_block .notice.menu_bday                           {background-image: url(../m/bday/quest_bg.png)}
+.notices_block .notice.menu_yandex                         {background-image: url(../events/yandex_block.png)}
+.notices_block .notice.menu_bday:after                     {background-image: url(../../../images/m/bday/bday_steps.png)}
+.notices_block .notice.menu_bday.q_101:after               {background-position: -100px 0}
+.notices_block .notice.menu_bday.q_102:after               {background-position: -100px -100px}
+.notices_block .notice.menu_bday.q_114:after               {background-position: -100px -200px}
+.notices_block .notice.menu_bday.q_115:after               {background-position: -100px -300px}
+.notices_block .notice.menu_bday.q_116:after               {background-position: -100px -400px}
+.notices_block .notice.menu_bday.q_103:after               {background-position: -100px -500px}
+.notices_block .notice.menu_bday.q_104:after               {background-position: -100px -600px}
+.notices_block .notice.menu_bday.q_105:after               {background-position: -100px -700px}
+.notices_block .notice.menu_bday.race_1.q_105:after        {background-position: -300px 0}
+.notices_block .notice.menu_bday.q_125:after               {background-position: -300px -100px}
+.notices_block .notice.menu_bday.q_126:after               {background-position: -300px -200px}
+.notices_block .notice.menu_bday.q_127:after               {background-position: -300px -300px}
+.notices_block .notice.menu_bday.q_106:after               {background-position: -300px -400px}
+.notices_block .notice.menu_bday.q_107:after               {background-position: -300px -500px}
+.notices_block .notice.menu_bday.q_108:after               {background-position: -300px -600px}
+.notices_block .notice.menu_bday.q_113:after               {background-position: -300px -700px}
+.notices_block .notice.menu_bday.q_109:after               {background-position: -500px 0}
+.notices_block .notice.snow_wars                           {background-image: url(../ad/snowwars.png)}
+.notices_block .notice.letter2016                          {background-image: url(../ad/letter2016.png)}
+.notices_block .notice.nytree2016_1                        {background-image: url(../ad/nytree2016_1.png)}
+.notices_block .notice.nytree2016_2                        {background-image: url(../ad/nytree2016_2.png)}
+.notices_block .notice.nytree2016_3                        {background-image: url(../ad/nytree2016_3.png)}
+.notices_block .notice.more_balls_for_green                {background-image: url(../ad/more_balls_for_green.png)}
+.notices_block .notice.kidnapping                          {background-image: url(../ad/kidnapping.png)}
+.notices_block .notice.freegreen                           {background-image: url(../ad/freegreen.png)}
+.notices_block .notice.block_finder                        {background-image: url(../ad/block_finder.png)}
+.notices_block .notice.block_lottery                       {background-image: url(../ad/block_lottery.png)}
+.notices_block .notice.block_raincoat2                     {background-image: url(../ad/bn_raincoat02.png)}
+.notices_block .notice.block_net                           {background-image: url(../ad/bn_net.png)}
+.notices_block .notice.block_epic1                         {background-image: url(../ad/epic1.png)}
+.notices_block .notice.block_epic2                         {background-image: url(../ad/epic2.png)}
+.notices_block .notice.block_epic3                         {background-image: url(../ad/epic3.png)}
+.notices_block .notice.meteor_block                        {background-image: url(../ad/meteor.png)}
+.notices_block .notice.meteor_block2                       {background-image: url(../ad/meteor2.png)}
+.notices_block .notice.glass_block                         {background-image: url(../ad/glass.png)}
+.notices_block .notice.frigate_block                       {background-image: url(../ad/frigate.png)}
+.notices_block .notice.avatar_lottery_block1               {background-image: url(../ad/avatar_lottery1.png)}
+.notices_block .notice.avatar_lottery_block2               {background-image: url(../ad/avatar_lottery2.png)}
+.notices_block .notice.avatar_items_set                    {background-image: url(../ad/items_set.png)}
+.notices_block .notice.meetnewtanks                        {background-image: url(../ad/meetnewtanks.png)}
+.notices_block .notice.berserkers                          {background-image: url(../ad/berserkers.png)}
+.notices_block .notice.feb23socks                          {background-image: url(../ad/feb23socks.png)}
+.notices_block .notice.mar8cats                            {background-image: url(../ad/mar8cats.png)}
+.notices_block .notice.mansion_boxes                       {background-image: url(../ad/mansion_boxes.png); background-position: 0 -3px}
+.notices_block .notice.mansion_boxes:hover                 {background-position: 0 -103px}
+.notices_block .notice.newbotva                            {background-image: url(../ad/newbotva.png)}
+.notices_block .notice.lunar                               {background-image: url(../ad/lunar.png)}
+.notices_block .notice.swamp                               {background-image: url(../ad/swamp2.png)}
+.notices_block .notice.coolsale                            {background-image: url(../ad/coolsale.png)}
+.notices_block .notice.paradise                            {background-image: url(../ad/paradise.png)}
+.notices_block .notice.ccg_block                           {background-image: url(../ad/ccg_block.png)}
+.notices_block .notice.airships                            {background-image: url(../ad/airships2020.png)}
+.notices_block .notice.indepth                             {background-image: url(../ad/indepth.png)}
+.notices_block .notice.ahaha                               {background-image: url(../ad/ahaha.png)}
+.notices_block .notice.knowledge                           {background-image: url(../ad/knowledge_block.png)}
+.notices_block .notice.mapsale                             {background-image: url(../ad/mapsale.png)}
+.notices_block .notice.green_march                         {background-image: url(../ad/green_march.png)}
+.notices_block .notice.greenbag                            {background-image: url(../ad/greenbag.png)}
+.notices_block .notice.avatar_flexible                     {background-image: url(../ad/avatar_flexible.png)}
+.notices_block .notice.event_corsair                       {background-image: url(../ad/corsair.png)}
+.notices_block .notice.event_corsair2                      {background-image: url(../ad/corsair2.png)}
+.notices_block .notice.event_opposition                    {background-image: url(../ad/opposition.png)}
+.notices_block .notice.event_opposition2                   {background-image: url(../ad/opposition2.png)}
+.notices_block .notice.super_mill                          {background-image: url(../ad/super_mill.png)}
+.notices_block .notice.thatsallfolks                       {background-image: url(../ad/thatsallfolks.png)}
+.notices_block .notice.frigate_avatar_block                {background-image: url(../ad/frigate_avatar.png)}
+.notices_block .notice.funlove_block                       {background-image: url(../ad/funlove_block.png)}
+.notices_block .notice.double_cheese_block                 {background-image: url(../ad/double_cheese.png)}
+.notices_block .notice.double_atlantis_block               {background-image: url(../ad/double_atlantis.png)}
+.notices_block .notice.yeti_block                          {background-image: url(../ad/yeti.png)}
+.notices_block .notice.brain_block                         {background-image: url(../ad/super_slug.png)}
+.notices_block .notice.dungeon_block                       {background-image: url(../ad/dungeon_block.png)}
+.notices_block .notice.dungeon_block2                      {background-image: url(../ad/dungeon_block_2.png)}
+.notices_block .notice.dungeon_block3                      {background-image: url(../ad/dungeon_block_3.png)}
+.notices_block .notice.halloween2014_block                 {background-image: url(../ad/halloween2014.png)}
+.notices_block .notice.halloween2014_battle_block          {background-image: url(../ad/halloween2014_battle.png)}
+.notices_block .notice.school_history                      {background-image: url(../ad/school_history.png)}
+.notices_block .notice.octogames                           {background-image: url(../ad/octogames.png)}
+.notices_block .notice.event_pinocchioshop                 {background-image: url(../ad/pinocchio.png)}
+.notices_block .notice.may2016_block.gifts_10_11           {background-image: url(../ad/may2016/gifts_10_11_j5digcTdij.png)}
+.notices_block .notice.may2016_block.gifts_10_12_old       {background-image: url(../ad/may2016/gifts_10_12_cpR6OoSze7.png)}
+.notices_block .notice.may2016_block.gifts_10_12           {background-image: url(../ad/may2016/gifts_10_13_QIe7qLyrR2.png)}
+.notices_block .notice.may2016_block.gifts_10_13           {background-image: url(../ad/may2016/gifts_10_13_QIe7qLyrR2.png)}
+.notices_block .notice.may2016_block.gifts_10_21           {background-image: url(../ad/may2016/gifts_10_21_f9vGMdWhQ0.png)}
+.notices_block .notice.may2016_block.gifts_10_22           {background-image: url(../ad/may2016/gifts_10_22_wk3bNffPFj.png)}
+.notices_block .notice.may2016_block.gifts_10_23           {background-image: url(../ad/may2016/gifts_10_23_zu6d1aZRA7.png)}
+.notices_block .notice.may2016_block.gifts_10_31           {background-image: url(../ad/may2016/gifts_10_31.png)}
+.notices_block .notice.may2016_block.gifts_10_32           {background-image: url(../ad/may2016/gifts_10_32.png)}
+.notices_block .notice.may2016_block.gifts_10_33           {background-image: url(../ad/may2016/gifts_10_33.png)}
+.notices_block .notice.may2016_block.gifts_11_11           {background-image: url(../ad/may2016/gifts_11_11.png)}
+.notices_block .notice.may2016_block.gifts_11_12           {background-image: url(../ad/may2016/gifts_11_12.png)}
+.notices_block .notice.may2016_block.gifts_11_13           {background-image: url(../ad/may2016/gifts_11_13.png)}
+.notices_block .notice.may2016_block.gifts_11_21           {background-image: url(../ad/may2016/gifts_11_21.png)}
+.notices_block .notice.may2016_block.gifts_11_22           {background-image: url(../ad/may2016/gifts_11_22.png)}
+.notices_block .notice.may2016_block.gifts_11_23           {background-image: url(../ad/may2016/gifts_11_23.png)}
+.notices_block .notice.may2016_block.gifts_11_31           {background-image: url(../ad/may2016/gifts_11_31.png)}
+.notices_block .notice.may2016_block.gifts_11_32           {background-image: url(../ad/may2016/gifts_11_32.png)}
+.notices_block .notice.may2016_block.gifts_11_33           {background-image: url(../ad/may2016/gifts_11_33.png)}
+.notices_block .notice.abandoned_block                     {background-image: url(../ad/abandoned_block.png)}
+.notices_block .notice.abandoned_block1                    {background-image: url(../ad/abandoned_city1.png)}
+.notices_block .notice.abandoned_block2                    {background-image: url(../ad/abandoned_city2.png)}
+.notices_block .notice.abandoned_block3                    {background-image: url(../ad/abandoned_city3.png)}
+.notices_block .notice.abandoned_block4                    {background-image: url(../ad/abandoned_city4.png)}
+.notices_block .notice.abandoned_block5                    {background-image: url(../ad/abandoned_city5.png)}
+.notices_block .notice.halloween_sale_2018                 {background-image: url(../ad/halloween_sale2018.png)}
+.notices_block .notice.morro_undead1                       {background-image: url(../ad/morro_undead1.png)}
+.notices_block .notice.morro_undead2                       {background-image: url(../ad/morro_undead2.png)}
+.notices_block .notice.morro_undead3                       {background-image: url(../ad/morro_undead3.png)}
+.notices_block .notice.menu_bday7                          {background-image: url(../ad/bday7_block.png)}
+.notices_block .notice.portal_avatarum                     {background-image: url(../ad/portal_avatarum.png)}
+.notices_block .notice.portal_botva                        {background-image: url(../ad/portal_botva.png)}
+.notices_block .notice.clan_chemp_block                    {background-image: url(../ad/clan_champ.png)}
+.notices_block .notice.sept1_block                         {background-image: url(../ad/sept1_2015.png)}
+.notices_block .notice.event_examination                   {background-image: url(../ad/feb23.png)}
+.notices_block .notice.dino_block                          {background-image: url(../ad/dino.png)}
+.notices_block .notice.penguin_may                         {background-image: url(../ad/penguin_may.png)}
+.notices_block .notice.space_green_x2                      {background-image: url(../ad/space_green_x2.png)}
+.notices_block .notice.superfair_block                     {background-image: url(../ad/superfair.png)}
+.notices_block .notice.superfair_block2                    {background-image: url(../ad/superfair2.png)}
+.notices_block .notice.guild_ring                          {background-image: url(../ad/guild_ring.png)}
+.notices_block .notice.menu_gifts_task                     {background-image: url(../ad/menu_gifts_task.png)}
+.notices_block .notice.event_goodness                      {background-image: url(../ad/event_goodness.png)}
+.notices_block .notice.ny2015_gifts                        {background-image: url(../ad/ny2015_gifts.png)}
+.notices_block .notice.valentine                           {background-image: url(../ad/valentine.png)}
+.notices_block .notice.valentine2017                       {background-image: url(../ad/valentine2017.png)}
+.notices_block .notice.morro_dogs                          {background-image: url(../ad/morro_dogs.png)}
+.notices_block .notice.march_8_2015                        {background-image: url(../ad/march_8_2015.png)}
+.notices_block .notice.march8_block                        {background-image: url(../ad/march8_block.png)}
+.notices_block .notice.womancraft                          {background-image: url(../ad/womancraft.png)}
+.notices_block .notice.warecho                             {background-image: url(../ad/warecho.png)}
+.notices_block .notice.springlottery1                      {background-image: url(../ad/springlottery1.png)}
+.notices_block .notice.springlottery2                      {background-image: url(../ad/springlottery2.png)}
+.notices_block .notice.ava50_ny_block                      {background-image: url(../ad/ava50_ny.png)}
+.notices_block .notice.supersale_block                     {background-image: url(../ad/firstsnow.png)}
+.notices_block .notice.scramble                            {background-image: url(../ad/scramble.png)}
+.notices_block .notice.gardenbeds                          {background-image: url(../ad/gardenbeds.png)}
+.notices_block .notice.monstrapocalypse                    {background-image: url(../ad/monstrapocalypse.png)}
+.notices_block .notice.pre_monstrapocalypse1               {background-image: url(../ad/pre_monstrapocalypse1.png)}
+.notices_block .notice.pre_monstrapocalypse2               {background-image: url(../ad/pre_monstrapocalypse2.png)}
+.notices_block .notice.pre_monstrapocalypse3               {background-image: url(../ad/pre_monstrapocalypse3.png)}
+.notices_block .notice.abandoned_undead                    {background-image: url(../ad/abandoned_undead.png)}
+.notices_block .notice.menu_monsters_pvp,
+.notices_block .notice.menu_monsters_pvp_timer             {background-image: url(../ad/menu_monsters_pvp.png)}
+.notices_block .notice.pvpcasket                           {background-image: url(../ad/pvpcasket.png)}
+.notices_block .notice.ny_2016_block                       {background-image: url(../ad/ny_2016_block.png)}
+.notices_block .notice.loan_block                          {background-image: url(../ad/loan.png)}
+.notices_block .notice.bday12_confrontation                {background-image: url(../ad/bday12_confrontation.png)}
+.notices_block .notice.backtoschool_1                      {background-image: url(../ad/backtoschool_1.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool_2                      {background-image: url(../ad/backtoschool_2.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool_3                      {background-image: url(../ad/backtoschool_3.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool_4                      {background-image: url(../ad/backtoschool_4.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool21                      {background-image: url(../ad/backtoschool21.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool22                      {background-image: url(../ad/backtoschool22.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool23                      {background-image: url(../ad/backtoschool23.png);margin-bottom: 30px;}
+.notices_block .notice.backtoschool24                      {background-image: url(../ad/backtoschool24.png);margin-bottom: 30px;}
+.notices_block .notice.nextdream                           {background-image: url(../ad/nextdream.png);margin-bottom: 30px;}
+.notices_block .notice.nextdream2                           {background-image: url(../ad/nextdream2.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1011                           {background-image: url(../ad/nycraft1.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1012                           {background-image: url(../ad/nycraft2.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1021                           {background-image: url(../ad/nycraft1021.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1022                           {background-image: url(../ad/nycraft1022.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1031                           {background-image: url(../ad/nycraft1031.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft1032                           {background-image: url(../ad/nycraft1032.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2011                           {background-image: url(../ad/nycraft2011.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2012                           {background-image: url(../ad/nycraft2012.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2021                           {background-image: url(../ad/nycraft2021.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2022                           {background-image: url(../ad/nycraft2022.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2031                           {background-image: url(../ad/nycraft2031.png);margin-bottom: 30px;}
+.notices_block .notice.nycraft2032                           {background-image: url(../ad/nycraft2032.png);margin-bottom: 30px;}
+.notices_block .notice.extra_green_block                   {background-image: url(../ad/green240.png)}
+.notices_block .notice.quest_chest_block                   {background-image: url(../ad/chest.png)}
+.notices_block .notice.extra_fishes_block                  {background-image: url(../ad/25_percent.png)}
+.notices_block .notice.menu_tavern_trade                   {background-image: url(../ad/fortune.png)}
+.notices_block .notice.menu_survey_form                    {background-image: url(../ad/survey2.png)}
+.notices_block .notice.day_sale_block                      {background-image: url(../ad/day_sale_block.png)}
+.notices_block .notice.foreman_block                       {background-image: url(../ad/foreman_block.png)}
+.notices_block .notice.marchset_block                      {background-image: url(../ad/marchset_block.png)}
+.notices_block .notice.marketman_block                     {background-image: url(../ad/marketman_block.png)}
+.notices_block .notice.marketman_block_assasin             {background-image: url(../ad/marketman_block_batteries.png)}
+.notices_block .notice.marketman_block_assasin_avatar      {background-image: url(../ad/marketman_block_assasin_avatar.png)}
+.notices_block .notice.marketman_block_assasin_avatar2      {background-image: url(../ad/marketman_block_grind.png)}
+.notices_block .marketman_block_snow                        {background-image: url(../ad/marketman_block_snow.png)}
+.notices_block .marketman_block_energy                      {background-image: url(../ad/marketman_block_energy.png)}
+.notices_block .marketman_block_dark_gold                   {background-image: url(../ad/marketman_block_dark_gold.png)}
+.notices_block .marketman_block_fight                   {background-image: url(../ad/marketman_block_fight.png)}
+.notices_block .marketman_block_piligrim                   {background-image: url(../ad/marketman_block_piligrim.png)}
+.notices_block .marketman_block_watch                   {background-image: url(../ad/marketman_block_watch.png)}
+.notices_block .marketman_block_oak                   {background-image: url(../ad/marketman_block_oak.png)}
+.notices_block .marketman_block_relic                   {background-image: url(../ad/marketman_block_relic.png)}
+.notices_block .marketman_block_mustache                   {background-image: url(../ad/marketman_block_mustache.png)}
+.notices_block .marketman_block_newres10                   {background-image: url(../ad/marketman_block_newres10.png)}
+.notices_block .marketman_block_arcane                   {background-image: url(../ad/marketman_block_arcane.png)}
+.notices_block .marketman_block_atlant                   {background-image: url(../ad/marketman_block_atlant.png)}
+.notices_block .marketman_block_casket_winter                   {background-image: url(../ad/marketman_block_casket_winter.png)}
+.notices_block .cheesetown_carpet                   {background-image: url(../ad/cheesetown_carpet.png)}
+.notices_block .marketman_block_cheese                   {background-image: url(../ad/marketman_block_cheese.png)}
+.notices_block .marketman_block_dragon                   {background-image: url(../ad/marketman_block_dragon.png)}
+
+.notices_block .discord                   {background-image: url(../ad/discord.png)}
+.notices_block .notice.explorer_block                       {background-image: url(../ad/explorer_block.png)}
+.notices_block .notice.explorer_block_avatar                {background-image: url(../ad/explorer_block_avatar.png)}
+.notices_block .notice.bday12_set_block                    {background-image: url(../ad/bday13set.png)}
+.notices_block .notice.prince_block                        {background-image: url(../ad/prince_block.png)}
+.notices_block .notice.mfights                             {background-image: url(../ad/mfights.png)}
+.notices_block .notice.avatar_buy_energy                   {background-image: url(../ad/avatar_buy_energy.png)}
+.notices_block .notice.flowars_block                       {background-image: url(../ad/flowars_block.png)}
+.notices_block .notice.godpoll_block                       {background-image: url(../ad/godpoll.png)}
+.notices_block .notice.hello14_block                       {background-image: url(../ad/hello14_block.png)}
+.notices_block .notice.nygifts_101                         {background-image: url(../ad/nygifts_101.png)}
+.notices_block .notice.nygifts_102                         {background-image: url(../ad/nygifts_102.png)}
+.notices_block .notice.nygifts_103                         {background-image: url(../ad/nygifts_103.png)}
+.notices_block .notice.nygifts_104                         {background-image: url(../ad/nygifts_104.png)}
+.notices_block .notice.nygifts_105                         {background-image: url(../ad/nygifts_105.png)}
+.notices_block .notice.nygifts_106                         {background-image: url(../ad/nygifts_106.png)}
+.notices_block .notice.nygifts_201                         {background-image: url(../ad/nygifts_201.png)}
+.notices_block .notice.nygifts_202                         {background-image: url(../ad/nygifts_202.png)}
+.notices_block .notice.nygifts_203                         {background-image: url(../ad/nygifts_203.png)}
+.notices_block .notice.nygifts_204                         {background-image: url(../ad/nygifts_204.png)}
+.notices_block .notice.nygifts_205                         {background-image: url(../ad/nygifts_205.png)}
+.notices_block .notice.nygifts_206                         {background-image: url(../ad/nygifts_206.png)}
+.notices_block .notice.nygifts_111                         {background-image: url(../ad/nygifts_111.png)}
+.notices_block .notice.nygifts_112                         {background-image: url(../ad/nygifts_112.png)}
+.notices_block .notice.nygifts_113                         {background-image: url(../ad/nygifts_113.png)}
+.notices_block .notice.nygifts_114                         {background-image: url(../ad/nygifts_114.png)}
+.notices_block .notice.nygifts_115                         {background-image: url(../ad/nygifts_115.png)}
+.notices_block .notice.nygifts_116                         {background-image: url(../ad/nygifts_116.png)}
+.notices_block .notice.nygifts_211                         {background-image: url(../ad/nygifts_211.png)}
+.notices_block .notice.nygifts_212                         {background-image: url(../ad/nygifts_212.png)}
+.notices_block .notice.nygifts_213                         {background-image: url(../ad/nygifts_213.png)}
+.notices_block .notice.nygifts_214                         {background-image: url(../ad/nygifts_214.png)}
+.notices_block .notice.nygifts_215                         {background-image: url(../ad/nygifts_215.png)}
+.notices_block .notice.nygifts_216                         {background-image: url(../ad/nygifts_216.png)}
+.notices_block .notice.nygifts_121                         {background-image: url(../ad/nygifts_121.png)}
+.notices_block .notice.nygifts_122                         {background-image: url(../ad/nygifts_122.png)}
+.notices_block .notice.nygifts_123                         {background-image: url(../ad/nygifts_123.png)}
+.notices_block .notice.nygifts_124                         {background-image: url(../ad/nygifts_124.png)}
+.notices_block .notice.nygifts_125                         {background-image: url(../ad/nygifts_125.png)}
+.notices_block .notice.nygifts_126                         {background-image: url(../ad/nygifts_126.png)}
+.notices_block .notice.nygifts_127                         {background-image: url(../ad/nygifts_127.png)}
+.notices_block .notice.nygifts_128                         {background-image: url(../ad/nygifts_128.png)}
+.notices_block .notice.nygifts_221                         {background-image: url(../ad/nygifts_221.png)}
+.notices_block .notice.nygifts_222                         {background-image: url(../ad/nygifts_222.png)}
+.notices_block .notice.nygifts_223                         {background-image: url(../ad/nygifts_223.png)}
+.notices_block .notice.nygifts_224                         {background-image: url(../ad/nygifts_224.png)}
+.notices_block .notice.nygifts_225                         {background-image: url(../ad/nygifts_225.png)}
+.notices_block .notice.nygifts_226                         {background-image: url(../ad/nygifts_226.png)}
+.notices_block .notice.nygifts_227                         {background-image: url(../ad/nygifts_227.png)}
+.notices_block .notice.nygifts_228                         {background-image: url(../ad/nygifts_228.png)}
+.notices_block .notice.nygifts_131                         {background-image: url(../ad/nygifts_131.png)}
+.notices_block .notice.nygifts_132                         {background-image: url(../ad/nygifts_132.png)}
+.notices_block .notice.nygifts_133                         {background-image: url(../ad/nygifts_133.png)}
+.notices_block .notice.nygifts_134                         {background-image: url(../ad/nygifts_134.png)}
+.notices_block .notice.nygifts_135                         {background-image: url(../ad/nygifts_135.png)}
+.notices_block .notice.nygifts_136                         {background-image: url(../ad/nygifts_136.png)}
+.notices_block .notice.nygifts_137                         {background-image: url(../ad/nygifts_137.png)}
+.notices_block .notice.nygifts_138                         {background-image: url(../ad/nygifts_138.png)}
+.notices_block .notice.nygifts_231                         {background-image: url(../ad/nygifts_231.png)}
+.notices_block .notice.nygifts_232                         {background-image: url(../ad/nygifts_232.png)}
+.notices_block .notice.nygifts_233                         {background-image: url(../ad/nygifts_233.png)}
+.notices_block .notice.nygifts_234                         {background-image: url(../ad/nygifts_234.png)}
+.notices_block .notice.nygifts_235                         {background-image: url(../ad/nygifts_235.png)}
+.notices_block .notice.nygifts_236                         {background-image: url(../ad/nygifts_236.png)}
+.notices_block .notice.nygifts_237                         {background-image: url(../ad/nygifts_237.png)}
+.notices_block .notice.nygifts_238                         {background-image: url(../ad/nygifts_238.png)}
+.notices_block .notice.gift_for_green                      {background-image: url(../ad/gift_for_green.png)}
+.notices_block .notice.gift_for_green_avatar               {background-image: url(../ad/gift_for_green_avatar.png)}
+.notices_block .notice.maygifts_701                        {background-image: url(../ad/maygifts_701.png)}
+.notices_block .notice.maygifts_702                        {background-image: url(../ad/maygifts_702.png)}
+.notices_block .notice.maygifts_703                        {background-image: url(../ad/maygifts_703.png)}
+.notices_block .notice.maygifts_704                        {background-image: url(../ad/maygifts_704.png)}
+.notices_block .notice.maygifts_705                        {background-image: url(../ad/maygifts_705.png)}
+.notices_block .notice.maygifts_706                        {background-image: url(../ad/maygifts_706.png)}
+.notices_block .notice.maygifts_801                        {background-image: url(../ad/maygifts_801.png)}
+.notices_block .notice.maygifts_802                        {background-image: url(../ad/maygifts_802.png)}
+.notices_block .notice.maygifts_803                        {background-image: url(../ad/maygifts_803.png)}
+.notices_block .notice.maygifts_804                        {background-image: url(../ad/maygifts_804.png)}
+.notices_block .notice.maygifts_805                        {background-image: url(../ad/maygifts_805.png)}
+.notices_block .notice.maygifts_806                        {background-image: url(../ad/maygifts_806.png)}
+.notices_block .notice.maygifts_901                        {background-image: url(../ad/maygifts_1001.png)}
+.notices_block .notice.maygifts_1001                       {background-image: url(../ad/maygifts_1001.png)}
+.notices_block .notice.maygifts_1002                       {background-image: url(../ad/maygifts_1002.png)}
+.notices_block .notice.maygifts_1003                       {background-image: url(../ad/maygifts_1003.png)}
+.notices_block .notice.maygifts_1004                       {background-image: url(../ad/maygifts_1004.png)}
+.notices_block .notice.maygifts_902                        {background-image: url(../ad/maygifts_1003.png)}
+.notices_block .notice.maygifts_903                        {background-image: url(../ad/maygifts_903.png)}
+.notices_block .notice.maygifts_904                        {background-image: url(../ad/maygifts_904.png)}
+.notices_block .notice.maygifts_905                        {background-image: url(../ad/maygifts_905.png)}
+.notices_block .notice.maygifts_906                        {background-image: url(../ad/maygifts_906.png)}
+.notices_block .notice.maygifts_907                        {background-image: url(../ad/maygifts_907.png)}
+.notices_block .notice.maygifts_908                        {background-image: url(../ad/maygifts_908.png)}
+.notices_block .notice.maygifts_111                        {background-image: url(../ad/maygifts_1002.png)}
+.notices_block .notice.maygifts_112                        {background-image: url(../ad/maygifts_1004.png)}
+.notices_block .notice.maygifts_113                        {background-image: url(../ad/maygifts_113.png)}
+.notices_block .notice.maygifts_114                        {background-image: url(../ad/maygifts_114.png)}
+.notices_block .notice.maygifts_115                        {background-image: url(../ad/maygifts_115.png)}
+.notices_block .notice.maygifts_116                        {background-image: url(../ad/maygifts_116.png)}
+.notices_block .notice.maygifts_117                        {background-image: url(../ad/maygifts_117.png)}
+.notices_block .notice.maygifts_118                        {background-image: url(../ad/maygifts_118.png)}
+.notices_block .notice.maygifts_115 .small_count,
+.notices_block .notice.maygifts_116 .small_count           {bottom: -35px;}
+.notices_block .notice.nycontraband                        {background-image: url(../ad/nycontraband.png)}
+.notices_block .notice.nycontraband2021                        {background-image: url(../ad/nycontraband2021.png)}
+.notices_block .notice.nycontraband2021                        {background-image: url(../ad/nycontraband2021.png)}
+.notices_block .notice.nycontraband2018                    {background-image: url(../ad/nycontraband2018.png)}
+.notices_block .notice.may2020contraband                   {background-image: url(../ad/may2020contraband.png)}
+.notices_block .notice.children2019                        {background-image: url(../ad/children2019.png)}
+.notices_block .notice.maycontraband                       {background-image: url(../ad/maycontraband.png)}
+.notices_block .notice.weekofauthority                     {background-image: url(../ad/weekofauthority.png)}
+.notices_block .notice.caves                               {background-image: url(../ad/caves.png)}
+.notices_block .notice.dragons                             {background-image: url(../ad/dragons.png)}
+.notices_block .notice.birthday10                          {background-image: url(../ad/birthday10.png)}
+.notices_block .notice.birthday10_step2                    {background-image: url(../ad/birthday10_step2.png)}
+.notices_block .notice.birthday10_step2_sale               {background-image: url(../ad/birthday10_step2_sale.png)}
+.notices_block .notice.birthday10_step3                    {background-image: url(../ad/birthday10_step3.png)}
+.notices_block .notice.shanni_alchemy                      {background-image: url(../ad/shanni_alchemy.png)}
+.notices_block .notice.shanni_dreaming                     {background-image: url(../ad/shanni_dreaming.png)}
+.notices_block .notice.icetown                             {background-image: url(../ad/icetown.png)}
+.notices_block .notice.icetown2                            {background-image: url(../ad/icetown.png);margin-bottom: 30px;}
+.notices_block .notice.sandbox_event                       {background-image: url(../ad/sandbox_event.png)}
+.notices_block .notice.dark_gold                           {background-image: url(../ad/dark_gold.png)}
+.notices_block .notice.nygreen                             {background-image: url(../ad/nygreen.png)}
+.notices_block .notice.maygreen                            {background-image: url(../ad/maygreen.png)}
+.notices_block .notice.starter_pack1                       {background-image: url(../ad/starter_pack1.png)}
+.notices_block .notice.starter_pack2                       {background-image: url(../ad/starter_pack2.png)}
+.notices_block .notice.starter_pack3                       {background-image: url(../ad/starter_pack3.png)}
+.notices_block .notice.starter_pack4                       {background-image: url(../ad/starter_pack4.png)}
+.notices_block .notice.mignonsale                          {background-image: url(../ad/mignonsale.png)}
+.notices_block .notice.mimibears                           {background-image: url(../ad/mimibears.png)}
+.notices_block .notice.uptime                              {background-image: url(../ad/uptime.png)}
+.notices_block .notice.shield                              {background-image: url(../ad/valentine2018.png)}
+.notices_block .notice.mansion4                            {background-image: url(../ad/mansion4.png)}
+.notices_block .notice.mansion5                            {background-image: url(../ad/mansion5.png)}
+.notices_block .notice.milk_shake                          {background-image: url(../ad/bday11_milk_shake.png)}
+.notices_block .notice.bday11_searching                    {background-image: url(../ad/bday11_searching.png)}
+.notices_block .notice.bday11_battle                       {background-image: url(../ad/bday11_battle.png)}
+.notices_block .notice.bday11_battle_rare                  {background-image: url(../ad/bday11_battle_rare.png)}
+.notices_block .notice.meteor_block .small_count           {position: absolute; bottom: -15px; left: -5px}
+.notices_block .notice.meteor_block .middle_count          {position: absolute; bottom: -25px; left: -5px}
+.notices_block .notice.supersale_block .middle_count       {left: -7px}
+.notices_block .notice.meteor_block .big_count .digit      {background-color:#3e54b9}
+.notices_block .notice.meteor_block .big_count .digit.static {
+    background-image: linear-gradient(bottom, #263788 50%, #3e54b9 50%);
+    background-image: -o-linear-gradient(bottom, #263788 50%, #3e54b9 50%);
+    background-image: -moz-linear-gradient(bottom, #263788 50%, #3e54b9 50%);
+    background-image: -webkit-linear-gradient(bottom, #263788 50%, #3e54b9 50%);
+    background-image: -ms-linear-gradient(bottom, #263788 50%, #3e54b9 50%);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.5, #263788),color-stop(0.5, #3e54b9));
+}
+.notices_block .notice.meteor_block .big_count .countDiv:before,
+.notices_block .notice.meteor_block .big_count .countDiv:after {background-color:#263788}
+.notices_block .notice .small_count {position: absolute; bottom: -32px; left: 3px}
+.notices_block .notice .middle_count {position: absolute; bottom: -42px; left: 5px}
+
+.old_bg .notices_block .notice.battleground_block_text_new,
+.night .notices_block .notice.battleground_block_text_new {color: #ffe598}
+.old_bg .notices_block .notice.battleground_block_mine_01,
+.night .notices_block .notice.battleground_block_mine_01   {background-image: url(../../../images/m/battleground/shaft1_old.png)}
+.old_bg .notices_block .notice.battleground_block_mine_02,
+.night .notices_block .notice.battleground_block_mine_02   {background-image: url(../../../images/m/battleground/shaft2_old.png)}
+.old_bg .notices_block .notice.battleground_block_mine_03,
+.night .notices_block .notice.battleground_block_mine_03   {background-image: url(../../../images/m/battleground/shaft3_old.png)}
+.old_bg .notices_block .notice.battleground_block_mine_04,
+.night .notices_block .notice.battleground_block_mine_04   {background-image: url(../../../images/m/battleground/shaft4_old.png)}
+.old_bg .notices_block .notice.battleground_block_mine_05,
+.night .notices_block .notice.battleground_block_mine_05   {background-image: url(../../../images/m/battleground/shaft5_old.png)}
+.old_bg .notices_block .notice.battleground_block_mine_06,
+.night .notices_block .notice.battleground_block_mine_06   {background-image: url(../../../images/m/battleground/shaft6_old.png)}
+.old_bg .notices_block .notice.maslenica_block,
+.night .notices_block .notice.maslenica_block              {background-image: url(../ad/block_pancake_old.png)}
+.old_bg .notices_block .notice.knowledgeday_block,
+.night .notices_block .notice.knowledgeday_block           {background-image: url(../ad/ban_knowledge_old.png)}
+.old_bg .notices_block .notice.popka_block,
+.night .notices_block .notice.popka_block                  {background-image: url(../ad/popka_block_old.png)}
+.old_bg .notices_block .notice.immortal_block,
+.night .notices_block .notice.immortal_block               {background-image: url(../ad/immortal_block_old.png)}
+.old_bg .notices_block .notice.supergifts_2013may_block,
+.night .notices_block .notice.supergifts_2013may_block     {background-image: url(../ad/supergifts_2013may_block_old.png)}
+.old_bg .notices_block .notice.supergifts_2013may_block2,
+.night .notices_block .notice.supergifts_2013may_block2    {background-image: url(../ad/supergifts_2013may_block_old_2.png)}
+.old_bg .notices_block .notice.supergifts_2013may_block3,
+.night .notices_block .notice.supergifts_2013may_block3    {background-image: url(../ad/supergifts_2013may_block_old_3_other.png)}
+.old_bg .notices_block .notice.supergifts_2013may_block4,
+.night .notices_block .notice.supergifts_2013may_block4    {background-image: url(../ad/supergifts_2013may_block_old_4.png)}
+.old_bg .notices_block .notice.supergifts_2014may_block,
+.night .notices_block .notice.supergifts_2014may_block     {background-image: url(../ad/supergifts_2014may_block_old.png)}
+.old_bg .notices_block .notice.supergifts_2014may_block2,
+.night .notices_block .notice.supergifts_2014may_block2    {background-image: url(../ad/supergifts_2014may_block2_old.png)}
+.old_bg .notices_block .notice.supergifts_2014may_block3,
+.night .notices_block .notice.supergifts_2014may_block3    {background-image: url(../ad/supergifts_2014may_block_3_old.png)}
+.old_bg .notices_block .notice.supergifts_2014may_block4,
+.night .notices_block .notice.supergifts_2014may_block4    {background-image: url(../ad/supergifts_2014may_block_4_old.png)}
+.old_bg .notices_block .notice.octoberfest_block,
+.night .notices_block .notice.octoberfest_block            {background-image: url(../ad/kvasfest_old.png)}
+.old_bg .notices_block .notice.tournament_block,
+.night .notices_block .notice.tournament_block             {background-image: url(../ad/tournament_old.png)}
+.old_bg .notices_block .notice.menu_forum_events,
+.night .notices_block .notice.menu_forum_events            {background-image: url(../ad/menu_forum_events_old.png)}
+.old_bg .notices_block .notice.menu_forum_events2,
+.night .notices_block .notice.menu_forum_events2           {background-image: url(../ad/menu_forum_events2_old.png)}
+.old_bg .notices_block .notice.menu_battle_5,
+.night .notices_block .notice.menu_battle_5                {background-image: url(../m/class/battle/booking_of_battle5_old.png)}
+.old_bg .notices_block .notice.menu_battle_6,
+.night .notices_block .notice.menu_battle_6                {background-image: url(../m/class/battle/booking_of_battle6_old.png)}
+.old_bg .notices_block .notice.menu_battle_7,
+.night .notices_block .notice.menu_battle_7                {background-image: url(../m/class/battle/booking_of_battle7_old.png)}
+.old_bg .notices_block .notice.menu_battle_8,
+.night .notices_block .notice.menu_battle_8                {background-image: url(../m/class/battle/booking_of_battle8_old.png)}
+.old_bg .notices_block .notice.menu_newbie,
+.night .notices_block .notice.menu_newbie                  {background-image: url(../m/newbie/quest_old.png)}
+.old_bg .notices_block .notice.menu_newbie2,
+.night .notices_block .notice.menu_newbie2                 {background-image: url(../m/newbie/quest2_old.png)}
+.old_bg .notices_block .notice.menu_chat2,
+.night .notices_block .notice.menu_chat2                   {background-image: url(../images/chat/chat_bg_old.png)}
+.old_bg .notices_block .notice.trainer.compact,
+.night .notices_block .notice.trainer.compact              {background-image: url(../m/tutorial/captain1_bg_old.png)}
+.old_bg .notices_block .notice.trainer.compact2,
+.night .notices_block .notice.trainer.compact2             {background-image: url(../m/tutorial/captain2_bg_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_1,
+.night .notices_block .notice.menu_zoo.rand_1              {background-image: url(../other/zoo/fpets_bg1_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_2,
+.night .notices_block .notice.menu_zoo.rand_2              {background-image: url(../other/zoo/fpets_bg2_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_3,
+.night .notices_block .notice.menu_zoo.rand_3              {background-image: url(../other/zoo/fpets_bg3_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_4,
+.night .notices_block .notice.menu_zoo.rand_4              {background-image: url(../other/zoo/fpets_bg4_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_5,
+.night .notices_block .notice.menu_zoo.rand_5              {background-image: url(../other/zoo/fpet_4bg2_old.png)}
+.old_bg .notices_block .notice.menu_zoo.rand_6,
+.night .notices_block .notice.menu_zoo.rand_6              {background-image: url(../other/zoo/fpet_4bg_old.png)}
+.old_bg .notices_block .notice.menu_toolbar,
+.night .notices_block .notice.menu_toolbar                 {background-image: url(../other/brouser_bg_old.png)}
+.old_bg .notices_block .notice.menu_worm,
+.night .notices_block .notice.menu_worm                    {background-image: url(../other/redworm_bg2_old.png)}
+.old_bg .notices_block .notice.menu_advwiki,
+.night .notices_block .notice.menu_advwiki                 {background-image: url(../other/wiki_bg_old.png)}
+.old_bg .notices_block .notice.menu_bday4,
+.night .notices_block .notice.menu_bday4                   {background-image: url(../ad/bday4_presents_old.png)}
+.old_bg .notices_block .notice.menu_dragon_1,
+.night .notices_block .notice.menu_dragon_1                {background-image: url(../ad/dracon_bar_old.png)}
+.old_bg .notices_block .notice.menu_dragon_2,
+.night .notices_block .notice.menu_dragon_2                {background-image: url(../ad/santa_bar_old.png)}
+.old_bg .notices_block .notice.menu_stamps_discount,
+.night .notices_block .notice.menu_stamps_discount         {background-image: url(../other/stamps_old.png)}
+.old_bg .notices_block .notice.menu_preview,
+.night .notices_block .notice.menu_preview                 {background-image: url(../other/new_guild_old.png)}
+.old_bg .notices_block .notice.menu_bday_ticket,
+.night .notices_block .notice.menu_bday_ticket             {background-image: url(../ad/bday_bg2_old.png)}
+.old_bg .notices_block .notice.menu_gifts_special,
+.night .notices_block .notice.menu_gifts_special           {background-image: url(../ad/bday_bg2_old.png)}
+.old_bg .notices_block .notice.harbour_disc,
+.night .notices_block .notice.harbour_disc                 {background-image: url(../ad/42_percent_old.png)}
+.old_bg .notices_block .notice.menu_monsterpve,
+.night .notices_block .notice.menu_monsterpve              {background-image: url(../m/monsterpve/menu_old.png)}
+.old_bg .notices_block .notice.harbour_disc_90,
+.night .notices_block .notice.harbour_disc_90              {background-image: url(../ad/90_persent_old.png)}
+.old_bg .notices_block .notice.pegas_disc_60,
+.night .notices_block .notice.pegas_disc_60                {background-image: url(../ad/pegas_discount_old.png)}
+.old_bg .notices_block .notice.draco_disc_80,
+.night .notices_block .notice.draco_disc_80                {background-image: url(../ad/draco_discount_old.png)}
+.old_bg .notices_block .notice.grifon_disc_80,
+.night .notices_block .notice.grifon_disc_80               {background-image: url(../ad/grifon_discount_old.png)}
+.old_bg .notices_block .notice.manticore_disc_80,
+.night .notices_block .notice.manticore_disc_80            {background-image: url(../ad/manticore_disc_80_old.png)}
+.old_bg .notices_block .notice.menu_atlantis_ad,
+.night .notices_block .notice.menu_atlantis_ad             {background-image: url(../ad/atlantis_block_old.png)}
+.old_bg .notices_block .notice.menu_atlantis2_ad,
+.night .notices_block .notice.menu_atlantis2_ad            {background-image: url(../ad/atlantis2_block_old.png)}
+.old_bg .notices_block .notice.menu_wormspirit,
+.night .notices_block .notice.menu_wormspirit              {background-image: url(../ad/menu_wormspirit_old.png)}
+.old_bg .notices_block .notice.menu_space,
+.night .notices_block .notice.menu_space                   {background-image: url(../ad/menu_space_old.png)}
+.old_bg .notices_block .notice.menu_specialist,
+.night .notices_block .notice.menu_specialist              {background-image: url(../ad/specialist_block_old.png)}
+.old_bg .notices_block .notice.menu_mammoth,
+.night .notices_block .notice.menu_mammoth                 {background-image: url(../ad/mamont_block_old.png)}
+.old_bg .notices_block .notice.menu_stamps_2013_ny,
+.night .notices_block .notice.menu_stamps_2013_ny          {background-image: url(../ad/stamps_bg_old.png)}
+.old_bg .notices_block .notice.menu_raincoat,
+.night .notices_block .notice.menu_raincoat                {background-image: url(../ad/block_raincoat_old.png)}
+.old_bg .notices_block .notice.menu_professions,
+.night .notices_block .notice.menu_professions             {background-image: url(../ad/block_proffs_old.png)}
+.old_bg .notices_block .notice.menu_whale_buy,
+.night .notices_block .notice.menu_whale_buy               {background-image: url(../ad/block_kit_old.png)}
+.old_bg .notices_block .notice.menu_avatar_buy,
+.night .notices_block .notice.menu_avatar_buy              {background-image: url(../ad/ava50_old.png)}
+.old_bg .notices_block .notice.menu_avatar_buy_ny,
+.night .notices_block .notice.menu_avatar_buy_ny           {background-image: url(../ad/ava25_ny_old.png)}
+.old_bg .notices_block .notice.menu_zoobox,
+.night .notices_block .notice.menu_zoobox                  {background-image: url(../ad/zoobox_old.png)}
+.old_bg .notices_block .notice.menu_monkey,
+.night .notices_block .notice.menu_monkey                  {background-image: url(../events/old/monkey_old.png)}
+.old_bg .notices_block .notice.menu_bday,
+.night .notices_block .notice.menu_bday                    {background-image: url(../m/bday/quest_bg_old.png)}
+.old_bg .notices_block .notice.snow_wars,
+.night .notices_block .notice.snow_wars                    {background-image: url(../ad/snowwars_old.png)}
+.old_bg .notices_block .notice.nytree2013,
+.night .notices_block .notice.nytree2013                   {background-image: url(../ad/nytree2013_old.png)}
+.old_bg .notices_block .notice.kidnapping,
+.night .notices_block .notice.kidnapping                   {background-image: url(../ad/kidnapping_old.png)}
+.old_bg .notices_block .notice.freegreen,
+.night .notices_block .notice.freegreen                    {background-image: url(../ad/freegreen_old.png)}
+.old_bg .notices_block .notice.block_finder,
+.night .notices_block .notice.block_finder                 {background-image: url(../ad/block_finder_old.png)}
+.old_bg .notices_block .notice.block_lottery,
+.night .notices_block .notice.block_lottery                {background-image: url(../ad/block_lottery_old.png)}
+.old_bg .notices_block .notice.block_raincoat2,
+.night .notices_block .notice.block_raincoat2              {background-image: url(../ad/bn_raincoat02_old.png)}
+.old_bg .notices_block .notice.block_net,
+.night .notices_block .notice.block_net                    {background-image: url(../ad/bn_net_old.png)}
+.old_bg .notices_block .notice.block_epic1,
+.night .notices_block .notice.block_epic1                  {background-image: url(../ad/epic1_old.png)}
+.old_bg .notices_block .notice.block_epic2,
+.night .notices_block .notice.block_epic2                  {background-image: url(../ad/epic2_old.png)}
+.old_bg .notices_block .notice.block_epic3,
+.night .notices_block .notice.block_epic3                  {background-image: url(../ad/epic3_old.png)}
+.old_bg .notices_block .notice.meteor_block,
+.night .notices_block .notice.meteor_block                 {background-image: url(../ad/meteor_old.png)}
+.night .notices_block .notice.meteor_block .big_count .countDiv:before,
+.night .notices_block .notice.meteor_block .big_count .countDiv:after {background-color:#fff;}
+.old_bg .notices_block .notice.meteor_block2,
+.night .notices_block .notice.meteor_block2                {background-image: url(../ad/meteor2_old.png)}
+.old_bg .notices_block .notice.glass_block,
+.night .notices_block .notice.glass_block                  {background-image: url(../ad/glass_old.png)}
+.old_bg .notices_block .notice.frigate_block,
+.night .notices_block .notice.frigate_block                {background-image: url(../ad/frigate_old.png)}
+.old_bg .notices_block .notice.frigate_avatar_block,
+.night .notices_block .notice.frigate_avatar_block         {background-image: url(../ad/frigate_avatar_old.png)}
+.old_bg .notices_block .notice.yeti_block,
+.night .notices_block .notice.yeti_block                   {background-image: url(../ad/yeti_old.png)}
+.old_bg .notices_block .notice.brain_block,
+.night .notices_block .notice.brain_block                  {background-image: url(../ad/super_slug_old.png)}
+.old_bg .notices_block .notice.dungeon_block,
+.night .notices_block .notice.dungeon_block                {background-image: url(../ad/dungeon_block_old.png)}
+.old_bg .notices_block .notice.dungeon_block2,
+.night .notices_block .notice.dungeon_block2               {background-image: url(../ad/dungeon_block_2_old.png)}
+.old_bg .notices_block .notice.dungeon_block3,
+.night .notices_block .notice.dungeon_block3               {background-image: url(../ad/halloween2014_old.png)}
+.old_bg .notices_block .notice.halloween2014_block,
+.night .notices_block .notice.halloween2014_block          {background-image: url(../ad/halloween2014_battle_old.png)}
+.old_bg .notices_block .notice.halloween2014_battle_block,
+.night .notices_block .notice.halloween2014_battle_block   {background-image: url(../ad/halloween2014_battle_old.png)}
+.old_bg .notices_block .notice.school_history,
+.night .notices_block .notice.school_history               {background-image: url(../ad/school_history_old.png)}
+.old_bg .notices_block .notice.drillhall_block,
+.night .notices_block .notice.drillhall_block              {background-image: url(../ad/drillhall_key_old.png)}
+.old_bg .notices_block .notice.flowars_block,
+.night .notices_block .notice.flowars_block                {background-image: url(../ad/flowars_block_old.png)}
+.old_bg .notices_block .notice.clan_chemp_block,
+.night .notices_block .notice.clan_chemp_block             {background-image: url(../ad/clan_champ_old.png)}
+.old_bg .notices_block .notice.sept1_2015,
+.night .notices_block .notice.sept1_2015                   {background-image: url(../ad/sept1_2015_old.png)}
+.old_bg .notices_block .notice.dino_block,
+.night .notices_block .notice.dino_block                   {background-image: url(../ad/dino_old.png)}
+.old_bg .notices_block .notice.penguin_may,
+.night .notices_block .notice.penguin_may                  {background-image: url(../ad/penguin_may_old.png)}
+.old_bg .notices_block .notice.space_green_x2,
+.night .notices_block .notice.space_green_x2               {background-image: url(../ad/space_green_x2_old.png)}
+.old_bg .notices_block .notice.superfair_block2,
+.night .notices_block .notice.superfair_block2             {background-image: url(../ad/superfair2_old.png)}
+.old_bg .notices_block .notice.guild_ring,
+.night .notices_block .notice.guild_ring                   {background-image: url(../ad/guild_ring_old.png)}
+.old_bg .notices_block .notice.superfair_block,
+.night .notices_block .notice.superfair_block              {background-image: url(../ad/superfair_old.png)}
+.old_bg .notices_block .notice.menu_gifts_task,
+.night .notices_block .notice.menu_gifts_task              {background-image: url(../ad/menu_gifts_task_old.png)}
+.old_bg .notices_block .notice.event_goodness,
+.night .notices_block .notice.event_goodness               {background-image: url(../ad/event_goodness_old.png)}
+.old_bg .notices_block .notice.ny2015_gifts,
+.night .notices_block .notice.ny2015_gifts                 {background-image: url(../ad/ny2015_gifts_old.png)}
+.old_bg .notices_block .notice.valentine,
+.night .notices_block .notice.valentine                    {background-image: url(../ad/valentine_old.png)}
+.old_bg .notices_block .notice.morro_dogs,
+.night .notices_block .notice.morro_dogs                   {background-image: url(../ad/morro_dogs_old.png)}
+.old_bg .notices_block .notice.march_8_2015,
+.night .notices_block .notice.march_8_2015                 {background-image: url(../ad/march_8_2015_old.png)}
+.old_bg .notices_block .notice.ava50_ny_block,
+.night .notices_block .notice.ava50_ny_block               {background-image: url(../ad/ava50_ny_old.png)}
+.old_bg .notices_block .notice.loan_block,
+.night .notices_block .notice.loan_block                   {background-image: url(../ad/loan_old.png)}
+.old_bg .notices_block .notice.extra_green_block,
+.night .notices_block .notice.extra_green_block            {background-image: url(../ad/green240_old.png)}
+.old_bg .notices_block .notice.quest_chest_block,
+.night .notices_block .notice.quest_chest_block            {background-image: url(../ad/chest_old.png)}
+.old_bg .notices_block .notice.extra_fishes_block,
+.night .notices_block .notice.extra_fishes_block           {background-image: url(../ad/25_percent_old.png)}
+.old_bg .notices_block .notice.menu_tavern_trade,
+.night .notices_block .notice.menu_tavern_trade            {background-image: url(../ad/fortune_old.png)}
+.old_bg .notices_block .notice.menu_survey_form,
+.night .notices_block .notice.menu_survey_form             {background-image: url(../ad/survey2_old.png)}
+.old_bg .notices_block .notice.menu_monsters_pvp,
+.night .notices_block .notice.menu_monsters_pvp,
+.old_bg .notices_block .notice.menu_monsters_pvp_timer,
+.night .notices_block .notice.menu_monsters_pvp_timer      {background-image: url(../ad/menu_monsters_pvp_old.png)}
+.old_bg .notices_block .notice.pvpcasket,
+.night .notices_block .notice.pvpcasket                    {background-image: url(../ad/pvpcasket_old.png)}
+.old_bg .notices_block .notice.opposition,
+.night .notices_block .notice.opposition                   {background-image: url(../ad/opposition_old.png)}
+.old_bg .notices_block .notice.monstrapocalypse,
+.night .notices_block .notice.monstrapocalypse             {background-image: url(../ad/monstrapocalypse_old.png)}
+.old_bg .notices_block .notice.orange_bar,
+.night .notices_block .notice.orange_bar                   {background-image: url(../ad/orange_bar_old.png)}
+aÄèûæ+      dúLdúLEaŸ”d_   V    O^partitionKey=%28https%2Cbotva.ru%29,:https://i.botva.ru/locale/RU/i/inside.css?v=946 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2 200 OK
+server: nginx/1.14.0 (Ubuntu)
+date: Sat, 18 Mar 2023 17:39:15 GMT
+content-type: text/css
+content-length: 89603
+last-modified: Fri, 03 Mar 2023 11:07:37 GMT
+etag: "6401d4f9-15e03"
+expires: Sat, 18 Mar 2023 19:39:15 GMT
+cache-control: max-age=7200
+strict-transport-security: max-age=31536000;
+accept-ranges: bytes
+X-Firefox-Spdy: h2
+ original-response-headers server: nginx/1.14.0 (Ubuntu)
+date: Sat, 18 Mar 2023 17:39:15 GMT
+content-type: text/css
+content-length: 89603
+last-modified: Fri, 03 Mar 2023 11:07:37 GMT
+etag: "6401d4f9-15e03"
+expires: Sat, 18 Mar 2023 19:39:15 GMT
+cache-control: max-age=7200
+strict-transport-security: max-age=31536000;
+accept-ranges: bytes
+X-Firefox-Spdy: h2
+ ctid 5 uncompressed-len 0 net-response-time-onstart 3915 net-response-time-onstop 7792  ^

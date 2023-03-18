@@ -1,0 +1,4 @@
+https:www.google-analytics.com:443:.:^partitionKey=%28https%2Cbotva.ru%29:3	0	19434	https:www.google-analytics.com:443:www.google-analytics.com:443::n:1681753300:h3:y:1679161181:n:^partitionKey=%28https%2Cbotva.ru%29:|n:y:
+https:www.google.com:443:.:^partitionKey=%28https%2Cbotva.ru%29:3	0	19434	https:www.google.com:443:www.google.com:443::n:1681753293:h3:y:1679161181:n:^partitionKey=%28https%2Cbotva.ru%29:|n:y:
+https:stats.g.doubleclick.net:443:.:^partitionKey=%28https%2Cbotva.ru%29:3	0	19434	https:stats.g.doubleclick.net:443:stats.g.doubleclick.net:443::n:1681753293:h3:y:1679161181:n:^partitionKey=%28https%2Cbotva.ru%29:|n:y:
+https:www.google.by:443:.:^partitionKey=%28https%2Cbotva.ru%29:3	0	19434	https:www.google.by:443:www.google.by:443::n:1681753293:h3:y:1679161181:n:^partitionKey=%28https%2Cbotva.ru%29:|n:y:
