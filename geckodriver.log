@@ -458,3 +458,278 @@ WebDriver BiDi listening on ws://127.0.0.1:58427
 Read port: 58436
 1679161919790	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 DevTools listening on ws://127.0.0.1:58427/devtools/browser/233057d1-b7b8-4ddd-a72e-890a7a7d2eed
+1679162756925	geckodriver	INFO	Listening on 127.0.0.1:59254
+1679162760011	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "59255" "--remote-allow-hosts" "localhost" "-no-remote"
+Read port: 58436
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679162760274	Marionette	INFO	Marionette enabled
+1679162760276	Marionette	INFO	Listening on port 59265
+WebDriver BiDi listening on ws://127.0.0.1:59255
+DevTools listening on ws://127.0.0.1:59255/devtools/browser/6097bc0e-8f08-427e-add7-d894def9bd0b
+Read port: 59265
+1679162762192	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1679162947718	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162947824	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162947934	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162948046	Marionette	WARN	Connection attempt denied because an activRead port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+[GFX1-]: shader-cache: Shader disk cache is not supported
+[ERROR webrender_bindings::program_cache] shader-cache: Shader disk cache is not supported
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+Read port: 59265
+empt denied because an active session has been found
+1679162949803	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162949911	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950021	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950129	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950238	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950347	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950455	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950565	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950674	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950784	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162950895	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951005	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951114	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951225	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951334	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951442	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951554	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951664	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951774	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951882	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162951989	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952097	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952207	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952315	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952424	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952534	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952642	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952753	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952863	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162952975	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953083	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953194	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953303	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953412	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953521	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953631	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953741	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953848	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162953960	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954070	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954180	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954288	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954396	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954503	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954612	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954720	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954829	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162954939	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955047	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955154	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955264	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955372	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955478	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955587	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955695	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955804	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162955912	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162956020	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162956129	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162956241	Marionette	WARN	Connection attempt denied because an active session has been found
+1679162956346	Marionette	WARN	Connection attempt denied because an active session has been found
+1679163279565	Marionette	INFO	Stopped listening on port 59265
+1679163575877	geckodriver	INFO	Listening on 127.0.0.1:59814
+1679163578983	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "59815" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679163579215	Marionette	INFO	Marionette enabled
+1679163579217	Marionette	INFO	Listening on port 59825
+WebDriver BiDi listening on ws://127.0.0.1:59815
+Read port: 59825
+1679163579329	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:59815/devtools/browser/72da531d-48a6-49e1-bc99-a1ce56cfa099
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://g1.botva.ru."
+1679163885463	Marionette	INFO	Stopped listening on port 59825
+1679256039046	geckodriver	INFO	Listening on 127.0.0.1:57718
+1679256042214	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "57719" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679256042551	Marionette	INFO	Marionette enabled
+1679256042553	Marionette	INFO	Listening on port 57730
+Read port: 57730
+WebDriver BiDi listening on ws://127.0.0.1:57719
+1679256042641	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57719/devtools/browser/ffb930b9-2234-4141-b8cd-6d7b3f7c1c3c
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript error: https://i.botva.ru/m/g=global?v=941, line 74: ReferenceError: texts is not defined
+1679256058595	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://i.botva.ru/m/g=global?v=941, line 32: ReferenceError: popups is not defined
+1679256060882	Marionette	INFO	Stopped listening on port 57730
+[Parent 20176, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  Waiting for ping task
+          Phase: TelemetryController: Waiting for pending ping activity
+          State: (none)
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:727:15
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:458:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.sys.mjs:10:28
+_checkPendingPings@resource://gre/modules/TelemetrySend.sys.mjs:863:17
+setup@resource://gre/modules/TelemetrySend.sys.mjs:803:18
+setup@resource://gre/modules/TelemetrySend.sys.mjs:241:30
+setupTelemetry/this._delayedInitTask<@resource://gre/modules/TelemetryControllerParent.sys.mjs:828:36
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:576:16
+
+console.error: "TelemetryScheduler.shutdown - Already shut down"
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  Waiting for ping task
+          Phase: TelemetryController: Waiting for pending ping activity
+          State: (none)
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:727:15
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:458:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.sys.mjs:10:28
+_checkPendingPings@resource://gre/modules/TelemetrySend.sys.mjs:863:17
+setup@resource://gre/modules/TelemetrySend.sys.mjs:803:18
+setup@resource://gre/modules/TelemetrySend.sys.mjs:241:30
+setupTelemetry/this._delayedInitTask<@resource://gre/modules/TelemetryControllerParent.sys.mjs:828:36
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:576:16
+
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  TelemetryController: shutting down
+          Phase: profile-before-change-telemetry
+          State: Error getting state: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange" at addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:727:15
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:458:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.sys.mjs:10:28
+_checkPendingPings@resource://gre/modules/TelemetrySend.sys.mjs:863:17
+setup@resource://gre/modules/TelemetrySend.sys.mjs:803:18
+setup@resource://gre/modules/TelemetrySend.sys.mjs:241:30
+setupTelemetry/this._delayedInitTask<@resource://gre/modules/TelemetryControllerParent.sys.mjs:828:36
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:576:16
+
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:727:15
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.sys.mjs:458:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.sys.mjs:10:28
+_checkPendingPings@resource://gre/modules/TelemetrySend.sys.mjs:863:17
+setup@resource://gre/modules/TelemetrySend.sys.mjs:803:18
+setup@resource://gre/modules/TelemetrySend.sys.mjs:241:30
+setupTelemetry/this._delayedInitTask<@resource://gre/modules/TelemetryControllerParent.sys.mjs:828:36
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:576:16
+
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+1679256082351	geckodriver	INFO	Listening on 127.0.0.1:57781
+1679256085472	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "57782" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679256085744	Marionette	INFO	Marionette enabled
+1679256085747	Marionette	INFO	Listening on port 57791
+WebDriver BiDi listening on ws://127.0.0.1:57782
+Read port: 57791
+1679256085871	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57782/devtools/browser/f3612465-6572-497b-aa47-fe5ad5aacdb4
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+JavaScript error: resource://gre/modules/PromiseWorker.jsm, line 106: Error: Could not get children of file(S:\PY_BOTVA\SELENIUMF\thumbnails) because it does not exist
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://g1.botva.ru."
+1679256249955	Marionette	INFO	Stopped listening on port 57791

@@ -4,19 +4,18 @@ import random
 from time import sleep
 import os
 from selenium.webdriver.common.by import By
-from datetime import datetime
-import configparser
-import sqlite3
 from selenium import webdriver
 import mysettings
 import traceback
 from selenium.webdriver.firefox.options import Options
 from selenium_stealth import stealth
 
-#drv = "E"
-tm = 5 # таймаут обновления страницы ускора в секндах
+from beep import mybeep
+
+
+tm = 10  # таймаут обновления страницы ускора в секндах
 def main():
-    print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать билетики")
+    print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     try:
@@ -68,23 +67,14 @@ def main():
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
     element = driver.find_element("name", "email")
-    # element.send_keys(config["LOGIN"]["username"])
     element.send_keys(mysettings.login)
     element = driver.find_element("name", "password")
-    # element.send_keys(config["LOGIN"]["password"])
     element.send_keys(mysettings.passw)
-    #sleep(100)
     element = driver.find_element("name", "server")
     element.send_keys("t")
-    #element = driver.find_element(By.CLASS_NAME, "submit_by_ajax_completed")
     element = driver.find_element(By.XPATH, '//*[@id="auth_form_email"]/form/div[4]/div/input')
-    #sleep(1000)
     element.submit()
-    #sleep(1000)
     sleep(random.random() * 2 + 0.5)
-    #driver.refresh()
-    #driver.get("https://g1.botva.ru/mine.php")
-    #element = driver.find_element(By.NAME, "mmtype")
     driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
     # /html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]
     # вот этот путь существует если есть ускор и его надо кликнуть
@@ -94,15 +84,12 @@ def main():
             element = driver.find_element(By.XPATH, "/html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]")
             t = element.click()
             print("УРАА!!")
-            #if t == 'ПЕРЕЙТИ К МЕСТУ СБОРА ОТРЯДА':
-            #    element.click()
-            #    print(element.text)
-            #    t = False
+            mybeep()
         except:
             print("Не найдено")
         sleep(tm)
         driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
-
+    driver.close()
 
 
 
