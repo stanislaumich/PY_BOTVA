@@ -17,7 +17,7 @@ tm = 7  # таймаут обновления страницы ускора в �
 ps = 60 * 0  # пауза сек-мин
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
-    print("Запускаем паузу секунд - {ps}")
+    print("Запускаем паузу секунд - {ps=}")
     sleep(ps)
     print("Поехали")
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
@@ -85,8 +85,8 @@ def main():
     while t:
         try:
             element = driver.find_element(By.XPATH, "/html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]")
-            element.click()
-            t = False
+            t = element.click()
+            #  t = False
             print("УРАА!!")
             mybeep()
         except:
