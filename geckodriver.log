@@ -1,0 +1,20 @@
+1679389303471	geckodriver	INFO	Listening on 127.0.0.1:52311
+1679389306713	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-profile" "S:\\PY_BOTVA\\SELENIUMF" "--remote-debugging-port" "52312" "--remote-allow-hosts" "localhost" "-no-remote"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679389309060	Marionette	INFO	Marionette enabled
+1679389309069	Marionette	INFO	Listening on port 52325
+WebDriver BiDi listening on ws://127.0.0.1:52312
+Read port: 52325
+1679389309450	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:52312/devtools/browser/9d2f75ed-47c8-4d48-8b81-bedb4f503e49
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://avatar.botva.ru."
+1679389321540	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://g1.botva.ru."
+1679389370065	Marionette	INFO	Stopped listening on port 52325
+console.error: (new InvalidStateError("JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment", (void 0), 572))
+console.error: (new InvalidStateError("JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment", (void 0), 572))
+JavaScript error: resource:///modules/FaviconLoader.jsm, line 587: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
+JavaScript error: resource:///modules/FaviconLoader.jsm, line 587: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
