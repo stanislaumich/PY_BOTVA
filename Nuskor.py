@@ -1,5 +1,3 @@
-#mmtype
-
 import random
 from time import sleep
 import os
@@ -9,12 +7,15 @@ import mysettings
 import traceback
 from selenium.webdriver.firefox.options import Options
 from selenium_stealth import stealth
+import undetected_chromedriver as uc
 
 from beep import mybeep
-
-
+"""
+pip install undetected-chromedriver
+"""
 tm = 7  # таймаут обновления страницы ускора в секундах
 ps = 60 * 0  # пауза сек-мин
+
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
     print(f"Запускаем паузу секунд - {ps=}")
@@ -25,45 +26,23 @@ def main():
         os.mkdir(myp)
     except:
         print("Путь профиля хром уже существует")
-    mypf = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUMF"
-    try:
-        os.mkdir(mypf)
-    except:
-        print("Путь профиля лисы уже существует")
+
     print("Путь профиля Chrome: " + myp)
-    print("Путь профиля FireFox: " + mypf)
-
-    if mysettings.drv == "F":
-        print("Движок Firefox")
-        options = Options()
-        options.add_argument('-profile')
-        options.add_argument(mypf)
-        driver = webdriver.Firefox(options=options)
-
-    if mysettings.drv == "C":
-        print("Движок Chrome")
-        options = webdriver.ChromeOptions()
-        options.add_argument("start-maximized")
-        # options.add_argument("--headless")
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('useAutomationExtension', False)
-        driver = webdriver.Chrome(options=options)
-        stealth(driver,
-                languages=["ru-RU", "ru"],
-                vendor="Google Inc.",
-                platform="Win32",
-                webgl_vendor="Intel Inc.",
-                renderer="Intel Iris OpenGL Engine",
-                fix_hairline=True,
-                )
-
-    if (mysettings.drv =="E"):
-        print("Движок Edge")
-        #options = Options()
-        #options.add_argument('-profile')
-        #options.add_argument(mypf)
-        driver = webdriver.Edge()
-
+    options = webdriver.ChromeOptions()
+    options.add_argument("start-maximized")
+    # options.add_argument("--headless")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+    #driver = webdriver.Chrome(options=options)
+    driver = uc.Chrome()
+    stealth(driver,
+            languages=["ru-RU", "ru"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
     print("Логин...  ")
 
     driver.get("http://botva.ru")
@@ -79,12 +58,12 @@ def main():
     element.submit()
     sleep(random.random() * 2 + 0.5)
     driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
-    # /html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]
-    # вот этот путь существует если есть ускор и его надо кликнуть
+
     t = True
     while t:
         try:
-            element = driver.find_element(By.XPATH, "/html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]")
+            element = driver.find_element(By.XPATH,
+                                          "/html/body/div[5]/div[3]/div[2]/div[2]/div[2]/div[4]/form/input[3]")
             t = element.click()
             #  t = False
             print("УРАА!!")
@@ -94,10 +73,7 @@ def main():
         sleep(tm)
         driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
     driver.close()
-
-
-
-
+    driver.quit()
 
 
 if __name__ == "__main__":
