@@ -14,7 +14,7 @@ from beep import mybeep
 pip install undetected-chromedriver
 """
 tm = 7  # таймаут обновления страницы ускора в секундах
-ps = 60 * 0  # пауза сек-мин
+ps = 60 * 23  # пауза сек-мин
 
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
@@ -29,12 +29,12 @@ def main():
 
     print("Путь профиля Chrome: " + myp)
     options = webdriver.ChromeOptions()
-    options.add_argument("start-maximized")
-    # options.add_argument("--headless")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_experimental_option('useAutomationExtension', False)
-    #driver = webdriver.Chrome(options=options)
-    driver = uc.Chrome()
+    #  +options.add_argument("start-maximized")
+    #  options.add_argument("--headless")
+    #  +options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    #  +options.add_experimental_option('useAutomationExtension', False)
+    #  driver = webdriver.Chrome(options=options)
+    driver = uc.Chrome(options=options)
     stealth(driver,
             languages=["ru-RU", "ru"],
             vendor="Google Inc.",
