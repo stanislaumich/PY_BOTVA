@@ -1,4 +1,5 @@
 import random
+import sys
 from time import sleep
 import os
 from selenium.webdriver.common.by import By
@@ -14,12 +15,13 @@ from beep import mybeep
 pip install undetected-chromedriver
 """
 tm = 7  # таймаут обновления страницы ускора в секундах
-sl = 3  # пауза мин
-ps = 60 * sl
+sl = 17  # пауза мин
+
 
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
     print(f"Запускаем паузу секунд - {sl=}")
+    ps = 60 * sl
     for i in range(sl):
         sleep(60)
         print(f"Минутка прошла {i=}")
