@@ -34,6 +34,7 @@ import mysettings
 import traceback
 from selenium.webdriver.firefox.options import Options
 from selenium_stealth import stealth
+import undetected_chromedriver as uc
 '''
 ---------------------------------------------------------------------------'''
 
@@ -64,12 +65,12 @@ def main():
 
     if (drv == "C"):
         options = webdriver.ChromeOptions()
-        options.add_argument("start-maximized")
+        #options.add_argument("start-maximized")
         # options.add_argument("--headless")
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('useAutomationExtension', False)
-        driver = webdriver.Chrome(options=options)
-
+        #options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        #options.add_experimental_option('useAutomationExtension', False)
+        #driver = webdriver.Chrome(options=options)
+        driver = uc.Chrome(options=options)
         stealth(driver,
                 languages=["ru-RU", "ru"],
                 vendor="Google Inc.",
