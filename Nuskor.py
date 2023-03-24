@@ -15,7 +15,7 @@ from beep import mybeep
 pip install undetected-chromedriver
 """
 tm = 7  # таймаут обновления страницы ускора в секундах
-sl = 16  # пауза мин
+sl = 0  # пауза мин
 
 
 def main():
@@ -34,13 +34,18 @@ def main():
         print("Путь профиля хром уже существует")
 
     print("Путь профиля Chrome: " + myp)
-    options = webdriver.ChromeOptions()
+    #options = webdriver.ChromeOptions()
+    opts = uc.ChromeOptions()
+    opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+    opts.add_argument(r"user-data-dir=" + myp)
+    opts.add_argument("--profile-directory=BOTVA")
+    #opts.add_argument('--headless')
     #  +options.add_argument("start-maximized")
     #  options.add_argument("--headless")
     #  +options.add_experimental_option("excludeSwitches", ["enable-automation"])
     #  +options.add_experimental_option('useAutomationExtension', False)
     #  driver = webdriver.Chrome(options=options)
-    driver = uc.Chrome(options=options)
+    driver = uc.Chrome(options=opts)
     stealth(driver,
             languages=["ru-RU", "ru"],
             vendor="Google Inc.",
@@ -50,7 +55,7 @@ def main():
             fix_hairline=True,
             )
     print("Логин...  ")
-
+    #  node = driver.find_element(By.CSS_SELECTOR, "h5[class='sc-29427738-0 sc-bdnxRM kgxFZp hBeyeI']")
     driver.get("http://botva.ru")
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
