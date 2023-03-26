@@ -64,13 +64,18 @@ def main():
         driver = webdriver.Firefox(options=options)
 
     if (drv == "C"):
-        options = webdriver.ChromeOptions()
+        #  options = webdriver.ChromeOptions()
         #options.add_argument("start-maximized")
         # options.add_argument("--headless")
         #options.add_experimental_option("excludeSwitches", ["enable-automation"])
         #options.add_experimental_option('useAutomationExtension', False)
         #driver = webdriver.Chrome(options=options)
-        driver = uc.Chrome(options=options)
+        opts = uc.ChromeOptions()
+        opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+        opts.add_argument(r"user-data-dir=" + myp)
+        opts.add_argument("--profile-directory=BOTVA")
+        opts.add_argument('--blink-settings=imagesEnabled=false')
+        driver = uc.Chrome(options=opts)
         stealth(driver,
                 languages=["ru-RU", "ru"],
                 vendor="Google Inc.",

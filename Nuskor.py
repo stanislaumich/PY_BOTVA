@@ -14,7 +14,7 @@ from beep import mybeep
 """
 pip install undetected-chromedriver
 """
-tm = 7  # таймаут обновления страницы ускора в секундах
+tm = 10  # таймаут обновления страницы ускора в секундах
 sl = 0  # пауза мин
 
 
