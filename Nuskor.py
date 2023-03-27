@@ -15,18 +15,12 @@ from beep import mybeep
 pip install undetected-chromedriver
 """
 tm = 10  # таймаут обновления страницы ускора в секундах
-sl = 0  # пауза мин
+sl = 8  # пауза мин
 
 
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
-    print(f"Запускаем паузу секунд - {sl=}")
-    ps = 60 * sl
-    for i in range(sl):
-        sleep(60)
-        print(f"Минутка прошла {i=}")
-    # sleep(ps)
-    print("Поехали")
+
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     try:
         os.mkdir(myp)
@@ -36,7 +30,7 @@ def main():
     print("Путь профиля Chrome: " + myp)
     #options = webdriver.ChromeOptions()
     opts = uc.ChromeOptions()
-    opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+    # opts.add_argument(f'--proxy-server=127.0.0.1:3128')
     opts.add_argument(r"user-data-dir=" + myp)
     opts.add_argument("--profile-directory=BOTVA")
     #opts.add_argument('--headless')
@@ -67,7 +61,13 @@ def main():
     element.send_keys("t")
     element = driver.find_element(By.XPATH, '//*[@id="auth_form_email"]/form/div[4]/div/input')
     element.submit()
-    sleep(random.random() * 2 + 0.5)
+    print(f"Запускаем паузу секунд - {sl=}")
+    ps = 60 * sl
+    for i in range(sl):
+        sleep(60)
+        print(f"Минутка прошла {i=}")
+    # sleep(ps)
+    print("Поехали")
     driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
 
     t = True
