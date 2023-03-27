@@ -30,7 +30,8 @@ def main():
     print("Путь профиля Chrome: " + myp)
     #options = webdriver.ChromeOptions()
     opts = uc.ChromeOptions()
-    # opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+    if os.path.exists('s:/home'):
+        opts.add_argument(f'--proxy-server=127.0.0.1:3128')
     opts.add_argument(r"user-data-dir=" + myp)
     opts.add_argument("--profile-directory=BOTVA")
     #opts.add_argument('--headless')
