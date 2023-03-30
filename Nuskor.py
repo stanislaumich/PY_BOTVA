@@ -14,8 +14,8 @@ from beep import mybeep
 """
 pip install undetected-chromedriver
 """
-tm = 10  # таймаут обновления страницы ускора в секундах
-sl = 8  # пауза мин
+tm = 5  # таймаут обновления страницы ускора в секундах
+sl = 23  # пауза мин
 
 
 def main():
@@ -58,8 +58,8 @@ def main():
     element.send_keys(mysettings.login)
     element = driver.find_element("name", "password")
     element.send_keys(mysettings.passw)
-    element = driver.find_element("name", "server")
-    element.send_keys("t")
+    #element = driver.find_element("name", "server")
+    #element.send_keys("t")
     element = driver.find_element(By.XPATH, '//*[@id="auth_form_email"]/form/div[4]/div/input')
     element.submit()
     print(f"Запускаем паузу секунд - {sl=}")

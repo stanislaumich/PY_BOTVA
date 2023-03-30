@@ -3,71 +3,109 @@
 15.02.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=907729&id=2664712&key=e4dc1a7fd8a645981be1ffeba219f59b	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=907765&id=2664821&key=ebe2a0b5f876246c78a1e39140a530a3
 
 '''
+import sys
 from time import sleep
 import os
 from selenium.webdriver.common.by import By
 from datetime import datetime
-import configparser
 import sqlite3
-from selenium import webdriver
+from selenium_stealth import stealth
+import undetected_chromedriver as uc
+import mysettings
+from bs4 import BeautifulSoup
+import requests
+
+base = "31.03.2023"
+url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
+
+myklan = []
+
+def form_voin_list():
+    page = requests.get(url)
+    print(page.status_code)
+    html = page.content
+    soup = BeautifulSoup(html, "lxml")
+    el = soup.find('a', class_='profile')
+    klan = el.text
+    fname = base + ".txt"
+    ff = open(fname, 'w')
+    print(klan)
+    table = soup.find_all('table')
+    all_cols = []
+    for row in table:
+        cols = row.find_all('td')
+        rw = []
+        i = 0
+        for c in cols:
+            c = c.text.replace('\n', '')
+            c = c.replace('\r', '')
+            c = c.replace('&nbsp', '')
+            c = c.strip(' ')
+            c = c.strip(chr(160))
+            c = c.strip(' ')
+            if c != '':
+                rw.append(c)
+                i = i + 1
+                if i == 5:
+                    i = 0
+                    e = tuple(rw)
+                    all_cols.append(e)
+                    rw.clear()
+    for r in all_cols:
+        ff.write(f"{r[0]};{r[2]};{r[3]};{r[4]}\n")
+        klant = (r[0], r[2], r[3], r[4])
+        myklan.append(klant)
+    ff.close()
+    print(myklan)
 
 
 def main():
     print("[INFO]Нужно помнить что нахождение в некоторых локациях, например подзем, не дает обработать казну")
-    config = configparser.ConfigParser()  # создаём объекта парсера
-    config.read("s:\\config.ini")  # читаем конфиг
+    print("Вычитываем список воинов клана в файл")
+    form_voin_list()
+    print('Обработка воинов клана завершена')
 
-    basepath = config["PATH"]["workdir"]
-    try:
-        os.mkdir(basepath)
-    except:
-        print("Проверка рабочей папки")
-    finally:
-        print(" ")
+    sys.exit()
 
-    base = config["PATH"]["base"]
-    print("Создаем и открываем базу данных: "+base)
-    con = sqlite3.connect(base)
-    cursor = con.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS KLAN
-                    (id INTEGER PRIMARY KEY AUTOINCREMENT,  
-                    nik TEXT, 
-                    bm  text,
-                    sl  text,
-                    dt  text,
-                    tm  text,
-                    dop text)""")
-    cursor.execute("""CREATE TABLE IF NOT EXISTS podzem (dt VARCHAR (50), num INTEGER, nik VARCHAR2 (50), 
-    id  INTEGER, val VARCHAR2 (1000))""")
-    cursor.execute("""CREATE TABLE IF NOT EXISTS kazna (dt VARCHAR(30), nik VARCHAR(100), gold VARCHAR(30),
-    pirah VARCHAR(30), kri VARCHAR(30))""")
-    cursor.execute("""CREATE TABLE IF NOT EXISTS zad(id INTEGER PRIMARY KEY AUTOINCREMENT, dt VARCHAR(30),
-    tip INTEGER, nik VARCHAR(300), val INTEGER)""")
-    cursor.execute("""CREATE TABLE IF NOT EXISTS podzemurl (dt VARCHAR (50), 
-    url1  VARCHAR (1000), url2 VARCHAR (1000))""")
-
-    nw = datetime.now()
-    dt = nw.strftime("%d.%m.%Y")
-    tm = nw.strftime("%I-%M")
-    print("База данных - Ok")
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     print("Путь профиля Chrome: "+myp)
-    options = webdriver.ChromeOptions()
-    options.add_argument("--allow-profiles-outside-user-dir")
-    options.add_argument(r"user-data-dir="+myp)
-    options.add_argument("--profile-directory=BOTVA")
-    driver = webdriver.Chrome(options=options)
+    try:
+        os.mkdir(myp)
+    except:
+        print("Путь профиля хром уже существует")
+
+    opts = uc.ChromeOptions()
+    if os.path.exists('s:/home'):
+        opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+    opts.add_argument(r"user-data-dir=" + myp)
+    opts.add_argument("--profile-directory=BOTVA")
+    # opts.add_argument('--headless')
+    #  +options.add_argument("start-maximized")
+    #  options.add_argument("--headless")
+    #  +options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    #  +options.add_experimental_option('useAutomationExtension', False)
+    #  driver = webdriver.Chrome(options=options)
+    driver = uc.Chrome(options=opts)
+    stealth(driver,
+            languages=["ru-RU", "ru"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
     print("Логин...  ")
     driver.get("http://botva.ru")
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
     element = driver.find_element("name", "email")
-    element.send_keys(config["LOGIN"]["username"])
+    element.send_keys(mysettings.login)
     element = driver.find_element("name", "password")
-    element.send_keys(config["LOGIN"]["password"])
+    element.send_keys(mysettings.passw)
     element = driver.find_element(By.CLASS_NAME, "submit_by_ajax_completed")
     element.submit()
     sleep(3)
+
     # пробуем работать со списком походов в подзем
     print("Обработка подзема")
     f1 = open('podzem.txt')
