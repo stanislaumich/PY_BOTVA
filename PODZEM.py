@@ -21,13 +21,20 @@ url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 myklan = []
 
 def form_voin_list():
+
+    con = sqlite3.connect(base+".SQLITE")
+    cursor = con.cursor()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS VOIN
+                        (nik TEXT)""")
+    cursor.execute("delete from VOIN where 1=1")
+    con.commit()
     page = requests.get(url)
     print(page.status_code)
     html = page.content
     soup = BeautifulSoup(html, "lxml")
     el = soup.find('a', class_='profile')
     klan = el.text
-    fname = base + ".txt"
+    fname = base + ".KLAN"
     ff = open(fname, 'w')
     print(klan)
     table = soup.find_all('table')
@@ -53,9 +60,13 @@ def form_voin_list():
                     rw.clear()
     for r in all_cols:
         ff.write(f"{r[0]};{r[2]};{r[3]};{r[4]}\n")
+        s = r[0]
         klant = (r[0], r[2], r[3], r[4])
         myklan.append(klant)
+        cursor.execute("INSERT INTO VOIN (nik) VALUES ('"+s+"')")
+        con.commit()
     ff.close()
+    con.close()
     print(myklan)
 
 
@@ -64,9 +75,11 @@ def main():
     print("Вычитываем список воинов клана в файл")
     form_voin_list()
     print('Обработка воинов клана завершена')
-
+    con = sqlite3.connect(base + ".SQLITE")
     sys.exit()
 
+    fname = base + ".PODZEM"
+    f = open(fname, 'w')
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     print("Путь профиля Chrome: "+myp)
     try:
@@ -79,12 +92,6 @@ def main():
         opts.add_argument(f'--proxy-server=127.0.0.1:3128')
     opts.add_argument(r"user-data-dir=" + myp)
     opts.add_argument("--profile-directory=BOTVA")
-    # opts.add_argument('--headless')
-    #  +options.add_argument("start-maximized")
-    #  options.add_argument("--headless")
-    #  +options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    #  +options.add_experimental_option('useAutomationExtension', False)
-    #  driver = webdriver.Chrome(options=options)
     driver = uc.Chrome(options=opts)
     stealth(driver,
             languages=["ru-RU", "ru"],
@@ -110,8 +117,7 @@ def main():
     print("Обработка подзема")
     f1 = open('podzem.txt')
     flist = f1.readlines()
-    gurl = []
-    gdt = ""
+
     url = []
     for el in flist:
         crt = el.split('\t')
@@ -130,11 +136,12 @@ def main():
             sleep(10)
             master = driver.find_element(By.CLASS_NAME, "profile ").text
             print(f"Master: {master}")
-            sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
-            bob = (dt, i, master, -1)
-            gdt = dt
-            cursor.execute(sql_select_query, bob)
-            con.commit()
+            #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
+            bob = dt+";" + str(i) +";"+ master + ";" + "2"+'\n'
+            f.write(bob)
+            #  gdt = dt
+            #  cursor.execute(sql_select_query, bob)
+            #  con.commit()
             elements = driver.find_elements(By.CLASS_NAME, "round3")
             cnt = 0
             bl = []
@@ -142,41 +149,37 @@ def main():
                 cnt = cnt + 1
                 ts = elz.text
                 print(ts)
-                ts = ts.replace("...", "%")
-                sql_select_query = """select nik from voin where nik like ?"""
-                cursor.execute(sql_select_query, (ts,))
-                record = cursor.fetchone()
-                ts = record[0].upper()
-                print(ts)
-                bob = (dt, i, ts, cnt)
-                bl.append(bob)
-            sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
-            cursor.executemany(sql_select_query, bl)
-            con.commit()
-            on = (dt, i, "", -2, href)
-            sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,?)"""
-            cursor.execute(sql_select_query, on)
-            con.commit()
-            loter = int(idp) % cnt
-            if loter == 0:
-                loter = cnt
-            pts = idp + f" mod {cnt} = " + str(loter)
-            on = (i, dt, loter)
-            sql_select_query = """select nik from podzem where num = ? and dt = ? and id = ?"""
-            cursor.execute(sql_select_query, on)
-            pobed1 = cursor.fetchone()
-            pobed = pobed1[0]
-            on = (dt, i, pobed, -3, pts)
-            sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,?)"""
-            cursor.execute(sql_select_query, on)
-            con.commit()
+                #  ts = ts.replace("...", "%")
+                #  sql_select_query = """select nik from voin where nik like ?"""
+                #  cursor.execute(sql_select_query, (ts,))
+                #  record = cursor.fetchone()
+                #  ts = record[0].upper()
+                #  print(ts)
+                bob = dt+";"+str(i) +";"+ ts + ";" + "1"+'\n'
+                f.write(bob)
+            #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
+            #  cursor.executemany(sql_select_query, bl)
+            #  con.commit()
+            #  on = (dt, i, "", -2, href)
+            #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,?)"""
+            #  cursor.execute(sql_select_query, on)
+            #  con.commit()
+            #  loter = int(idp) % cnt
+            # if loter == 0:
+            #      loter = cnt
+            #  pts = idp + f" mod {cnt} = " + str(loter)
+            #  on = (i, dt, loter)
+            #  sql_select_query = """select nik from podzem where num = ? and dt = ? and id = ?"""
+            #  cursor.execute(sql_select_query, on)
+            #  pobed1 = cursor.fetchone()
+            #  pobed = pobed1[0]
+            #  on = (dt, i, pobed, -3, pts)
+            #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,?)"""
+            #  cursor.execute(sql_select_query, on)
+            #  con.commit()
 
-        #gbob = (gdt, url[1], url[2])
-        #gurl.append(gbob)
-
-    #cursor_q = "insert into podzemurl (dt, url1, url2) values(?,?,?)"
-    #cursor.executemany(cursor_q, gbob)
-
+    f.close()
+    con.close()
 
 if __name__ == "__main__":
     main()
