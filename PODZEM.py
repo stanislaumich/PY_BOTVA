@@ -25,7 +25,7 @@ def form_voin_list():
     con = sqlite3.connect(base+".SQLITE")
     cursor = con.cursor()
     cursor.execute("""CREATE TABLE IF NOT EXISTS VOIN
-                        (nik TEXT)""")
+                        (nik TEXT, pohod integer, lid integer)""")
     cursor.execute("delete from VOIN where 1=1")
     con.commit()
     page = requests.get(url)
@@ -60,10 +60,10 @@ def form_voin_list():
                     rw.clear()
     for r in all_cols:
         ff.write(f"{r[0]};{r[2]};{r[3]};{r[4]}\n")
-        s = r[0]
+        s = r[0].upper()
         klant = (r[0], r[2], r[3], r[4])
         myklan.append(klant)
-        cursor.execute("INSERT INTO VOIN (nik) VALUES ('"+s+"')")
+        cursor.execute("INSERT INTO VOIN (nik, pohod, lid) VALUES ('"+s+"',0 ,0)")
         con.commit()
     ff.close()
     con.close()
@@ -76,7 +76,7 @@ def main():
     form_voin_list()
     print('Обработка воинов клана завершена')
     con = sqlite3.connect(base + ".SQLITE")
-    sys.exit()
+    #  sys.exit()
 
     fname = base + ".PODZEM"
     f = open(fname, 'w')
@@ -90,7 +90,7 @@ def main():
     opts = uc.ChromeOptions()
     if os.path.exists('s:/home'):
         opts.add_argument(f'--proxy-server=127.0.0.1:3128')
-    opts.add_argument(r"user-data-dir=" + myp)
+    opts.add_argument(r"--user-data-dir=" + myp)
     opts.add_argument("--profile-directory=BOTVA")
     driver = uc.Chrome(options=opts)
     stealth(driver,
@@ -106,19 +106,22 @@ def main():
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
     element = driver.find_element("name", "email")
+    element.clear()
     element.send_keys(mysettings.login)
     element = driver.find_element("name", "password")
+    element.clear()
     element.send_keys(mysettings.passw)
     element = driver.find_element(By.CLASS_NAME, "submit_by_ajax_completed")
     element.submit()
-    sleep(3)
+    sleep(1)
 
     # пробуем работать со списком походов в подзем
     print("Обработка подзема")
     f1 = open('podzem.txt')
     flist = f1.readlines()
-
-    url = []
+    con = sqlite3.connect(base + ".SQLITE")
+    cursor = con.cursor()
+    lost = 0
     for el in flist:
         crt = el.split('\t')
         print(crt[0])
@@ -128,35 +131,50 @@ def main():
             # первая и вторая ссылки в строке
             href = crt[i]
             print(href)
-            #url[i] = href
             idp0 = href.split("&")
             idp1 = idp0[3].split("=")
             idp = idp1[1]
             driver.get(href)
-            sleep(10)
+            sleep(1)
             master = driver.find_element(By.CLASS_NAME, "profile ").text
             print(f"Master: {master}")
-            #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
-            bob = dt+";" + str(i) +";"+ master + ";" + "2"+'\n'
+            ts = master.upper()
+            ts = ts.replace("...", "%")
+            sql_select_query = "select nik from voin where nik like '" + ts + "'"
+            cursor.execute(sql_select_query)
+            record = cursor.fetchone()
+
+            try:
+                ts = record[0]
+                print(f"Found: {ts}")
+            except:
+                lost = lost +1
+            #  print(ts)
+            cursor.execute("update VOIN set lid = lid+2 where nik = '" + ts + "'")
+            con.commit()
+            bob = dt+";" + str(i) + ";" + master + ";" + "2"+'\n'
             f.write(bob)
-            #  gdt = dt
-            #  cursor.execute(sql_select_query, bob)
-            #  con.commit()
-            elements = driver.find_elements(By.CLASS_NAME, "round3")
+
+            elements = driver.find_elements(By.CLASS_NAME, "member")
             cnt = 0
-            bl = []
             for elz in elements:
                 cnt = cnt + 1
-                ts = elz.text
-                print(ts)
-                #  ts = ts.replace("...", "%")
-                #  sql_select_query = """select nik from voin where nik like ?"""
-                #  cursor.execute(sql_select_query, (ts,))
-                #  record = cursor.fetchone()
-                #  ts = record[0].upper()
+                ts = elz.text.upper()
                 #  print(ts)
-                bob = dt+";"+str(i) +";"+ ts + ";" + "1"+'\n'
+                ts = ts.replace("...", "%")
+                sql_select_query = """select nik from voin where nik like ?"""
+                cursor.execute(sql_select_query, (ts,))
+                record = cursor.fetchone()
+                try:
+                    ts = record[0]
+                except:
+                    pass
+                print(ts)
+                bob = dt + ";" + str(i) + ";" + ts + ";" + "1" + '\n'
+                cursor.execute("update VOIN set pohod = pohod+1 where nik = '" + ts + "'")
+                con.commit()
                 f.write(bob)
+
             #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
             #  cursor.executemany(sql_select_query, bl)
             #  con.commit()
@@ -179,7 +197,22 @@ def main():
             #  con.commit()
 
     f.close()
+    """
+    Сохраняем базу в текст
+    """
+    rfname = base + ".RESULT"
+    rf = open(rfname, 'w')
+    q = "select nik, sum(pohod) p, sum(lid) l from voin group by nik order by sum(pohod)+sum(lid) desc"
+    cursor.execute(q)
+    records = cursor.fetchall()
+    for row in records:
+        ts = row[0] + ";" +  str(row[1]) + ";" + str(row[2]) + ";\n"
+        print(ts)
+        rf.write(ts)
     con.close()
+    rf.close()
+    print(f"Утеряно мастеров : {lost}")
+
 
 if __name__ == "__main__":
     main()
