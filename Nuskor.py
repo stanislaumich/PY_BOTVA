@@ -15,7 +15,7 @@ from beep import mybeep
 pip install undetected-chromedriver
 """
 tm = 5  # таймаут обновления страницы ускора в секундах
-sl = 23  # пауза мин
+sl = 20  # пауза мин
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
     opts = uc.ChromeOptions()
     if os.path.exists('s:/home'):
         opts.add_argument(f'--proxy-server=127.0.0.1:3128')
-    opts.add_argument(r"user-data-dir=" + myp)
+    opts.add_argument(r"--user-data-dir=" + myp)
     opts.add_argument("--profile-directory=BOTVA")
     #opts.add_argument('--headless')
     #  +options.add_argument("start-maximized")
@@ -66,7 +66,8 @@ def main():
     ps = 60 * sl
     for i in range(sl):
         sleep(60)
-        print(f"Минутка прошла {i=}")
+        z = i + 1
+        print(f"Минутка прошла {z} из {sl}")
     # sleep(ps)
     print("Поехали")
     driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
