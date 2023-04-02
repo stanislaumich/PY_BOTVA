@@ -9,14 +9,15 @@ import traceback
 from selenium.webdriver.firefox.options import Options
 from selenium_stealth import stealth
 import undetected_chromedriver as uc
+from datetime import datetime
 
 from beep import mybeep
 """
 pip install undetected-chromedriver
 """
 tm = 5  # таймаут обновления страницы ускора в секундах
-sl = 20  # пауза мин
-
+sl = 30  # пауза мин максимально ждать, обычно полчаса
+wt = 20  #  в эту минуту запускаемся
 
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
@@ -54,21 +55,29 @@ def main():
     driver.get("http://botva.ru")
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
-    element = driver.find_element("name", "email")
-    element.send_keys(mysettings.login)
-    element = driver.find_element("name", "password")
-    element.send_keys(mysettings.passw)
-    #element = driver.find_element("name", "server")
-    #element.send_keys("t")
+    #  element = driver.find_element("name", "email")
+    #  element.send_keys(mysettings.login)
+    #  element = driver.find_element("name", "password")
+    #  element.send_keys(mysettings.passw)
+    #  element = driver.find_element("name", "server")
+    #  element.send_keys("t")
     element = driver.find_element(By.XPATH, '//*[@id="auth_form_email"]/form/div[4]/div/input')
     element.submit()
-    print(f"Запускаем паузу секунд - {sl=}")
-    ps = 60 * sl
-    for i in range(sl):
+    print(f"Ждем минуту - {wt=}")
+    #  ps = 60 * sl
+    '''for i in range(sl):
         sleep(60)
         z = i + 1
+        cr = datetime.now()
+        if cr.minute ==
         print(f"Минутка прошла {z} из {sl}")
-    # sleep(ps)
+    '''# sleep(ps)
+    cr = datetime.now()
+    while cr.minute != wt:
+        sleep(60)
+        print(f"Минутка прошла, ждем {wt}")
+        cr = datetime.now()
+
     print("Поехали")
     driver.get("https://g1.botva.ru/monster.php?a=monsterpve")
 
