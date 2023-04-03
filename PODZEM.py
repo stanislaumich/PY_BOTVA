@@ -76,7 +76,7 @@ def main():
     form_voin_list()
     print('Обработка воинов клана завершена')
     con = sqlite3.connect(base + ".SQLITE")
-    #  sys.exit()
+    sys.exit()
 
     fname = base + ".PODZEM"
     f = open(fname, 'w')
