@@ -14,10 +14,11 @@ from datetime import datetime
 from beep import mybeep
 """
 pip install undetected-chromedriver
+pip install selenium_stealth
 """
 tm = 5  # таймаут обновления страницы ускора в секундах
 sl = 30  # пауза мин максимально ждать, обычно полчаса
-wt = 20  #  в эту минуту запускаемся
+wt = 4  #  в эту минуту запускаемся
 
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
@@ -55,10 +56,12 @@ def main():
     driver.get("http://botva.ru")
     element = driver.find_element(By.CLASS_NAME, "sign_in")
     element.click()
-    #  element = driver.find_element("name", "email")
-    #  element.send_keys(mysettings.login)
-    #  element = driver.find_element("name", "password")
-    #  element.send_keys(mysettings.passw)
+    element = driver.find_element("name", "email")
+    element.clear()
+    element.send_keys(mysettings.login)
+    element = driver.find_element("name", "password")
+    element.clear()
+    element.send_keys(mysettings.passw)
     #  element = driver.find_element("name", "server")
     #  element.send_keys("t")
     element = driver.find_element(By.XPATH, '//*[@id="auth_form_email"]/form/div[4]/div/input')

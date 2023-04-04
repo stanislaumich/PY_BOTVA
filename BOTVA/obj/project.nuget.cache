@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "vAgODqelndMqalKzYUKz1bRfLZxlVTs6q0iHsxfTaUeI5SaGdAfl8GzFprY8GYgvEGsYFLucLz/Sj8Xw3DvJYg==",
+  "success": true,
+  "projectFilePath": "S:\\PY_BOTVA\\BOTVA\\BOTVA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lz42\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\selenium.support\\4.3.0\\selenium.support.4.3.0.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\selenium.webdriver\\4.3.0\\selenium.webdriver.4.3.0.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\selenium.webdriver.undetectedchromedriver\\2.3.0\\selenium.webdriver.undetectedchromedriver.2.3.0.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\sl.selenium.extensions\\2.1.1\\sl.selenium.extensions.2.1.1.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\sl.selenium.extensions.chrome\\2.3.0\\sl.selenium.extensions.chrome.2.3.0.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Lz42\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
