@@ -1,0 +1,6 @@
+[3640:5904:0406/101415.181:WARNING:chrome_main_delegate.cc(618)] This is Chrome version 111.0.5563.147 (not a warning)
+[3640:6888:0406/101420.861:WARNING:page_discarding_helper.cc(127)] Urgently discarding multiple pages with target (kb): 0
+[3640:5904:0406/101422.659:INFO:CONSOLE(0)] "[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o", source: https://avatar.botva.ru/ (0)
+[3640:3436:0406/101425.868:WARNING:page_discarding_helper.cc(127)] Urgently discarding multiple pages with target (kb): 0
+[3640:3436:0406/101430.868:WARNING:page_discarding_helper.cc(127)] Urgently discarding multiple pages with target (kb): 0
+[3640:5904:0406/101434.734:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
