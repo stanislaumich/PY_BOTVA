@@ -15,7 +15,7 @@ import mysettings
 from bs4 import BeautifulSoup
 import requests
 
-base = "31.03.2023"
+base = "07.04.2023"
 url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 
 myklan = []
@@ -76,7 +76,7 @@ def main():
     form_voin_list()
     print('Обработка воинов клана завершена')
     con = sqlite3.connect(base + ".SQLITE")
-    sys.exit()
+    #  sys.exit()
 
     fname = base + ".PODZEM"
     f = open(fname, 'w')
@@ -123,57 +123,58 @@ def main():
     cursor = con.cursor()
     lost = 0
     for el in flist:
-        crt = el.split('\t')
-        print(crt[0])
-        dt = crt[0]
+        if el.startswith(('0', '1', '2', '3')):
+            crt = el.split('\t')
+            print(crt[0])
+            dt = crt[0]
 
-        for i in range(1, 3):
-            # первая и вторая ссылки в строке
-            href = crt[i]
-            print(href)
-            idp0 = href.split("&")
-            idp1 = idp0[3].split("=")
-            idp = idp1[1]
-            driver.get(href)
-            sleep(1)
-            master = driver.find_element(By.CLASS_NAME, "profile ").text
-            print(f"Master: {master}")
-            ts = master.upper()
-            ts = ts.replace("...", "%")
-            sql_select_query = "select nik from voin where nik like '" + ts + "'"
-            cursor.execute(sql_select_query)
-            record = cursor.fetchone()
-
-            try:
-                ts = record[0]
-                print(f"Found: {ts}")
-            except:
-                lost = lost +1
-            #  print(ts)
-            cursor.execute("update VOIN set lid = lid+2 where nik = '" + ts + "'")
-            con.commit()
-            bob = dt+";" + str(i) + ";" + master + ";" + "2"+'\n'
-            f.write(bob)
-
-            elements = driver.find_elements(By.CLASS_NAME, "member")
-            cnt = 0
-            for elz in elements:
-                cnt = cnt + 1
-                ts = elz.text.upper()
-                #  print(ts)
+            for i in range(1, 3):
+                # первая и вторая ссылки в строке
+                href = crt[i]
+                print(href)
+                idp0 = href.split("&")
+                idp1 = idp0[3].split("=")
+                idp = idp1[1]
+                driver.get(href)
+                sleep(1)
+                master = driver.find_element(By.CLASS_NAME, "profile ").text
+                print(f"Master: {master}")
+                ts = master.upper()
                 ts = ts.replace("...", "%")
-                sql_select_query = """select nik from voin where nik like ?"""
-                cursor.execute(sql_select_query, (ts,))
+                sql_select_query = "select nik from voin where nik like '" + ts + "'"
+                cursor.execute(sql_select_query)
                 record = cursor.fetchone()
+
                 try:
                     ts = record[0]
+                    print(f"Found: {ts}")
                 except:
-                    pass
-                print(ts)
-                bob = dt + ";" + str(i) + ";" + ts + ";" + "1" + '\n'
-                cursor.execute("update VOIN set pohod = pohod+1 where nik = '" + ts + "'")
+                    lost = lost +1
+                #  print(ts)
+                cursor.execute("update VOIN set lid = lid+2 where nik = '" + ts + "'")
                 con.commit()
+                bob = dt+";" + str(i) + ";" + master + ";" + "2"+'\n'
                 f.write(bob)
+
+                elements = driver.find_elements(By.CLASS_NAME, "member")
+                cnt = 0
+                for elz in elements:
+                    cnt = cnt + 1
+                    ts = elz.text.upper()
+                    #  print(ts)
+                    ts = ts.replace("...", "%")
+                    sql_select_query = """select nik from voin where nik like ?"""
+                    cursor.execute(sql_select_query, (ts,))
+                    record = cursor.fetchone()
+                    try:
+                        ts = record[0]
+                    except:
+                        pass
+                    print(ts)
+                    bob = dt + ";" + str(i) + ";" + ts + ";" + "1" + '\n'
+                    cursor.execute("update VOIN set pohod = pohod+1 where nik = '" + ts + "'")
+                    con.commit()
+                    f.write(bob)
 
             #  sql_select_query = """insert into podzem (dt, num, nik, id, val) values(?,?,?,?,0)"""
             #  cursor.executemany(sql_select_query, bl)
