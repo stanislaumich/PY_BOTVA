@@ -16,3 +16,15 @@
 
 06.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913548&id=2683677&key=7cc2ae07b91ddcb162a1f3445541f7b8	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913559&id=2683713&key=0813ef036f9dd982562f9c0a79641101
 	NeXTY	NeXTY
+
+
+09.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913797&id=2684400&key=a3ad04437f4ed59bbf7361effd0e3b3d	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913803&id=2684428&key=a4c66ce1a2fd204dded32c1d4c7a37df
+	Kerberos	T@nk
+
+
+10.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913891&id=2684698&key=18fb99634f2134504798203fa8a6c2ce	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913899&id=2684728&key=c92de9d2b1a6fc49f33d5e79aeb46cc1
+	*Kronos*	NeXTY
+
+
+11.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913970&id=2684938&key=80ef8174a22c0d26a6bf5697f9434a78	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913981&id=2684975&key=39c4d8bf1d3f7aee395ac21747d6ba73
+	NeXTY	T@nk

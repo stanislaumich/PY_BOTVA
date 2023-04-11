@@ -15,7 +15,7 @@ import mysettings
 from bs4 import BeautifulSoup
 import requests
 
-base = "07.04.2023"
+base = "11.04.2023"
 url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 
 myklan = []
