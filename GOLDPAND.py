@@ -7,12 +7,7 @@ import configparser
 from selenium import webdriver
 import pickle
 ''''''
-# количество панд для открытия
-<<<<<<< HEAD
-N = 32
-=======
-N = 19
->>>>>>> ddf58876a31393dd603818c6507ca17f4c35fe9d
+
 # пауза между открытиями
 pause = 6
 def main():
