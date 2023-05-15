@@ -12,6 +12,7 @@ from beep import mybeep
 
 # пауза между открытиями
 pause = 13
+times = 30
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
 
@@ -71,11 +72,11 @@ def main():
     while t:
         m = driver.find_element(By.XPATH, "/html/body/div[5]/div[3]/div[2]/div[2]/div[2]/table/tbody/tr/td[2]/div/div[2]/center/form/div[1]/div/div/span/input")
         m.click()
-        print(1)
+        print(r)
         mybeep()
         sleep(pause)
         r = r+1
-        if r > 20:
+        if r > times:
             t = False
 
     print("ЗАВЕРШИЛ 20")
