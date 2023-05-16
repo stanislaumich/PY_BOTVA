@@ -12,7 +12,7 @@ from beep import mybeep
 
 # пауза между открытиями
 pause = 13
-times = 30
+times = 40
 def main():
     print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
 
@@ -79,7 +79,7 @@ def main():
         if r > times:
             t = False
 
-    print("ЗАВЕРШИЛ 20")
+    print("ЗАВЕРШИЛ ")
 
 if __name__ == "__main__":
     main()
