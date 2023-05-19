@@ -12,9 +12,9 @@ from beep import mybeep
 
 # пауза между открытиями
 pause = 13
-times = 40
+times = 160
 def main():
-    print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать ускор")
+    print("[INFO] Нужно помнить что нахождение в некоторых локациях, например подзем, не дает отработать")
 
     myp = os.path.dirname(os.path.realpath(__file__)) + "\SELENIUM"
     try:
