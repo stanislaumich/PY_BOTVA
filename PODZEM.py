@@ -9,13 +9,12 @@ import os
 from selenium.webdriver.common.by import By
 from datetime import datetime
 import sqlite3
-from selenium_stealth import stealth
-import undetected_chromedriver as uc
+from selenium import webdriver
 import mysettings
 from bs4 import BeautifulSoup
 import requests
 
-base = "11.04.2023"
+base = "31.10.2023"
 url = 'https://g1.botva.ru/clan_members.php?id=21148'  # Мы
 
 myklan = []
@@ -87,13 +86,18 @@ def main():
     except:
         print("Путь профиля хром уже существует")
 
-    opts = uc.ChromeOptions()
-    if os.path.exists('s:/home'):
-        opts.add_argument(f'--proxy-server=127.0.0.1:3128')
-    opts.add_argument(r"--user-data-dir=" + myp)
-    opts.add_argument("--profile-directory=BOTVA")
-    driver = uc.Chrome(options=opts)
-    stealth(driver,
+    #opts = uc.Options()
+    #if os.path.exists('s:/home'):
+    #    opts.add_argument(f'--proxy-server=127.0.0.1:3128')
+    #opts.add_argument(r"--user-data-dir=" + myp)
+    #opts.add_argument("--profile-directory=BOTVA")
+    options = webdriver.ChromeOptions()
+    options.add_argument("--allow-profiles-outside-user-dir")
+    options.add_argument(r"user-data-dir=" + myp)
+    options.add_argument("--profile-directory=BOTVA")
+
+    driver = webdriver.Chrome(options=options,executable_path=r"c:\chromedriver\driver.exe")
+    '''stealth(driver,
             languages=["ru-RU", "ru"],
             vendor="Google Inc.",
             platform="Win32",
@@ -101,6 +105,7 @@ def main():
             renderer="Intel Iris OpenGL Engine",
             fix_hairline=True,
             )
+    '''
     print("Логин...  ")
     driver.get("http://botva.ru")
     element = driver.find_element(By.CLASS_NAME, "sign_in")

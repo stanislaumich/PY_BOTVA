@@ -1,0 +1,6 @@
+[LOGIN]
+username=юзер
+password=пароль
+[PATH]
+workdir=WORK
+base = s:\\BOTVA\\Win32\\Release\\botva.sqlite

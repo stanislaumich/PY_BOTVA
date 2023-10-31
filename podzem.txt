@@ -1,30 +1,84 @@
-02.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913245&id=2682786&key=6195609d83f6482f4c04f7db9d2373eb	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913256&id=2682814&key=cb61b1109daf2be0a982f823ba2e6edb
-	Kerberos	**SUPERHelen**
-
-
-03.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913338&id=2683067&key=2a395aeafb66177d559872a26ad91a98	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913348&id=2683093&key=0b3e83b53d622a4f9cbb778ae383750e
-	**SUPERHelen**	T@nk
-
-
-04.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913406&id=2683261&key=4710133798d5f486023aa09faa366e7d	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913418&id=2683300&key=9f61e56f610717e459e8e66bcb88e782
-	**SUPERHelen**	=–õ—é–õ—é–ù–¥–†–∞=
-
-
-05.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913492&id=2683526&key=95aeb4b765abb4a2fd35d1a61b283692	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913502&id=2683562&key=bfcc1460b95854f506a35a4489587050
-	NeXTY	=–õ—é–õ—é–ù–¥–†–∞=
-
-
-06.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913548&id=2683677&key=7cc2ae07b91ddcb162a1f3445541f7b8	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913559&id=2683713&key=0813ef036f9dd982562f9c0a79641101
+01.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951094&id=2817964&key=c44462b3081a8108ef1c9ef8caa2e718	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951107&id=2817997&key=1d04699ce8d597c8d432328bc16fb1e6
+	T@nk	StasLz42
+		
+		
+02.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951166&id=2818197&key=93e90bef5f0c9d27d3af2a4741e9131c	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951174&id=2818223&key=87f47f9fdc9835994d1ec7f8e9309c1c
+	Kerberos	Kerberos
+		
+		
+03.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951231&id=2818416&key=fe810bd517e057a56adbc89067441cfe	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951240&id=2818445&key=d31491461262132e14bdaa112bf948c3
+	Bravan	_‘Âˇ À‡Ì‡_
+		
+		
+04.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951387&id=2818963&key=a5638e7b3efa9f4700bf2ca2c4566532	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951432&id=2819126&key=c3464ce0f2cdb7eac17c65c5527a97ff
+	**SUPERHelen**	Kerberos
+		
+		
+05.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951795&id=2820509&key=8ab9d2feeae416197adcddf85ec5d2a3	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=951825&id=2820609&key=d0a8a3d331c6711dea81bea42df04e9e
+	**SUPERHelen**	=À˛À˛Õ‰–‡=
+		
+		
+08.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=952906&id=2824662&key=e20f3b826c1b7996d56172477e93a3a1	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=952938&id=2824784&key=16da9a45e48c0fbea044f2565cac120d
+	~Ã‡Î¸‚ËÌ‡~	-Brain-
+		
+		
+09.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=953283&id=2826092&key=fefa13402cae99c6007eadfe825de63b	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=953310&id=2826203&key=62be4b80398d210405a6abddc4c92e58
+	NeXTY	Kerberos
+		
+		
+10.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=953683&id=2827559&key=e1cf733654caa671b5ad6913a4b789bd	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=953710&id=2827659&key=8961be33d0b84c7306075af4249678e9
+	Ice flame	**SUPERHelen**
+		
+		
+11.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=954076&id=2829046&key=646325a3d136511ee3bdde857ff2d451	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=954113&id=2829173&key=73c6596a0e95f0ce07184702765acfb2
+	GoldGirl.	**SUPERHelen**
+		
+		
+12.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=954476&id=2830555&key=49605683a8f99cfd755ef62c10bb5639	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=954508&id=2830684&key=c08bdbd417db5b4772dc08bd721e8476
+	**SUPERHelen**	**SUPERHelen**
+		
+		
+15.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=955684&id=2835112&key=40e83f65b157947c12a4fa7e87d6709b	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=955721&id=2835265&key=2e31434d04ddbc978a530d93d77eb095
+	Kerberos	=À˛À˛Õ‰–‡=
+		
+		
+16.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956097&id=2836679&key=655f3ff56e2aa0d8c2500cfb3044eb15	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956141&id=2836847&key=44898e848183d85856253964fd4c7aae
 	NeXTY	NeXTY
-
-
-09.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913797&id=2684400&key=a3ad04437f4ed59bbf7361effd0e3b3d	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913803&id=2684428&key=a4c66ce1a2fd204dded32c1d4c7a37df
-	Kerberos	T@nk
-
-
-10.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913891&id=2684698&key=18fb99634f2134504798203fa8a6c2ce	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913899&id=2684728&key=c92de9d2b1a6fc49f33d5e79aeb46cc1
-	*Kronos*	NeXTY
-
-
-11.04.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913970&id=2684938&key=80ef8174a22c0d26a6bf5697f9434a78	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=913981&id=2684975&key=39c4d8bf1d3f7aee395ac21747d6ba73
-	NeXTY	T@nk
+		
+		
+17.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956514&id=2838241&key=cad3f63d3051101cbce91acaded460ed	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956556&id=2838425&key=0b0b2421239b45dbede921899ddfff8b
+	-Brain-	**SUPERHelen**
+		
+		
+18.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956919&id=2839783&key=575e9bfe2db7a04e64762300a6a9f346	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=956952&id=2839903&key=44c24657b5c8db8dd42dbb629aaaad65
+	-Brain-	NeXTY
+		
+		
+19.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=957236&id=2840956&key=80f96022b2c2e8ddcb66e6466471fe84	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=957273&id=2841107&key=2621b8fa8d7744e72247421e0182d827
+	Kerberos	-Brain-
+		
+		
+22.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958261&id=2844835&key=92e478f3d9684dc73a97a103f9f098ba	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958293&id=2844965&key=bfa3bd48c0cc58c59ffda6cf52750c32
+	T@nk	=À˛À˛Õ‰–‡=
+		
+		
+23.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958595&id=2846075&key=698ac3dbe28447c923347f1acbbf9458	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958631&id=2846215&key=c1e79cc5ab4b2131e31db9f80e21e5aa
+	-Brain-	NeXTY
+		
+		
+24.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958928&id=2847330&key=54a98112b4547d2fecde842c9be64212	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=958951&id=2847416&key=5123e32263fc0f2cb255a40f21a530ca
+	Kerberos	NeXTY
+		
+		
+25.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=959272&id=2848609&key=2ae9f2e7d542681df2b2abb8e57b6c3c	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=959304&id=2848720&key=e5a0044151061787a96696ed7d32436f
+	T@nk	T@nk
+		
+		
+26.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=959631&id=2849942&key=d7a4dad2064c1046f7833ec31718c404	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=959660&id=2850055&key=38e11f42865e30aa022d482034846c89
+	·Â¯Í‡-·Â·Â¯Í‡_	T@nk
+		
+		
+		
+30.10.2023	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=960921&id=2854776&key=7908372f365d682b04835241b3b704b5	https://g1.botva.ru/monster.php?a=monsterpve&do_cmd=log&raid=961148&id=2855550&key=ba076ca2a91481666fcc33edabfd4db3
+	GoldGirl.	T@nk
+		

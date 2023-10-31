@@ -5,12 +5,12 @@ walmau 6altau;107;DominosZ;151;walmau 6altau;99;Макыс;77;Макыс;124;**S
 *Милка;100;Kerberos;136;Тудор;93;DambLDoR;61;Тудор;100;ЛюЛюНдРа=;95;Kerberos;116;Kerberos;111;Kerberos;53;Kerberos;78;
 
 '''
-base = "arena_mart"
+base = "arena_may"
 def main():
     d = {}
     with open(base + ".csv", "r") as file:
         content = file.read()
-        content = content.replace("\n", ";") #
+        content = content.replace("\n", ";")
         #
         for i in range(1, 10):
             content = content.replace(";;", ";")
